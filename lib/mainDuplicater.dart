@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:musicalization/logic/permission.dart';
+import 'package:musicalization/logic/startup.dart';
 import 'package:musicalization/pages/HomePage.dart';
 import 'package:musicalization/pages/ListPage.dart';
 import 'package:musicalization/pages/PlayPage.dart';
@@ -13,7 +13,6 @@ class MainDuplicater extends StatefulWidget {
 }
 
 class _MainDuplicaterState extends State<MainDuplicater> {
-  final _permissionRequester = MediaAudioPermissionRequester();
   final PageController _pageController = PageController(initialPage: 0);
 
   final List<Widget> _pages = const [
@@ -28,7 +27,7 @@ class _MainDuplicaterState extends State<MainDuplicater> {
   @override
   void initState() {
     super.initState();
-    _permissionRequester.requestPermission();
+    StartUp().init();
   }
 
   
