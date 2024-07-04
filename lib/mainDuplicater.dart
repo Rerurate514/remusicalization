@@ -76,7 +76,6 @@ class _MainDuplicaterState extends State<MainDuplicater> {
         ],
         currentIndex: _currentPageIndex,
         onTap: _onItemTapped,
-        selectedItemColor: MyColors.PRIMARY_BLUE.color,
       ),
     );
   }

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 enum MyColors{
   PRIMARY_BLUE,
-  UNSELECTED_BLUE
+  UNSELECTED_BLUE,
+  CARD_BACKGROUND
 }
 
 extension ColorEx on MyColors{
@@ -10,6 +11,7 @@ extension ColorEx on MyColors{
     switch(this){
       case MyColors.PRIMARY_BLUE: return const Color.fromARGB(255, 44, 232, 245);
       case MyColors.UNSELECTED_BLUE: return const Color.fromARGB(255, 14, 68, 71);
+      case MyColors.CARD_BACKGROUND: return const Color.fromARGB(255, 51, 51, 51); 
     }
   }
 }
