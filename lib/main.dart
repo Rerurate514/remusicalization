@@ -16,7 +16,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         textTheme: ThemeData.dark().textTheme.copyWith(),
-        colorScheme: ColorScheme.fromSeed(seedColor: MyColors.PRIMARY_BLUE.color)
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: MyColors.PRIMARY_BLUE.color,
+        ),
+        iconTheme: IconThemeData(
+          color: MyColors.PRIMARY_BLUE.color,
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          foregroundColor: MyColors.PRIMARY_BLUE.color,
+        )
       ),
       home: const MyHomePage(),
     );
