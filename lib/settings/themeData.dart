@@ -7,7 +7,8 @@ final ThemeData APP_THEME_DATA = ThemeData.dark().copyWith(
   //   seedColor: MyColors.PRIMARY_BLUE.color,
   // ),
   cardTheme: CardTheme(
-    color: MyColors.CARD_BACKGROUND.color
+    color: MyColors.CARD_BACKGROUND.color,
+    elevation: 8
   ),
   iconTheme: IconThemeData(
     color: MyColors.PRIMARY_BLUE.color,
