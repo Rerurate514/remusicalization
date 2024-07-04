@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/enums/colors.dart';
 
-final ThemeData appThemeData = ThemeData.dark().copyWith(
+final ThemeData APP_THEME_DATA = ThemeData.dark().copyWith(
   textTheme: ThemeData.dark().textTheme.copyWith(),
   colorScheme: ColorScheme.fromSeed(
     seedColor: MyColors.PRIMARY_BLUE.color,
