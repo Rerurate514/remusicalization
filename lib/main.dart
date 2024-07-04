@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:musicalization/enums/colors.dart';
 import 'package:musicalization/mainDuplicater.dart';
+import 'package:musicalization/settings/themeData.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,18 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        textTheme: ThemeData.dark().textTheme.copyWith(),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: MyColors.PRIMARY_BLUE.color,
-        ),
-        iconTheme: IconThemeData(
-          color: MyColors.PRIMARY_BLUE.color,
-        ),
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
-          foregroundColor: MyColors.PRIMARY_BLUE.color,
-        )
-      ),
+      theme: appThemeData,
       home: const MyHomePage(),
     );
   }
