@@ -1,3 +1,4 @@
+import 'package:musicalization/utils/showWarnDialog.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 abstract class PermissionRequester {
@@ -11,7 +12,7 @@ class MediaAudioPermissionRequester extends PermissionRequester {
 
     status.isGranted
         ? print('READ_MEDIA_AUDIO permission granted.')
-        : print('READ_MEDIA_AUDIO permission denied.');
+        : showWarnDialog("READ_MEDIA_AUDIO permission denied.");
 
     return status;
   }

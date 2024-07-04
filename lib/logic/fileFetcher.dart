@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:musicalization/utils/showWarnDialog.dart';
+
 import 'filrStrTrimer.dart';
 
 class FileFetcher{
@@ -43,7 +45,7 @@ class FileFetcher{
       //todo
     }
     else{
-      print("unknown platform, undefined logic");
+      showWarnDialog("Unknown platform, Undefined logic");
     }
     
     return directory;
