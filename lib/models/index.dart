@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class Index{
   final List list;
 
@@ -16,5 +18,9 @@ class Index{
   void dicrease(){
     _value--;
     if(0 > _value) _value = len - _value;
+  }
+
+  void random(){
+    _value = Random().nextInt(len);
   }
 }
