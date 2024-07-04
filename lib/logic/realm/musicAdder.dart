@@ -2,7 +2,7 @@ import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
 import 'package:realm/realm.dart';
 
-class MusicInfoAdder {
+class MusicAdder {
   final realmIOManager = RealmIOManager(Music.schema);
 
   void add(String pathArg, String nameArg) {
