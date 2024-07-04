@@ -12,6 +12,8 @@ class MainDuplicater extends StatefulWidget {
 }
 
 class _MainDuplicaterState extends State<MainDuplicater> {
+  final PageController _pageController = PageController(initialPage: 0);
+
   final List<Widget> _pages = const [
     HomePage(),
     ListPage(),
@@ -20,10 +22,15 @@ class _MainDuplicaterState extends State<MainDuplicater> {
   ];
 
   int _currentPageIndex = 0;
-
-  void _onItemTapped(int index){
+  
+  void _onItemTapped(int indexArg) {
     setState(() {
-      _currentPageIndex = index;
+      _currentPageIndex = indexArg;
+      _pageController.animateToPage(
+        indexArg,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
     });
   }
 
@@ -32,7 +39,11 @@ class _MainDuplicaterState extends State<MainDuplicater> {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
-        child: _pages[_currentPageIndex]
+        child: PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: _pageController,
+          children: _pages,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
