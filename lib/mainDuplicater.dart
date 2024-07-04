@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/enums/colors.dart';
+import 'package:musicalization/logic/logic/permission.dart';
 import 'package:musicalization/pages/HomePage.dart';
 import 'package:musicalization/pages/ListPage.dart';
 import 'package:musicalization/pages/PlayPage.dart';
@@ -13,6 +14,7 @@ class MainDuplicater extends StatefulWidget {
 }
 
 class _MainDuplicaterState extends State<MainDuplicater> {
+  final _permissionRequester = MediaAudioPermissionRequester();
   final PageController _pageController = PageController(initialPage: 0);
 
   final List<Widget> _pages = const [
@@ -23,6 +25,13 @@ class _MainDuplicaterState extends State<MainDuplicater> {
   ];
 
   int _currentPageIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _permissionRequester.requestPermission();
+  }
+
   
   void _onItemTapped(int indexArg) {
     setState(() {
