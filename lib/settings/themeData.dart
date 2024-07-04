@@ -19,5 +19,12 @@ final ThemeData APP_THEME_DATA = ThemeData.dark().copyWith(
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedItemColor: MyColors.PRIMARY_BLUE.color,
     unselectedItemColor: MyColors.UNSELECTED_BLUE.color
+  ),
+  sliderTheme: SliderThemeData(
+    trackHeight: 2.0,
+        thumbColor: MyColors.PRIMARY_BLUE.color,
+        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8.0),
+        overlayColor: Colors.blue,
+        overlayShape: const RoundSliderOverlayShape(overlayRadius: 20.0),
   )
 );
