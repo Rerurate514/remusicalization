@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicalization/enums/colors.dart';
 import 'package:musicalization/pages/HomePage.dart';
 import 'package:musicalization/pages/ListPage.dart';
 import 'package:musicalization/pages/PlayPage.dart';
@@ -66,6 +67,7 @@ class _MainDuplicaterState extends State<MainDuplicater> {
         ],
         currentIndex: _currentPageIndex,
         onTap: _onItemTapped,
+        selectedItemColor: MyColors.PRIMARY_BLUE.color,
       ),
     );
   }

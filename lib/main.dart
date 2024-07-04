@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicalization/enums/colors.dart';
 import 'package:musicalization/mainDuplicater.dart';
 
 void main() {
@@ -12,9 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        textTheme: ThemeData.dark().textTheme.copyWith(),
+        colorScheme: ColorScheme.fromSeed(seedColor: MyColors.PRIMARY_BLUE.color)
       ),
       home: const MyHomePage(),
     );
