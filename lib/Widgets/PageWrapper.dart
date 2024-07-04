@@ -11,7 +11,7 @@ class PageWrapper extends StatelessWidget{
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: size.width * 0.05,
-        vertical: size.height * 0.05
+        //vertical: size.height * 0.05
       ),
       child: child,
     );
