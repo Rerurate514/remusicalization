@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:musicalization/enums/colors.dart';
-import 'package:musicalization/logic/logic/permission.dart';
+import 'package:musicalization/logic/permission.dart';
 import 'package:musicalization/pages/HomePage.dart';
 import 'package:musicalization/pages/ListPage.dart';
 import 'package:musicalization/pages/PlayPage.dart';
