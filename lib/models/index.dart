@@ -1,20 +1,20 @@
 class Index{
   final List list;
 
-  int _index = 0;
-  int get index => _index;
+  int _value = 0;
+  int get value => _value;
 
   Index({required this.list});
 
   int get len => list.length;
 
   void increase(){
-    _index++;
-    if(len < _index) _index -= len;
+    _value++;
+    if(len < _value) _value -= len;
   }
 
   void dicrease(){
-    _index--;
-    if(0 > _index) _index = len - _index;
+    _value--;
+    if(0 > _value) _value = len - _value;
   }
 }
