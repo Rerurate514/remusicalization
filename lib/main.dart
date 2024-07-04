@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/mainDuplicater.dart';
+import 'package:musicalization/settings/globalNavigatoeKey.dart';
 import 'package:musicalization/settings/themeData.dart';
 
 void main() {
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: APP_THEME_DATA,
+      navigatorKey: navigatorKey,
       home: const MyHomePage(),
     );
   }
