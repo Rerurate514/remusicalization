@@ -118,7 +118,7 @@ class Music extends _Music with RealmEntity, RealmObjectBase, RealmObject {
   SchemaObject get objectSchema => RealmObjectBase.getSchema(this) ?? schema;
 }
 
-class Musics extends _Musics with RealmEntity, RealmObjectBase, RealmObject {
+class Musics extends _PlayList with RealmEntity, RealmObjectBase, RealmObject {
   Musics(
     ObjectId id,
     String name, {

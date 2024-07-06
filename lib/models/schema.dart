@@ -14,7 +14,7 @@ class _Music{
 }
 
 @RealmModel()
-class _Musics{
+class _PlayList{
   @PrimaryKey()
   late ObjectId id;           //テーブルId
   late String name;           //リスト名
