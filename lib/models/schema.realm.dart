@@ -118,8 +118,9 @@ class Music extends _Music with RealmEntity, RealmObjectBase, RealmObject {
   SchemaObject get objectSchema => RealmObjectBase.getSchema(this) ?? schema;
 }
 
-class Musics extends _PlayList with RealmEntity, RealmObjectBase, RealmObject {
-  Musics(
+class PlayList extends _PlayList
+    with RealmEntity, RealmObjectBase, RealmObject {
+  PlayList(
     ObjectId id,
     String name, {
     Iterable<ObjectId> list = const [],
@@ -130,7 +131,7 @@ class Musics extends _PlayList with RealmEntity, RealmObjectBase, RealmObject {
         this, 'list', RealmList<ObjectId>(list));
   }
 
-  Musics._();
+  PlayList._();
 
   @override
   ObjectId get id => RealmObjectBase.get<ObjectId>(this, 'id') as ObjectId;
@@ -150,15 +151,15 @@ class Musics extends _PlayList with RealmEntity, RealmObjectBase, RealmObject {
       throw RealmUnsupportedSetError();
 
   @override
-  Stream<RealmObjectChanges<Musics>> get changes =>
-      RealmObjectBase.getChanges<Musics>(this);
+  Stream<RealmObjectChanges<PlayList>> get changes =>
+      RealmObjectBase.getChanges<PlayList>(this);
 
   @override
-  Stream<RealmObjectChanges<Musics>> changesFor([List<String>? keyPaths]) =>
-      RealmObjectBase.getChangesFor<Musics>(this, keyPaths);
+  Stream<RealmObjectChanges<PlayList>> changesFor([List<String>? keyPaths]) =>
+      RealmObjectBase.getChangesFor<PlayList>(this, keyPaths);
 
   @override
-  Musics freeze() => RealmObjectBase.freezeObject<Musics>(this);
+  PlayList freeze() => RealmObjectBase.freezeObject<PlayList>(this);
 
   EJsonValue toEJson() {
     return <String, dynamic>{
@@ -168,15 +169,15 @@ class Musics extends _PlayList with RealmEntity, RealmObjectBase, RealmObject {
     };
   }
 
-  static EJsonValue _toEJson(Musics value) => value.toEJson();
-  static Musics _fromEJson(EJsonValue ejson) {
+  static EJsonValue _toEJson(PlayList value) => value.toEJson();
+  static PlayList _fromEJson(EJsonValue ejson) {
     return switch (ejson) {
       {
         'id': EJsonValue id,
         'name': EJsonValue name,
         'list': EJsonValue list,
       } =>
-        Musics(
+        PlayList(
           fromEJson(id),
           fromEJson(name),
           list: fromEJson(list),
@@ -186,9 +187,9 @@ class Musics extends _PlayList with RealmEntity, RealmObjectBase, RealmObject {
   }
 
   static final schema = () {
-    RealmObjectBase.registerFactory(Musics._);
+    RealmObjectBase.registerFactory(PlayList._);
     register(_toEJson, _fromEJson);
-    return SchemaObject(ObjectType.realmObject, Musics, 'Musics', [
+    return SchemaObject(ObjectType.realmObject, PlayList, 'PlayList', [
       SchemaProperty('id', RealmPropertyType.objectid, primaryKey: true),
       SchemaProperty('name', RealmPropertyType.string),
       SchemaProperty('list', RealmPropertyType.objectid,
