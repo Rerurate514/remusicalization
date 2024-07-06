@@ -4,11 +4,11 @@ import 'package:musicalization/utils/showWarnDialog.dart';
 import 'filrStrTrimer.dart';
 
 class FileFetcher{
-  late List _list = [];
-  List get list => _list;
+  late List<FileSystemEntity> _list = [];
+  List<FileSystemEntity> get list => _list;
 
-  List get nameList => _getNameList();
-  List get pathList => _getPathList();
+  List<String> get nameList => _getNameList();
+  List<String> get pathList => _getPathList();
 
   final _trimFileStr = FileStrTrimer();
 
@@ -20,12 +20,12 @@ class FileFetcher{
     await _fetchFileFromDownloadDir().then((value) => _list = value);
   }
 
-  List _getNameList(){
+  List<String> _getNameList(){
     _initFileFetcher();
     return _trimFileStr.convertFileNameToNameString(_list);
   }
 
-  List _getPathList(){
+  List<String> _getPathList(){
     _initFileFetcher();
     return _trimFileStr.convertFileNameToPathString(_list);
   }
@@ -52,7 +52,7 @@ class FileFetcher{
   }
 
   ///このメソッドは外部ストレージのdownloadディレクトリ内のファイルを取得するメソッドです。
-  Future<List> _fetchFileFromDownloadDir() async {
+  Future<List<FileSystemEntity>> _fetchFileFromDownloadDir() async {
     Directory dir = await _fetchExternalDir();
 
     List<FileSystemEntity> result = dir.listSync();
