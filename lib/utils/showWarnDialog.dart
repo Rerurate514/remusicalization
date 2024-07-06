@@ -3,7 +3,7 @@ import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/settings/globalNavigatoeKey.dart';
 
-showWarnDialog(String text){
+showWarnDialog(String text, [Widget? child]){
   showDialog(
     barrierDismissible: false,
     context: navigatorKey.currentContext!,
@@ -19,9 +19,16 @@ showWarnDialog(String text){
                   color: Colors.red,
                 ),
                 StandardSpace(),
-                FittedBox(
-                  child: Text(text),
-                )
+                Column(
+                  children: [
+                    FittedBox(
+                      child: Text(text),
+                    ),
+                    StandardSpace(),
+                    child ?? const SizedBox.shrink()
+                  ]
+                ),
+                StandardSpace(),
               ],
             )
           ),
