@@ -39,6 +39,7 @@ dependencies:
   permission_handler: ^11.3.1
   realm: ^3.1.0
   audioplayers: ^6.0.0
+  flutter_riverpod: ^2.5.1
 
 dev_dependencies:
   flutter_test:
