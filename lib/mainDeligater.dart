@@ -5,14 +5,14 @@ import 'package:musicalization/pages/ListPage.dart';
 import 'package:musicalization/pages/PlayPage.dart';
 import 'package:musicalization/pages/SettingPage.dart';
 
-class MainDuplicater extends StatefulWidget {
-  const MainDuplicater({super.key});
+class MainDeligater extends StatefulWidget {
+  const MainDeligater({super.key});
 
   @override
-  _MainDuplicaterState createState() => _MainDuplicaterState();
+  _MainDeligaterState createState() => _MainDeligaterState();
 }
 
-class _MainDuplicaterState extends State<MainDuplicater> {
+class _MainDeligaterState extends State<MainDeligater> {
   final PageController _pageController = PageController(initialPage: 0);
 
   final List<Widget> _pages = const [
