@@ -40,6 +40,11 @@ class RealmIOManager {
   void deleteAll<SCHEMA extends RealmObject>() {
     realm.write(() => realm.deleteAll<SCHEMA>());
   }
+
+  Future<void> update<T extends RealmObject>({required T newData}) async {
+    _adder.updater<T>(realm: realm, newData: newData);
+  }
+
 }
 
 class _DataReader {
@@ -74,6 +79,11 @@ class _DataReader {
 class _DataAdder {
   Future<Result> add<T extends RealmObject>({required Realm realm, required T newData}) async {
     realm.write(() => realm.add(newData));
+    return Result(isSucceeded: true);
+  }
+
+  Future<Result> updater<T extends RealmObject>({required Realm realm, required T newData}) async {
+    realm.write(() => realm.add(newData, update: true));
     return Result(isSucceeded: true);
   }
 }
