@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/HeaderMenuBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
-import 'package:musicalization/components/HomePage/HomeMusicList.dart';
+import 'package:musicalization/logic/fileFetcher.dart';
+import 'package:musicalization/logic/musicCreater.dart';
+import 'package:musicalization/logic/recordFetcher.dart';
+import 'package:musicalization/models/schema.dart';
+import 'package:musicalization/utils/scrollableMusicList.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,6 +16,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<Music> _list = [];
+
+  final _recordFetcher = RecordFetcher<Music>(Music.schema);
+
+  @override
+  void initState(){
+    super.initState();
+
+    setState(() {
+      _list = _recordFetcher.getAllReacordList();
+    });
+  }
 
   void _onUpdateBtnTapped(){
 
@@ -37,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               rightWidgetTappedCallback: () {}
             ),
             StandardSpace(),
-            const HomeMusicList()
+            ScrollableMusicList(list: _list)
           ],
         )
       ),

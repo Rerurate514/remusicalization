@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:musicalization/mainDuplicater.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:musicalization/mainDeligater.dart';
 import 'package:musicalization/settings/globalNavigatoeKey.dart';
 import 'package:musicalization/settings/themeData.dart';
 
@@ -12,12 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: APP_THEME_DATA,
-      navigatorKey: navigatorKey,
-      home: const MyHomePage(),
+    return ProviderScope(
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: APP_THEME_DATA,
+        navigatorKey: navigatorKey,
+        home: const MyHomePage(),
+      )
     );
   }
 }
@@ -32,6 +35,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context){
-    return const MainDuplicater();
+    return const MainDeligater();
   }
 }

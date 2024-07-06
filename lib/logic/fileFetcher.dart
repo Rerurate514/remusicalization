@@ -4,11 +4,8 @@ import 'package:musicalization/utils/showWarnDialog.dart';
 import 'filrStrTrimer.dart';
 
 class FileFetcher{
-  late List<FileSystemEntity> _list = [];
-  List<FileSystemEntity> get list => _list;
-
-  List<String> get nameList => _getNameList();
-  List<String> get pathList => _getPathList();
+  Future<List<String>> get nameList async => await _getNameList();
+  Future<List<String>> get pathList async => await _getPathList();
 
   final _trimFileStr = FileStrTrimer();
 
@@ -16,18 +13,18 @@ class FileFetcher{
     _initFileFetcher();
   }
 
-  Future<void> _initFileFetcher() async {
-    await _fetchFileFromDownloadDir().then((value) => _list = value);
+  Future<List> _initFileFetcher() async {
+    return await _fetchFileFromDownloadDir();
   }
 
-  List<String> _getNameList(){
-    _initFileFetcher();
-    return _trimFileStr.convertFileNameToNameString(_list);
+  Future<List<String>> _getNameList() async {
+    final list = await _initFileFetcher();
+    return _trimFileStr.convertFileNameToNameString(list);
   }
 
-  List<String> _getPathList(){
-    _initFileFetcher();
-    return _trimFileStr.convertFileNameToPathString(_list);
+  Future<List<String>> _getPathList() async {
+    final list = await _initFileFetcher();
+    return _trimFileStr.convertFileNameToPathString(list);
   }
 
   ///このメソッドは外部ストレージのオブジェクトを取得するメソッドです。
@@ -47,7 +44,7 @@ class FileFetcher{
     else{
       showWarnDialog("Unknown platform, Undefined logic");
     }
-    
+
     return directory;
   }
 

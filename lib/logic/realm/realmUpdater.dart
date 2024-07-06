@@ -1,25 +1,18 @@
-import 'package:musicalization/logic/fileFetcher.dart';
-import 'package:musicalization/logic/musicCreater.dart';
 import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
 import 'package:musicalization/utils/getNamesFromMusic.dart';
 
 class Updater{
   final _io = RealmIOManager(Music.schema);
-  final _fetcher = FileFetcher();
-  final _creater = MusicCreater();
 
-  void update(){
+  void update(List<Music> newList){
     final List<Music> originalList = _io.readAll<Music>();
-    final listFromDir = _creater.generateMusicList(
-      _fetcher.pathList, _fetcher.nameList
-    );
-    final List<Music> newList = _createUnDuplicateList(
-      listFromDir, 
+    final List<Music> createdList = _createUnDuplicateList(
+      newList, 
       originalList
     );
   
-    newList.forEach((Music music) async {
+    createdList.forEach((Music music) async {
       _io.update(newData: music);
     });
   }
