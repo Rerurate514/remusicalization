@@ -6,12 +6,14 @@ class InkCard extends StatelessWidget{
   final Function() onTap;
   final Widget child;
   final double circular;
+  final double padding;
 
   const InkCard({
     super.key, 
     required this.onTap, 
     required this.child,
-    this.circular = 16.0
+    this.circular = 16.0,
+    this.padding = 0.0
   });
 
   @override
@@ -24,7 +26,10 @@ class InkCard extends StatelessWidget{
       child: InkWell(
         borderRadius: MyBorderRadius.CARD.value,
         onTap: onTap,
-        child: child
+        child: Padding(
+          padding: EdgeInsets.all(padding),
+          child: child
+        )
       ),
     );
   }
