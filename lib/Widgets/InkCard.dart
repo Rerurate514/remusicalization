@@ -5,15 +5,21 @@ import 'package:musicalization/enums/radius.dart';
 class InkCard extends StatelessWidget{
   final Function() onTap;
   final Widget child;
+  final double circular;
 
-  const InkCard({super.key, required this.onTap, required this.child});
+  const InkCard({
+    super.key, 
+    required this.onTap, 
+    required this.child,
+    this.circular = 16.0
+  });
 
   @override
   Widget build(BuildContext context){
     final Size size = MediaQuery.of(context).size;
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16)
+        borderRadius: BorderRadius.circular(circular)
       ),
       child: InkWell(
         borderRadius: MyBorderRadius.CARD.value,
