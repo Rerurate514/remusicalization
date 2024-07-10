@@ -29,6 +29,11 @@ class MusicPlayer{
     return ins;
   }
 
+  factory MusicPlayer.getEmptyInstance(){
+    final ins = MusicPlayer._();
+    return ins;
+  }
+
   void _setMusicList(List<Music> musicList){
     _player.setMusicList(musicList);
   }
