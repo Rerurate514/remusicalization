@@ -70,6 +70,10 @@ class MusicPlayer{
   void toggleMusicMode(){
     _player.toggleMusicMode();
   }
+
+  void changeVolume(int volume){
+    _player.changeVolume(volume);
+  }
 }
 
 class _AudioPlayerManager{
