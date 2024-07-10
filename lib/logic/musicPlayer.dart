@@ -34,6 +34,12 @@ class MusicPlayer{
     return ins;
   }
 
+  factory MusicPlayer.getInstanceWithReRender(Function() reRenderUICallback){
+    final ins = MusicPlayer._();
+    ins._setRerenderUICallback(reRenderUICallback);
+    return ins;
+  }
+
   void _setMusicList(List<Music> musicList){
     _player.setMusicList(musicList);
   }
@@ -51,6 +57,10 @@ class MusicPlayer{
 
   void pause() {
     _player.pause();
+  }
+
+  void resume(){
+    _player.resume();
   }
 
   void seek(double newCurrenrSeconds){
