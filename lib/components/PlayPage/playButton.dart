@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
+import 'package:musicalization/logic/musicPlayer.dart';
 
 class PlayButton extends StatefulWidget {
   const PlayButton({
@@ -11,9 +12,12 @@ class PlayButton extends StatefulWidget {
 }
 
 class _PlayButtonState extends State<PlayButton> {
+  final MusicPlayer _player = MusicPlayer.getEmptyInstance();
+
   bool isPlaying = true;
 
   void onTapped(){
+    _togglePlaying();
     setState(() {
       _changeIcon();
     });
@@ -21,6 +25,15 @@ class _PlayButtonState extends State<PlayButton> {
 
   void _changeIcon(){
     isPlaying = !isPlaying;
+  }
+
+  void _togglePlaying(){
+    if(isPlaying){
+      _player.pause();
+    }
+    else{
+      _player.resume();
+    }
   }
 
   @override
