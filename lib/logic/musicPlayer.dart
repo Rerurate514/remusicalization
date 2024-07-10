@@ -17,6 +17,8 @@ class MusicPlayer{
   String get listName => _player.listName;
   Music get currentMusic => _player.currentMusic;
 
+  int get nowVolume => _player.nowVolume;
+
   factory MusicPlayer.setMusicList(
     List<Music> musicList, 
     [String listName = "",
@@ -100,6 +102,8 @@ class _AudioPlayerManager{
 
   String get listName => "";
   Music get currentMusic => _musicList[_index.value];
+
+  int get nowVolume => (_audioPlayer.volume * 100).toInt();
 
 
   static _AudioPlayerManager? _instance;
