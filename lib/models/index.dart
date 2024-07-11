@@ -23,4 +23,8 @@ class Index{
   void random(){
     _value = Random().nextInt(len);
   }
+
+  void setIndex(int index){
+    _value = index;
+  }
 }

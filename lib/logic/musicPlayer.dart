@@ -146,6 +146,7 @@ class _AudioPlayerManager{
     listIndex ??= 0;
 
     final String musicPath = _musicList[listIndex].path;
+    _index.setIndex(listIndex);
 
     if(!_isExcutable) return;
     _isExcutable = false;
