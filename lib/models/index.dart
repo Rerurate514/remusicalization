@@ -12,12 +12,12 @@ class Index{
 
   void increase(){
     _value++;
-    if(len < _value) _value -= len;
+    if(len <= _value) _value -= len;
   }
 
   void dicrease(){
     _value--;
-    if(0 > _value) _value = len - _value;
+    if(0 > _value) _value = len + _value;
   }
 
   void random(){
