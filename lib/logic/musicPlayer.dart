@@ -53,7 +53,7 @@ class MusicPlayer{
   }
 
 
-  void start(int? listIndex){
+  void start(int listIndex){
     _player.start(listIndex);
   }
 
@@ -132,19 +132,26 @@ class _AudioPlayerManager{
   }
 
   void _initCompListener(){
-    _pclr.setPlayerCompletionListener(
-      _audioPlayer, 
-      musicMode, 
-      _moveNext, 
-      _moveRandom,
-      _reRenderUI
-    );
+    // _pclr.setPlayerCompletionListener(
+    //   _audioPlayer, 
+    //   musicMode, 
+    //   _moveNext, 
+    //   _moveRandom,
+    //   _reRenderUI
+    // );
+    _audioPlayer.onPlayerComplete.listen((event) {
+      switch(musicMode){
+        case MusicMode.NORMAL: _moveNext();
+        case MusicMode.LOOP: () {};
+        case MusicMode.SHUFFLE: _moveRandom();
+      }
+
+      if(_reRenderUI != null) _reRenderUI!();
+    }); 
   }
 
 
-  Future<void> start(int? listIndex) async {
-    listIndex ??= 0;
-
+  Future<void> start(int listIndex) async {
     final String musicPath = _musicList[listIndex].path;
     _index.setIndex(listIndex);
 
@@ -190,6 +197,7 @@ class _AudioPlayerManager{
   Future<void> _moveNext() async {
     _index.increase();
     start(_index.value);
+    print(_index.value);
   }
 
   Future<void> _movePrevious() async {
@@ -275,6 +283,7 @@ class _PlayerCompletionListenerResistry {
     Function() moveRandom,
     Function()? reRenderUI
   ) {
+    print("set lisetener");
     audioPlayer.onPlayerComplete.listen((event) {
       switch(musicMode){
         case MusicMode.NORMAL: moveNext();
