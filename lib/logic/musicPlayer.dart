@@ -76,13 +76,16 @@ class MusicPlayer{
   void changeVolume(int volume){
     _player.changeVolume(volume);
   }
+
+  void moveMusicList(Transition transition) {
+    _player.moveMusicList(transition);
+  }
 }
 
 class _AudioPlayerManager{
   final AudioPlayer _audioPlayer = AudioPlayer();
   final _CurrentListenerResistry _clr = _CurrentListenerResistry();
   final _DurationListenerResistry _dlr = _DurationListenerResistry();
-  final _PlayerCompletionListenerResistry _pclr = _PlayerCompletionListenerResistry();
 
 
   List<Music> _musicList = [];
@@ -132,13 +135,6 @@ class _AudioPlayerManager{
   }
 
   void _initCompListener(){
-    // _pclr.setPlayerCompletionListener(
-    //   _audioPlayer, 
-    //   musicMode, 
-    //   _moveNext, 
-    //   _moveRandom,
-    //   _reRenderUI
-    // );
     _audioPlayer.onPlayerComplete.listen((event) {
       switch(musicMode){
         case MusicMode.NORMAL: _moveNext();
@@ -146,8 +142,12 @@ class _AudioPlayerManager{
         case MusicMode.SHUFFLE: _moveRandom();
       }
 
-      if(_reRenderUI != null) _reRenderUI!();
+      _reRender();
     }); 
+  }
+
+  void _reRender(){
+    if(_reRenderUI != null) _reRenderUI!();
   }
 
 
@@ -192,12 +192,12 @@ class _AudioPlayerManager{
       case Transition.PREVIOUS: _movePrevious();
       case Transition.RANDOM: _moveRandom();
     }
+    _reRender();
   }
 
   Future<void> _moveNext() async {
     _index.increase();
     start(_index.value);
-    print(_index.value);
   }
 
   Future<void> _movePrevious() async {
