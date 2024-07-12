@@ -16,6 +16,12 @@ class _PlayButtonState extends State<PlayButton> {
 
   bool isPlaying = true;
 
+  @override
+  void initState(){
+    super.initState();
+    isPlaying = _player.isPlaying;
+  }
+
   void onTapped(){
     _togglePlaying();
     setState(() {
@@ -43,7 +49,7 @@ class _PlayButtonState extends State<PlayButton> {
       onTap: onTapped, 
       padding: 10,
       child: Icon(
-        isPlaying ? Icons.pause : Icons.play_arrow,
+        _player.isPlaying ? Icons.pause : Icons.play_arrow,
         size: 32,
       )
     );
