@@ -19,6 +19,8 @@ class MusicPlayer{
 
   int get nowVolume => _player.nowVolume;
 
+  bool get isPlaying => _player.isPlaying;
+
   factory MusicPlayer.setMusicList(
     List<Music> musicList, 
     [String listName = "",
@@ -26,7 +28,7 @@ class MusicPlayer{
 
     final ins = MusicPlayer._();
     ins._setMusicList(musicList);
-    ins._setRerenderUICallback(reRenderUICallback);
+    ins._setReRenderUICallback(reRenderUICallback);
 
     return ins;
   }
@@ -38,7 +40,7 @@ class MusicPlayer{
 
   factory MusicPlayer.getInstanceWithReRender(Function() reRenderUICallback){
     final ins = MusicPlayer._();
-    ins._setRerenderUICallback(reRenderUICallback);
+    ins._setReRenderUICallback(reRenderUICallback);
     return ins;
   }
 
@@ -46,7 +48,7 @@ class MusicPlayer{
     _player.setMusicList(musicList);
   }
 
-  void _setRerenderUICallback(
+  void _setReRenderUICallback(
     Function()? reRenderUI
   ) {
     _player.setReRenderUICallback(reRenderUI ?? () {});
@@ -88,6 +90,7 @@ class _AudioPlayerManager{
   final _DurationListenerResistry _dlr = _DurationListenerResistry();
 
 
+
   List<Music> _musicList = [];
   Index _index = Index(list: []);
 
@@ -100,6 +103,8 @@ class _AudioPlayerManager{
 
   Function()? _reRenderUI;
 
+
+
   double get currentSeconds => _clr.currentSeconds;
   double get durationSeconds => _dlr.durationSeconds;
 
@@ -107,6 +112,7 @@ class _AudioPlayerManager{
   Music get currentMusic => _musicList[_index.value];
 
   int get nowVolume => (_audioPlayer.volume * 100).toInt();
+
 
 
   static _AudioPlayerManager? _instance;
@@ -126,8 +132,8 @@ class _AudioPlayerManager{
 
   void setMusicList(List<Music> musicList, [String listName = ""]){
     _musicList = musicList;
-    _index = Index(list: _musicList);
     _listName = listName;
+    _setIndex(musicList);
   }
 
   void setReRenderUICallback(Function() reRenderUI){
@@ -150,10 +156,16 @@ class _AudioPlayerManager{
     if(_reRenderUI != null) _reRenderUI!();
   }
 
+  void _setIndex(List<Music> musicList){
+    final value = _index.value;
+    _index = Index(list: _musicList);
+    _index.setIndex(value);
+  }
+
 
   Future<void> start(int listIndex) async {
-    final String musicPath = _musicList[listIndex].path;
     _index.setIndex(listIndex);
+    final String musicPath = currentMusic.path;
 
     if(!_isExcutable) return;
     _isExcutable = false;

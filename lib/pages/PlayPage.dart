@@ -44,7 +44,7 @@ class _PlayPageState extends State<PlayPage> {
   }
 
   void _reRenderUI(){
-    setState(() {print(_player.currentMusic.name);
+    setState(() {
       _listNane = _player.listName;
       _musicName = _player.currentMusic.name;
     });
