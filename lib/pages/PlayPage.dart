@@ -5,6 +5,7 @@ import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/PlayPage/musicModeButton.dart';
+import 'package:musicalization/components/PlayPage/musicSettingDrawer.dart';
 import 'package:musicalization/components/PlayPage/nextMusicButton.dart';
 import 'package:musicalization/components/PlayPage/playButton.dart';
 import 'package:musicalization/components/PlayPage/previousButton.dart';
@@ -22,6 +23,8 @@ class PlayPage extends StatefulWidget {
 class _PlayPageState extends State<PlayPage> {
   late final MusicPlayer _player;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   String _musicName = "null";
   String _listNane = "";
   
@@ -30,6 +33,9 @@ class _PlayPageState extends State<PlayPage> {
 
   String _musicDurText = "null";
   String _musicCurText = "null";
+
+  void _openDrawer() => _scaffoldKey.currentState?.openDrawer();
+  void _closeDrawer() => _scaffoldKey.currentState?.closeDrawer();
 
   @override
   void initState(){
@@ -66,6 +72,7 @@ class _PlayPageState extends State<PlayPage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      key: _scaffoldKey,
       body: PageWrapper(
         child: Center(
           child: Stack(
@@ -86,6 +93,40 @@ class _PlayPageState extends State<PlayPage> {
             ],
           ),
         )
+      ),
+      drawer: MusicSettingDrawer(_DrawerTappedFuncs().tappedFuncMap),
+      floatingActionButton: Stack(
+        children: [
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: EdgeInsets.only(top: size.height * 0.14, right: size.width * 0.002),
+              child: FloatingActionButton(
+                onPressed: () => _openDrawer(),
+                backgroundColor: Theme.of(context).cardColor,
+                child: const Icon(
+                  Icons.menu,
+                  size: 40,
+                ),
+              )
+            ),
+          ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: EdgeInsets.only(top: size.height * 0.14, left: size.width * 0.072),
+              child: FloatingActionButton(
+                onPressed: () {
+                  
+                },
+                backgroundColor: Theme.of(context).cardColor,
+                child: const Icon(
+                  Icons.lyrics
+                )
+              )
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -184,4 +225,36 @@ class _PlayPageState extends State<PlayPage> {
       ],
     );
   }
+}
+
+class _DrawerTappedFuncs{
+  late final Map<DrawerItemTappped, Function> _tappedFuncsMap;
+  Map<DrawerItemTappped, Function> get tappedFuncMap => _tappedFuncsMap;
+
+  _DrawerTappedFuncs(){
+    _tappedFuncsMap = {
+      DrawerItemTappped.AUTO_VOLUME_SETTING: _autoVolumeSettingItemTapped,
+      DrawerItemTappped.LYRICS_SETTING: _lyricsSettingItemTapped,
+      DrawerItemTappped.NAME_SETTING: _nameSettingItemTapped,
+      DrawerItemTappped.PICTURE_SETTING: _pictureSettingItemTapped,
+    };
+  }
+
+  void _autoVolumeSettingItemTapped() {
+    //_showAutoVolumeAdjuster();
+  }
+
+  void _lyricsSettingItemTapped() {
+    //_showDialog(LyricsSettingAdjuster());
+  }
+
+  void _nameSettingItemTapped() {
+    //_showDialog(const FileRenameDialog());
+  }
+
+  void _pictureSettingItemTapped() {
+    //_isShowPictureSetting = !_isShowPictureSetting;
+    //_closeDrawer();
+  }
+
 }

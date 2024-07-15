@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:musicalization/Widgets/InkCard.dart';
+import 'package:musicalization/Widgets/standardSpace.dart';
 
 enum DrawerItemTappped {
   AUTO_VOLUME_SETTING,
@@ -23,7 +25,8 @@ class MusicSettingDrawer extends Drawer{
               Padding(
                 padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
                 child: const Icon(
-                  Icons.settings
+                  Icons.settings,
+                  size: 64,
                 )
               ),
               const Text(
@@ -32,6 +35,18 @@ class MusicSettingDrawer extends Drawer{
               ),
             ],
           ),
+          StandardSpace(),
+          buildCards()
+        ],
+      ),
+    );
+  }
+
+  Widget buildCards(){
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [
           _MusicSettingDrawerItems(
             "自動音量設定",
             "assets/images/mp3_menu_auto_sound_control.png",
@@ -67,17 +82,15 @@ class _MusicSettingDrawerItems extends StatelessWidget{
 
   @override
   Widget build(BuildContext contect){
-    return Card(
-      child: InkWell(
-        onTap: () => _onItemTappedFunc(),
-        child: ListTile(
-          leading: Image.asset(
-            _itemPicture,
-            width: 25,
-          ),
-          title: Text(_itemTitle),
+    return InkCard(
+      onTap: () => _onItemTappedFunc(),
+      child: ListTile(
+        leading: Image.asset(
+          _itemPicture,
+          width: 25,
         ),
-      )
+        title: Text(_itemTitle),
+      ),
     );
   }
 }
