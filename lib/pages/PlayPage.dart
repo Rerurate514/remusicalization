@@ -73,9 +73,7 @@ class _PlayPageState extends State<PlayPage> {
               Column(
                 children: [
                   StandardSpace(),
-                  Text(_listNane),
-                  StandardSpace(),
-                  Text(_musicName),
+                  buildTitle(),
                   StandardSpace(),
                   buildImage(size),
                   StandardSpace(),
@@ -89,6 +87,18 @@ class _PlayPageState extends State<PlayPage> {
           ),
         )
       ),
+    );
+  }
+
+  Widget buildTitle(){
+    return Column(
+      children: [
+          Text(_listNane),
+          StandardSpace(),
+          FittedBox(
+            child: Text(_musicName),
+          )
+      ],
     );
   }
   
