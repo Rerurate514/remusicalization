@@ -7,22 +7,19 @@ class InkCard extends StatelessWidget{
   final Widget child;
   final double circular;
   final double padding;
-  final double elevation;
 
   const InkCard({
     super.key, 
     required this.onTap, 
     required this.child,
     this.circular = 16.0,
-    this.padding = 0.0,
-    this.elevation = 0.0
+    this.padding = 0.0,s
   });
 
   @override
   Widget build(BuildContext context){
     final Size size = MediaQuery.of(context).size;
     return Card(
-      elevation: elevation,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(circular)
       ),

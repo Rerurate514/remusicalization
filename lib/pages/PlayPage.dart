@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
+import 'package:musicalization/components/PlayPage/drawer/autoVolumeSettingAdjuster.dart';
 import 'package:musicalization/components/PlayPage/musicModeButton.dart';
 import 'package:musicalization/components/PlayPage/musicSettingDrawer.dart';
 import 'package:musicalization/components/PlayPage/nextMusicButton.dart';
@@ -12,6 +13,7 @@ import 'package:musicalization/components/PlayPage/previousButton.dart';
 import 'package:musicalization/components/PlayPage/volumeButton.dart';
 import 'package:musicalization/components/PlayPage/volumeSwitcher.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
+import 'package:musicalization/settings/globalNavigatoeKey.dart';
 
 class PlayPage extends StatefulWidget {
   const PlayPage({super.key});
@@ -240,8 +242,17 @@ class _DrawerTappedFuncs{
     };
   }
 
-  void _autoVolumeSettingItemTapped() {
-    //_showAutoVolumeAdjuster();
+  void _showDialog(Widget content){
+    showDialog(
+      context: navigatorKey.currentContext!, 
+      builder: (BuildContext context) {
+        return content;
+      }
+    );
+  }
+  
+  void _autoVolumeSettingItemTapped(){
+    _showDialog(AutoVolumeSettingAdjuster());
   }
 
   void _lyricsSettingItemTapped() {
@@ -258,3 +269,4 @@ class _DrawerTappedFuncs{
   }
 
 }
+
