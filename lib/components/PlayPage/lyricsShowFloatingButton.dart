@@ -23,9 +23,7 @@ class LyricsShowFloatingButtonState extends ConsumerState<LyricsShowFloatingButt
       child: Padding(
         padding: EdgeInsets.only(top: size.height * 0.14, left: size.width * 0.072),
         child: FloatingActionButton(
-          onPressed: () {
-            
-          },
+          onPressed: onTapped,
           backgroundColor: Theme.of(context).cardColor,
           child: const Icon(
             Icons.lyrics
