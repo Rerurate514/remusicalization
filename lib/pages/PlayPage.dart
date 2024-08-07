@@ -5,6 +5,8 @@ import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/PlayPage/drawer/autoVolumeSettingAdjuster.dart';
+import 'package:musicalization/components/PlayPage/lyricsShowFloatingButton.dart';
+import 'package:musicalization/components/PlayPage/lyricsSwitcher.dart';
 import 'package:musicalization/components/PlayPage/musicModeButton.dart';
 import 'package:musicalization/components/PlayPage/musicSettingDrawer.dart';
 import 'package:musicalization/components/PlayPage/nextMusicButton.dart';
@@ -97,39 +99,7 @@ class _PlayPageState extends State<PlayPage> {
         )
       ),
       drawer: MusicSettingDrawer(_DrawerTappedFuncs().tappedFuncMap),
-      floatingActionButton: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: Padding(
-              padding: EdgeInsets.only(top: size.height * 0.14, right: size.width * 0.002),
-              child: FloatingActionButton(
-                onPressed: () => _openDrawer(),
-                backgroundColor: Theme.of(context).cardColor,
-                child: const Icon(
-                  Icons.menu,
-                  size: 40,
-                ),
-              )
-            ),
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: EdgeInsets.only(top: size.height * 0.14, left: size.width * 0.072),
-              child: FloatingActionButton(
-                onPressed: () {
-                  
-                },
-                backgroundColor: Theme.of(context).cardColor,
-                child: const Icon(
-                  Icons.lyrics
-                )
-              )
-            ),
-          ),
-        ],
-      ),
+      floatingActionButton: buildFloatingButtons(size)
     );
   }
 
@@ -223,7 +193,30 @@ class _PlayPageState extends State<PlayPage> {
   Widget buildSwitchers(){
     return const Column(
       children: [
-        VolumeSwitcher()
+        VolumeSwitcher(),
+        LyricsSwitcher()
+      ],
+    );
+  }
+
+  Widget buildFloatingButtons(Size size){
+    return Stack(
+      children: [
+        Align(
+          alignment: Alignment.topRight,
+          child: Padding(
+            padding: EdgeInsets.only(top: size.height * 0.14, right: size.width * 0.002),
+            child: FloatingActionButton(
+              onPressed: () => _openDrawer(),
+              backgroundColor: Theme.of(context).cardColor,
+              child: const Icon(
+                Icons.menu,
+                size: 40,
+              ),
+            )
+          ),
+        ),
+        const LyricsShowFloatingButton()
       ],
     );
   }
