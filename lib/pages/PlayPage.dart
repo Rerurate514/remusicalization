@@ -6,6 +6,7 @@ import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/PlayPage/drawer/autoVolumeSettingAdjuster.dart';
 import 'package:musicalization/components/PlayPage/drawer/lyricsSettingAdjuster.dart';
+import 'package:musicalization/components/PlayPage/imageCreaterSwitcher.dart';
 import 'package:musicalization/components/PlayPage/lyricsShowFloatingButton.dart';
 import 'package:musicalization/components/PlayPage/lyricsSwitcher.dart';
 import 'package:musicalization/components/PlayPage/musicModeButton.dart';
@@ -99,7 +100,7 @@ class _PlayPageState extends State<PlayPage> {
           ),
         )
       ),
-      drawer: MusicSettingDrawer(_DrawerTappedFuncs().tappedFuncMap),
+      drawer: MusicSettingDrawer(_DrawerTappedFuncs(closeDrawer: _closeDrawer).tappedFuncMap),
       floatingActionButton: buildFloatingButtons(size)
     );
   }
@@ -195,7 +196,8 @@ class _PlayPageState extends State<PlayPage> {
     return const Column(
       children: [
         VolumeSwitcher(),
-        LyricsSwitcher()
+        LyricsSwitcher(),
+        ImageCreaterSwitcher()
       ],
     );
   }
@@ -227,7 +229,11 @@ class _DrawerTappedFuncs{
   late final Map<DrawerItemTappped, Function> _tappedFuncsMap;
   Map<DrawerItemTappped, Function> get tappedFuncMap => _tappedFuncsMap;
 
-  _DrawerTappedFuncs(){
+  final Function() closeDrawer;
+
+  _DrawerTappedFuncs({
+    required this.closeDrawer
+  }){
     _tappedFuncsMap = {
       DrawerItemTappped.AUTO_VOLUME_SETTING: _autoVolumeSettingItemTapped,
       DrawerItemTappped.LYRICS_SETTING: _lyricsSettingItemTapped,
@@ -258,8 +264,8 @@ class _DrawerTappedFuncs{
   }
 
   void _pictureSettingItemTapped() {
-    //_isShowPictureSetting = !_isShowPictureSetting;
-    //_closeDrawer();
+    closeDrawer();
+
   }
 
 }
