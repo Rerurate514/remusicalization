@@ -5,6 +5,7 @@ import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/PlayPage/drawer/autoVolumeSettingAdjuster.dart';
+import 'package:musicalization/components/PlayPage/drawer/lyricsSettingAdjuster.dart';
 import 'package:musicalization/components/PlayPage/lyricsShowFloatingButton.dart';
 import 'package:musicalization/components/PlayPage/lyricsSwitcher.dart';
 import 'package:musicalization/components/PlayPage/musicModeButton.dart';
@@ -249,7 +250,7 @@ class _DrawerTappedFuncs{
   }
 
   void _lyricsSettingItemTapped() {
-    //_showDialog(LyricsSettingAdjuster());
+    _showDialog(LyricsSettingAdjuster());
   }
 
   void _nameSettingItemTapped() {
