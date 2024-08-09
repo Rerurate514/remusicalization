@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
+import 'package:musicalization/logic/musicPlayer.dart';
 
 class LyricsFragment extends StatefulWidget{
   final Function() closeFragment;
@@ -11,6 +12,8 @@ class LyricsFragment extends StatefulWidget{
 }
 
 class LyricsFragmentState extends State<LyricsFragment>{
+  final MusicPlayer _musicPlayer = MusicPlayer.getEmptyInstance();
+
   @override
   Widget build(BuildContext context){
     final Size size = MediaQuery.of(context).size;
@@ -29,7 +32,9 @@ class LyricsFragmentState extends State<LyricsFragment>{
               child: Column(
                 children: [
                   StandardSpace(),
-                  buildHeader(size)
+                  buildHeader(size),
+                  StandardSpace(),
+                  Text(_musicPlayer.currentMusic.lyrics)
                 ],
               ),
             )
