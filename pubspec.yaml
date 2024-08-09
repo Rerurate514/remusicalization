@@ -18,6 +18,7 @@ dependencies:
   audioplayers: ^6.0.0
   flutter_riverpod: ^2.5.1
   matrix_gesture_detector: ^0.2.0-nullsafety.1
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
