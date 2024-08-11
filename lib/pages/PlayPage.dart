@@ -101,7 +101,14 @@ class _PlayPageState extends State<PlayPage> {
           ),
         )
       ),
-      drawer: MusicSettingDrawer(_DrawerTappedFuncs(closeDrawer: _closeDrawer).tappedFuncMap),
+      drawer: MusicSettingDrawer(
+        _DrawerTappedFuncs(
+          closeDrawer: () {
+            _closeDrawer();
+            
+          },
+        ).tappedFuncMap
+      ),
       floatingActionButton: buildFloatingButtons(size)
     );
   }
@@ -213,7 +220,7 @@ class _DrawerTappedFuncs{
   final Function() closeDrawer;
 
   _DrawerTappedFuncs({
-    required this.closeDrawer
+    required this.closeDrawer,
   }){
     _tappedFuncsMap = {
       DrawerItemTappped.AUTO_VOLUME_SETTING: _autoVolumeSettingItemTapped,
@@ -246,8 +253,6 @@ class _DrawerTappedFuncs{
 
   void _pictureSettingItemTapped() {
     closeDrawer();
-
   }
-
 }
 

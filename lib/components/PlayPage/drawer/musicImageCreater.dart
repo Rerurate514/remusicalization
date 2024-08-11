@@ -1,9 +1,12 @@
+
+
+// ignore: must_be_immutable
 import 'dart:io';
 import 'dart:typed_data';
-import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix_gesture_detector/matrix_gesture_detector.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
@@ -13,17 +16,17 @@ import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
 import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
+import 'package:musicalization/providers/musicImageProvider.dart';
 
-// ignore: must_be_immutable
-class MusicImageCreater extends StatefulWidget {
-  Function() closeFragment;
-  MusicImageCreater({super.key, required this.closeFragment});
+class MusicImageCreater extends ConsumerStatefulWidget {
+  final Function() closeFragment;
+  const MusicImageCreater({super.key, required this.closeFragment});
 
   @override
   MusicImageCreaterState createState() => MusicImageCreaterState();
 }
 
-class MusicImageCreaterState extends State<MusicImageCreater> {
+class MusicImageCreaterState extends ConsumerState<MusicImageCreater> {
   final PictureBinaryConverter _converter = PictureBinaryConverter();
   final RealmIOManager _ioManager = RealmIOManager(Music.schema);
   final MusicPlayer _player = MusicPlayer.getEmptyInstance();
@@ -48,6 +51,7 @@ class MusicImageCreaterState extends State<MusicImageCreater> {
     RenderRepaintBoundary boundary = _globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
     String imageDataBinary = await _converter.convertBoundaryToImageBase64(boundary);
     await _updatePicture(imageDataBinary);
+    _setImageToMusic(imageDataBinary);
   }
 
   Future<void> _updatePicture(String newPictureBinary) async {
@@ -60,6 +64,11 @@ class MusicImageCreaterState extends State<MusicImageCreater> {
       newPictureBinary
     );
     _ioManager.edit(newData: info);
+  }
+
+  void _setImageToMusic(String newPictureBinary){
+    ImageProvider imageProvider = _converter.convertBase64ToImage(newPictureBinary);
+    ref.read(musicImageProvider.notifier).state = imageProvider;
   }
 
   void _initMatrix(){

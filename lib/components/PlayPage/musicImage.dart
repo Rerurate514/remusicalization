@@ -1,40 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
+import 'package:musicalization/providers/musicImageProvider.dart';
 
-class MusicImage extends StatefulWidget{
+class MusicImage extends ConsumerStatefulWidget{
   const MusicImage({super.key});
 
   @override
   MusicImageState createState() => MusicImageState();
 }
 
-class MusicImageState extends State<MusicImage>{
+class MusicImageState extends ConsumerState<MusicImage>{
   final MusicPlayer _player = MusicPlayer.getEmptyInstance();
   final PictureBinaryConverter _converter = PictureBinaryConverter();
 
-  ImageProvider? _musicImage;
+  ImageProvider? _image;
 
   @override
   void initState(){
     super.initState();
-    _setMusicPicture();
+    _setMusicPictureToImage();
   }
 
-  void _setMusicPicture() {
+  void _setMusicPictureToImage() {
     setState(() {
       if(_player.currentMusic.picture != ""){
-        _musicImage = _converter.convertBase64ToImage(_player.currentMusic.picture);
+        _image = _converter.convertBase64ToImage(_player.currentMusic.picture);
       }
       else{
-        _musicImage = null;
+        _image = null;
       }
     });
+  }
+
+  void _setMusicPictureToProv(){
+    ref.read(musicImageProvider.notifier).update(
+      (state) =>
+        _player.currentMusic.picture != ""
+        ? state
+        : null
+    );
   }
 
   @override
   Widget build(BuildContext context){
     final Size size = MediaQuery.of(context).size;
+    final imageProv = ref.watch(musicImageProvider);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _setMusicPictureToProv();
+    });
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: Card(
@@ -47,8 +64,8 @@ class MusicImageState extends State<MusicImage>{
           height: size.height * 0.34,
           child: CircleAvatar(
             backgroundColor: const Color.fromARGB(28, 28, 28, 0),
-            backgroundImage: _musicImage,
-            child: _musicImage == null
+            backgroundImage: imageProv,
+            child: imageProv == null
             ? const Icon(Icons.image)
             : null,
           ),
