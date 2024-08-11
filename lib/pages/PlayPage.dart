@@ -9,6 +9,7 @@ import 'package:musicalization/components/PlayPage/drawer/lyricsSettingAdjuster.
 import 'package:musicalization/components/PlayPage/imageCreaterSwitcher.dart';
 import 'package:musicalization/components/PlayPage/lyricsShowFloatingButton.dart';
 import 'package:musicalization/components/PlayPage/lyricsSwitcher.dart';
+import 'package:musicalization/components/PlayPage/musicImage.dart';
 import 'package:musicalization/components/PlayPage/musicModeButton.dart';
 import 'package:musicalization/components/PlayPage/musicSettingDrawer.dart';
 import 'package:musicalization/components/PlayPage/nextMusicButton.dart';
@@ -88,7 +89,7 @@ class _PlayPageState extends State<PlayPage> {
                   StandardSpace(),
                   buildTitle(),
                   StandardSpace(),
-                  buildImage(size),
+                  const MusicImage(),
                   StandardSpace(),
                   buildTimeAndSlider(),
                   StandardSpace(),
@@ -114,26 +115,6 @@ class _PlayPageState extends State<PlayPage> {
             child: Text(_musicName),
           )
       ],
-    );
-  }
-  
-  Widget buildImage(Size size){
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(1000)
-        ),
-        elevation: 16,
-        child: SizedBox(
-          width: size.width * 0.74,
-          height: size.height * 0.34,
-          child: const CircleAvatar(
-            backgroundColor: Color.fromARGB(28, 28, 28, 0),
-            child: Icon(Icons.image)
-          ),
-        )
-      ),
     );
   }
 
