@@ -35,7 +35,23 @@ class _MusicModeButtonState extends State<MusicModeButton> {
   @override
   void initState(){
     super.initState();
-    _icon = normalIcon;
+    _initBtnIcon();
+  }
+
+  void _initBtnIcon(){
+    setState(() {
+      switch(_player.musicMode){
+        case MusicMode.NORMAL: {
+          _icon = normalIcon;
+        }
+        case MusicMode.LOOP: {
+          _icon = loopIcon;
+        }
+        case MusicMode.SHUFFLE: {
+          _icon = shuffleIcon;
+        }
+      }
+    });
   }
 
   void onTapped(){
