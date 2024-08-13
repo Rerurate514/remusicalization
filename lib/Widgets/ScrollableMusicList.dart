@@ -37,7 +37,7 @@ class _ScrollableMusicListState extends State<ScrollableMusicList> {
               _player.start(index);
             }, 
             child: ListTile(
-              leading: Text("leading"),
+              leading: buildImage(index),
               title: Text(widget.list[index].name),
             )
           );
@@ -49,10 +49,10 @@ class _ScrollableMusicListState extends State<ScrollableMusicList> {
   Widget buildImage(int index){
     return widget.list[index].picture != ""
       ? _buildMusicPicture(widget.list[index])
-      // : Image.asset(
-      //   _picture.musicRecordImg,
-      //   width: 50,
-      : const Icon(Icons.image);
+      : const Icon(
+        Icons.image,
+        size: 40,
+      );
   }
 
   Widget _buildMusicPicture(Music music) {
