@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
@@ -66,7 +67,7 @@ class LyricsSettingAdjusterState extends State<LyricsSettingAdjuster>{
                     }),
                   ),
                 ),
-                Padding(padding: EdgeInsets.symmetric(vertical: size.height * 0.015)),
+                StandardSpace(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -83,7 +84,7 @@ class LyricsSettingAdjusterState extends State<LyricsSettingAdjuster>{
                     ), 
                   ],
                 ),
-                Padding(padding: EdgeInsets.symmetric(vertical: size.height * 0.015)),
+                StandardSpace()
               ],
             ),
           )
