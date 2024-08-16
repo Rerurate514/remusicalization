@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicalization/Widgets/dialogPadding.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/realm/realmIOManager.dart';
@@ -37,8 +38,7 @@ class LyricsSettingAdjusterState extends State<LyricsSettingAdjuster>{
   Widget build(BuildContext context){
     final Size size = MediaQuery.of(context).size;
     return Center(
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: size.height * 0.3, horizontal: size.width * 0.1),
+      child: DialogPadding(
         child: Card(
           elevation: 8,
             child: SingleChildScrollView(

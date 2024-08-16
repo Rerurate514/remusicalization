@@ -5,6 +5,7 @@ import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/PlayPage/drawer/autoVolumeSettingAdjuster.dart';
+import 'package:musicalization/components/PlayPage/drawer/fileRenameDialog.dart';
 import 'package:musicalization/components/PlayPage/drawer/lyricsSettingAdjuster.dart';
 import 'package:musicalization/components/PlayPage/imageCreaterSwitcher.dart';
 import 'package:musicalization/components/PlayPage/lyricsShowFloatingButton.dart';
@@ -248,7 +249,7 @@ class _DrawerTappedFuncs{
   }
 
   void _nameSettingItemTapped() {
-    //_showDialog(const FileRenameDialog());
+    _showDialog(const FileRenameDialog());
   }
 
   void _pictureSettingItemTapped() {
