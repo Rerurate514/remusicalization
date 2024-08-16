@@ -98,6 +98,7 @@ class _AudioPlayerManager{
   MusicMode musicMode = MusicMode.NORMAL;
 
   bool _isExcutable = true;
+  bool _isMusicFirstPlayExecuted = false;
 
   String _listName = "";
 
@@ -109,7 +110,9 @@ class _AudioPlayerManager{
   double get durationSeconds => _dlr.durationSeconds;
 
   String get listName => "";
-  Music get currentMusic => _musicList[_index.value];
+  Music get currentMusic {
+    return _musicList[_index.value];
+  }
 
   int get nowVolume => (_audioPlayer.volume * 100).toInt();
 
@@ -164,6 +167,8 @@ class _AudioPlayerManager{
 
 
   Future<void> start(int listIndex) async {
+    _isMusicFirstPlayExecuted = true;
+
     _index.setIndex(listIndex);
     final String musicPath = currentMusic.path;
 
