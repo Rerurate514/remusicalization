@@ -25,10 +25,10 @@ class PlayPage extends StatefulWidget {
   const PlayPage({super.key});
 
   @override
-  _PlayPageState createState() => _PlayPageState();
+  PlayPageState createState() => PlayPageState();
 }
 
-class _PlayPageState extends State<PlayPage> {
+class PlayPageState extends State<PlayPage> {
   late final MusicPlayer _player;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
