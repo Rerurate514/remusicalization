@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/HeaderMenuBar.dart';
+import 'package:musicalization/Widgets/MyAppBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/scrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
@@ -35,6 +36,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: const MyAppBar(
+        image: AssetImage("assets/images/mp3_mode_main.png")
+      ),
       body: PageWrapper(
         child: Column(
           children: [

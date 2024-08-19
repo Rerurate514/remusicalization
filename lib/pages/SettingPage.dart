@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicalization/Widgets/MyAppBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 
 class SettingPage extends StatefulWidget {
@@ -13,6 +14,9 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: const MyAppBar(
+        image: AssetImage("assets/images/mp3_mode_setting.png")
+      ),
       body: PageWrapper(
         child: Column(
           children: [

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class MyAppBar extends StatelessWidget{
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final ImageProvider image;
 
   const MyAppBar({super.key, required this.image});
@@ -16,4 +16,7 @@ class MyAppBar extends StatelessWidget{
       ],
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

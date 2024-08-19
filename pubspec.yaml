@@ -29,7 +29,12 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/images/
     - assets/images/mp3_menu_auto_sound_control.png
     - assets/images/mp3_menu_lyrics_setting.png
     - assets/images/mp3_menu_name_change_button.png
     - assets/images/mp3_menu_picture_setting.png
+    - assets/images/mp3_mode_main.png
+    - assets/images/mp3_mode_list.png
+    - assets/images/mp3_mode_music.png
+    - assets/images/mp3_mode_setting.png

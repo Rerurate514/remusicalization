@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
+import 'package:musicalization/Widgets/MyAppBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/PlayPage/drawer/autoVolumeSettingAdjuster.dart';
@@ -81,6 +82,9 @@ class PlayPageState extends State<PlayPage> {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       key: _scaffoldKey,
+      appBar: const MyAppBar(
+        image: AssetImage("assets/images/mp3_play_music.png")
+      ),
       body: PageWrapper(
         child: Center(
           child: Stack(
