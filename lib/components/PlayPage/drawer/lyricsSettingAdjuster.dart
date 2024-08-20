@@ -47,10 +47,7 @@ class LyricsSettingAdjusterState extends State<LyricsSettingAdjuster>{
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.1, vertical: size.height * 0.03),
-                  child: Text(
-                    "歌詞の編集",
-                    style: TextStyle(fontSize: size.height * 0.02),
-                  ),
+                  child: buildTitle(size)
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.05, vertical: size.height * 0.01),
@@ -90,6 +87,13 @@ class LyricsSettingAdjusterState extends State<LyricsSettingAdjuster>{
           )
         )
       )
+    );
+  }
+
+  Widget buildTitle(Size size){
+    return const Text(
+      "歌詞の編集",
+      style: TextStyle(fontSize: 20),
     );
   }
 }
