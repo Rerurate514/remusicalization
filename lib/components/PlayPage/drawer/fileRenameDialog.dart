@@ -62,13 +62,11 @@ class FileRenameDialogState extends State<FileRenameDialog> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: Column(
-                children: [
+                children: [                 
                   StandardSpace(),
-                  const Text("ファイル名の変更"),
+                  buildTitle(size),
                   StandardSpace(),
-                  TextField(
-                    controller: _controller,
-                  ),
+                  buildTextField(size),
                   StandardSpace(),
                   buildBtns()
                 ],
@@ -77,6 +75,28 @@ class FileRenameDialogState extends State<FileRenameDialog> {
           )
         ),
       )
+    );
+  }
+
+  Widget buildTitle(Size size){
+    return const Text(
+      "ファイル名の変更",
+      style: TextStyle(fontSize: 20),
+    );
+  }
+
+  Widget buildTextField(Size size){
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.05, vertical: size.height * 0.01),
+      child: TextField(
+        controller: _controller,
+        maxLines: null,
+        autofocus: true,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: '新しい名前を入力',
+        ),
+      ),
     );
   }
 

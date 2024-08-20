@@ -49,38 +49,9 @@ class LyricsSettingAdjusterState extends State<LyricsSettingAdjuster>{
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.1, vertical: size.height * 0.03),
                   child: buildTitle(size)
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.05, vertical: size.height * 0.01),
-                  child: TextField(
-                    controller: _lyricsTextController,
-                    maxLines: null,
-                    autofocus: true,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: '歌詞を入力',
-                    ),
-                    onChanged: ((value){
-                      _lyrics = value;
-                    }),
-                  ),
-                ),
+                buildTextField(size),
                 StandardSpace(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton( 
-                      child: const Text("Cancel"),
-                      onPressed: () => Navigator.pop(context), 
-                    ), 
-                    TextButton( 
-                      child: const Text("Ok"), 
-                      onPressed: () => {
-                        _okBtnTapped(),
-                        Navigator.pop(context), 
-                      }
-                    ), 
-                  ],
-                ),
+                buildBtns(),
                 StandardSpace()
               ],
             ),
@@ -94,6 +65,43 @@ class LyricsSettingAdjusterState extends State<LyricsSettingAdjuster>{
     return const Text(
       "歌詞の編集",
       style: TextStyle(fontSize: 20),
+    );
+  }
+
+  Widget buildTextField(Size size){
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.05, vertical: size.height * 0.01),
+      child: TextField(
+        controller: _lyricsTextController,
+        maxLines: null,
+        autofocus: true,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: '歌詞を入力',
+        ),
+        onChanged: ((value){
+          _lyrics = value;
+        }),
+      ),
+    );
+  }
+
+  Widget buildBtns(){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton( 
+          child: const Text("Cancel"),
+          onPressed: () => Navigator.pop(context), 
+        ), 
+        TextButton( 
+          child: const Text("Ok"), 
+          onPressed: () => {
+            _okBtnTapped(),
+            Navigator.pop(context), 
+          }
+        ), 
+      ],
     );
   }
 }
