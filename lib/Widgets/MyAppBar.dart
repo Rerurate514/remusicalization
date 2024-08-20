@@ -12,7 +12,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: const Text("musicalization"),
       actions: [
-        Image(image: image)
+        Padding(
+          padding: const EdgeInsets.only(right: 8),
+          child: Image(image: image),
+        )
       ],
     );
   }
