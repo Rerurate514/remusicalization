@@ -146,27 +146,39 @@ class MusicImageCreaterState extends ConsumerState<MusicImageCreater> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         InkCard(
-          padding: 8,
+          padding: 16,
           onTap: widget.closeFragment, 
-          child: const Icon(Icons.arrow_back)
+          child: const Icon(
+            Icons.arrow_back,
+            size: 32,
+          )
         ),
         InkCard(
-          padding: 8,
+          padding: 16,
           onTap: _selectFile, 
-          child: const Icon(Icons.download)
+          child: const Icon(
+            Icons.download,
+            size: 32,
+          )
         ),
         InkCard(
-          padding: 8,
+          padding: 16,
           onTap: _initMatrix, 
-          child: const Icon(Icons.update_rounded)
+          child: const Icon(
+            Icons.update_rounded,
+            size: 32,
+          )
         ),
         InkCard(
-          padding: 8,
+          padding: 16,
           onTap: () {
             _captureImage();
             widget.closeFragment();
           }, 
-          child: const Icon(Icons.check)
+          child: const Icon(
+            Icons.check,
+            size: 32,
+          )
         ),
       ],
     );
