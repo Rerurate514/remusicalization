@@ -46,6 +46,7 @@ class _MainDeligaterState extends State<MainDeligater> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: PageView(
           physics: const NeverScrollableScrollPhysics(),
