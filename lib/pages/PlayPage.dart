@@ -83,7 +83,7 @@ class PlayPageState extends State<PlayPage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: const MyAppBar(
-        image: AssetImage("assets/images/mp3_play_music.png")
+        image: AssetImage("assets/images/mp3_mode_music.png")
       ),
       body: PageWrapper(
         child: Center(
@@ -91,7 +91,6 @@ class PlayPageState extends State<PlayPage> {
             children: [
               Column(
                 children: [
-                  StandardSpace(),
                   buildTitle(),
                   StandardSpace(),
                   const MusicImage(),
