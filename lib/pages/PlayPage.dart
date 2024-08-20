@@ -91,7 +91,7 @@ class PlayPageState extends State<PlayPage> {
             children: [
               Column(
                 children: [
-                  buildTitle(),
+                  buildTitle(size),
                   StandardSpace(),
                   const MusicImage(),
                   StandardSpace(),
@@ -117,13 +117,16 @@ class PlayPageState extends State<PlayPage> {
     );
   }
 
-  Widget buildTitle(){
+  Widget buildTitle(Size size){
     return Column(
       children: [
           Text(_listNane),
           StandardSpace(),
-          FittedBox(
-            child: Text(_musicName),
+          SizedBox(
+            width: size.width * 0.6,
+            child: FittedBox(
+              child: Text(_musicName),
+            ),
           )
       ],
     );
