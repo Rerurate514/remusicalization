@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
       body: PageWrapper(
         child: Column(
           children: [
+            StandardSpace(),  
             HeaderMenuBar(
               leftWidget: const Icon(
                 Icons.shuffle,
