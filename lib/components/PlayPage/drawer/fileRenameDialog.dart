@@ -3,6 +3,7 @@ import 'package:musicalization/Widgets/dialogPadding.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/logic/fileRenamer.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
+import 'package:musicalization/logic/permission.dart';
 import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
 
@@ -29,6 +30,8 @@ class FileRenameDialogState extends State<FileRenameDialog> {
     _controller.text = originalFileName;
 
     _removeFileNameFromPath();
+
+    _requestPermission();
   }
 
   void _removeFileNameFromPath(){
@@ -36,20 +39,27 @@ class FileRenameDialogState extends State<FileRenameDialog> {
     _newFilePath.replaceAll(_player.currentMusic.name, "");
   }
 
-  void _okBtnTapped(){
-    final newFilePath = "$_newFileName.mp3";
+  void _okBtnTapped() {
+    String newMusicName = "${_controller.text}.mp3";
+    String newMusicPath = "$_newFileName.mp3";
 
     Music musicInfo = Music(
       _player.currentMusic.id, 
-      _controller.text, 
-      newFilePath, 
+      newMusicName, 
+      newMusicPath, 
       _player.currentMusic.volume,
       _player.currentMusic.lyrics,
       _player.currentMusic.picture
     );
 
     _ioManager.edit(newData: musicInfo);
-    _renamer.renameFile(_player.currentMusic.path, _controller.text);
+    _renamer.renameFile(_player.currentMusic.path, newMusicName);
+  }
+
+  Future<void> _requestPermission() async {
+    final storageAccessRequester = StorageAccessRequester();
+
+    storageAccessRequester.requestPermission();
   }
 
   @override

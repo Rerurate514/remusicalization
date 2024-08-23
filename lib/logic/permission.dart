@@ -17,3 +17,16 @@ class MediaAudioPermissionRequester extends PermissionRequester {
     return status;
   }
 }
+
+class StorageAccessRequester extends PermissionRequester {
+  @override
+  Future<PermissionStatus> requestPermission() async {
+    PermissionStatus status = await Permission.storage.request();
+
+    status.isGranted
+      ? print('AccessStorage permission granted.')
+      : showWarnDialog("AccessStorage permission denied.");
+
+    return status;
+  }
+}
