@@ -114,6 +114,8 @@ class _AudioPlayerManager{
     return _musicList[_index.value];
   }
 
+  List<Music> get currentMusicList => _musicList;
+
   int get nowVolume => (_audioPlayer.volume * 100).toInt();
 
 
