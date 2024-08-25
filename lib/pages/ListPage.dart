@@ -4,6 +4,7 @@ import 'package:musicalization/Widgets/MyAppBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/scrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
+import 'package:musicalization/components/ListPage/registerListDialog.dart';
 import 'package:musicalization/logic/recordFetcher.dart';
 import 'package:musicalization/models/schema.dart';
 
@@ -32,6 +33,15 @@ class _ListPageState extends State<ListPage> {
 
   }
 
+  void _onListAddBtnTapped(){
+    showDialog(
+      context: context, 
+      builder: (BuildContext context){
+        return const RegisterListDialog();
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -50,10 +60,10 @@ class _ListPageState extends State<ListPage> {
               ), 
               leftWidgetTappedCallback: () {}, 
               rightWidget: const Icon(
-                Icons.add_to_drive_outlined,
+                Icons.playlist_add,
                 size: 40,
               ), 
-              rightWidgetTappedCallback: () {}
+              rightWidgetTappedCallback: _onListAddBtnTapped
             ),
             StandardSpace(),
             ScrollableMusicList(list: _list)
