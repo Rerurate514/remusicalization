@@ -5,8 +5,11 @@ import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/scrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/ListPage/registerListDialog.dart';
+import 'package:musicalization/components/ListPage/registerListNameDialog.dart';
 import 'package:musicalization/logic/recordFetcher.dart';
 import 'package:musicalization/models/schema.dart';
+import 'package:realm/realm.dart';
+import 'package:musicalization/settings/globalNavigatoeKey.dart';
 
 class ListPage extends StatefulWidget {
   const ListPage({super.key});
@@ -33,14 +36,11 @@ class _ListPageState extends State<ListPage> {
 
   }
 
-  void _onListAddBtnTapped(){
-    showDialog(
-      context: context, 
-      builder: (BuildContext context){
-        return const RegisterListDialog();
-      }
-    );
+  void _onListAddBtnTapped() async {
+
   }
+
+  
 
   @override
   Widget build(BuildContext context) {

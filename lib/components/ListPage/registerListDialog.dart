@@ -5,10 +5,12 @@ import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
 import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
+import 'package:realm/realm.dart';
 
 class RegisterListDialog extends StatefulWidget {
+  final Function(List<ObjectId>) setMusicList;
 
-  const RegisterListDialog({super.key});  
+  const RegisterListDialog({super.key, required this.setMusicList});  
 
   @override
   RegisterListDialogState createState() => RegisterListDialogState();
@@ -24,6 +26,8 @@ class RegisterListDialogState extends State<RegisterListDialog> {
 
   late List<bool> _selected;
 
+  final List<ObjectId> _tempToBeAddedList = [];
+
   @override
   void initState(){
     super.initState();
@@ -32,15 +36,16 @@ class RegisterListDialogState extends State<RegisterListDialog> {
   }
 
   void _okBtnTapped(){
-
+    widget.setMusicList(_tempToBeAddedList);
   }
-  // void addList(ObjectId idArg) {
-  //   setState(() {
-  //     tempListInMusicList.contains(idArg)
-  //         ? tempListInMusicList.remove(idArg)
-  //         : tempListInMusicList.add(idArg);
-  //   });
-  // }
+
+  void _addList(ObjectId id) {
+    setState(() {
+      _tempToBeAddedList.contains(id)
+      ? _tempToBeAddedList.remove(id)
+      : _tempToBeAddedList.add(id);
+    });
+  }
   
   @override
   Widget build(BuildContext context){
@@ -84,6 +89,7 @@ class RegisterListDialogState extends State<RegisterListDialog> {
             onTap: () {
               setState(() {
                 _selected[index] = !_selected[index];
+                _addList(_allMusicList[index].id);
               });
             }, 
             child: Row(
