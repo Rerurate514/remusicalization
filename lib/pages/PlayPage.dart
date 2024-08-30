@@ -124,6 +124,7 @@ class PlayPageState extends State<PlayPage> {
           StandardSpace(),
           SizedBox(
             width: size.width * 0.6,
+            height: size.height * 0.1,
             child: FittedBox(
               child: Text(_musicName),
             ),
