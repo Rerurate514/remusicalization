@@ -5,8 +5,8 @@ import 'package:musicalization/utils/getNamesFromMusic.dart';
 class Updater{
   final _io = RealmIOManager(Music.schema);
 
-  void update(List<Music> newList){
-    final List<Music> originalList = _io.readAll<Music>();
+  void update(List<Music> newList) async {
+    final List<Music> originalList = await _io.readAll<Music>();
     final List<Music> createdList = _createUnDuplicateList(
       newList, 
       originalList

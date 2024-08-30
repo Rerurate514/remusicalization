@@ -8,13 +8,13 @@ class RecordFetcher<SCHEMA extends RealmObject>{
     _realmIOManager = RealmIOManager(schemaObjectArg);
   }
 
-  List<SCHEMA> getAllReacordList(){
-    List<SCHEMA> result = _realmIOManager.readAll<SCHEMA>();
+  Future<List<SCHEMA>> getAllReacordList() async {
+    List<SCHEMA> result = await _realmIOManager.readAll<SCHEMA>();
     return result;
   }
 
-  SCHEMA getRecordFromId(ObjectId id){
-    SCHEMA result = _realmIOManager.searchById<SCHEMA>(id: id);
+  Future<SCHEMA> getRecordFromId(ObjectId id) async {
+    SCHEMA result = await _realmIOManager.searchById<SCHEMA>(id: id);
     return result;
   }
 }

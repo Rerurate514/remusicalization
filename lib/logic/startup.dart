@@ -5,8 +5,8 @@ class StartUp{
   final _mediaAudioRequester = MediaAudioPermissionRequester();
   final _repo = StartUpRepositry();
 
-  void init() {
-    _mediaAudioRequester.requestPermission();
+  void init() async {
+    await _mediaAudioRequester.requestPermission();
     _repo.refreshData();
   }
 }

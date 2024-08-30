@@ -28,7 +28,7 @@ class _ListPageState extends State<ListPage> {
     super.initState();
 
     setState(() {
-      _list = _recordFetcher.getAllReacordList();
+      
     });
   }
 

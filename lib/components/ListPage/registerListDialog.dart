@@ -31,8 +31,12 @@ class RegisterListDialogState extends State<RegisterListDialog> {
   @override
   void initState(){
     super.initState();
-    _allMusicList = _ioManager.readAll();
+    _readAllMusic();
     _selected = List.generate(_allMusicList.length, (index) => false);
+  }
+
+  void _readAllMusic() async {
+    _allMusicList = await _ioManager.readAll();
   }
 
   void _okBtnTapped(){

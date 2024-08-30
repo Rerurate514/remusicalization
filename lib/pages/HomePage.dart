@@ -5,6 +5,7 @@ import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/scrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/logic/recordFetcher.dart';
+import 'package:musicalization/logic/startup.dart';
 import 'package:musicalization/models/schema.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,13 +24,19 @@ class _HomePageState extends State<HomePage> {
   void initState(){
     super.initState();
 
-    setState(() {
-      _list = _recordFetcher.getAllReacordList();
-    });
+    _updateMusicList();
   }
 
-  void _onUpdateBtnTapped(){
+  void _onUpdateBtnTapped() async { 
+    await _updateMusicList();
+    print(_list);
+  }
 
+  Future<void> _updateMusicList() async {
+    List<Music> list = await _recordFetcher.getAllReacordList();
+    setState(() {
+      _list = list;
+    });
   }
 
   @override

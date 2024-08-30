@@ -18,12 +18,12 @@ class RealmIOManager {
     _adder.add<T>(realm: realm, newData: newData);
   }
 
-  List<SCHEMA> readAll<SCHEMA extends RealmObject>() {
+  Future<List<SCHEMA>> readAll<SCHEMA extends RealmObject>() async {
     Result results = _reader.readAll<SCHEMA>(realm: realm);
     return results.value;
   }
 
-  SCHEMA searchById<SCHEMA extends RealmObject>({required ObjectId id}) {
+  Future<SCHEMA> searchById<SCHEMA extends RealmObject>({required ObjectId id}) async {
     var result = _reader.searchById<SCHEMA>(realm: realm, id: id);
     return result.value;
   }
@@ -32,8 +32,8 @@ class RealmIOManager {
     _editor.edit<T>(realm: realm, newData: newData);
   }
 
-  void delete<SCHEMA extends RealmObject>({required ObjectId id}) {
-    var obj = searchById<SCHEMA>(id: id);
+  Future<void> delete<SCHEMA extends RealmObject>({required ObjectId id}) async {
+    var obj = await searchById<SCHEMA>(id: id);
     realm.write(() => realm.delete<SCHEMA>(obj));
   }
 
