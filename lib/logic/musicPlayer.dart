@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:musicalization/enums/musicMode.dart';
 import 'package:musicalization/enums/transition.dart';
+import 'package:musicalization/logic/musicCreater.dart';
 import 'package:musicalization/models/index.dart';
 import 'package:musicalization/models/schema.dart';
 
@@ -88,7 +89,7 @@ class _AudioPlayerManager{
   final AudioPlayer _audioPlayer = AudioPlayer();
   final _CurrentListenerResistry _clr = _CurrentListenerResistry();
   final _DurationListenerResistry _dlr = _DurationListenerResistry();
-
+  final MusicCreater _creater = MusicCreater();
 
 
   List<Music> _musicList = [];
@@ -111,7 +112,12 @@ class _AudioPlayerManager{
 
   String get listName => "";
   Music get currentMusic {
-    return _musicList[_index.value];
+    if(_musicList.isNotEmpty){
+      return _musicList[_index.value];
+    }
+    else{
+      return _creater.createMusic("null", "null");
+    }
   }
 
   List<Music> get currentMusicList => _musicList;
