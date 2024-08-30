@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage> {
 
   void _onUpdateBtnTapped() async { 
     await _updateMusicList();
-    print(_list);
   }
 
   Future<void> _updateMusicList() async {
