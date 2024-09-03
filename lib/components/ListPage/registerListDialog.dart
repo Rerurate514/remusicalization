@@ -22,7 +22,7 @@ class RegisterListDialogState extends State<RegisterListDialog> {
   final PictureBinaryConverter _converter = PictureBinaryConverter();
   final RealmIOManager _ioManager = RealmIOManager(Music.schema);
 
-  late final List<Music> _allMusicList;
+  List<Music> _allMusicList = [];
 
   late List<bool> _selected;
 
@@ -31,11 +31,15 @@ class RegisterListDialogState extends State<RegisterListDialog> {
   @override
   void initState(){
     super.initState();
-    _readAllMusic();
+    _initWithAwait();
+  }
+
+  void _initWithAwait() async {
+    await _readAllMusic();
     _selected = List.generate(_allMusicList.length, (index) => false);
   }
 
-  void _readAllMusic() async {
+  Future<void> _readAllMusic() async {
     _allMusicList = await _ioManager.readAll();
   }
 
@@ -52,7 +56,7 @@ class RegisterListDialogState extends State<RegisterListDialog> {
   }
   
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context){ 
     final Size size = MediaQuery.of(context).size;
     return Center(
       child: Padding(
