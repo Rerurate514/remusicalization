@@ -54,6 +54,6 @@ class RegisterDialogRepositry{
   }
 
   void _saveList(){
-    _ioManager.add<PlayList>(newData: PlayList(ObjectId(), _listName, list: _musicList));
+    _ioManager.add<PlayList>(newData: PlayList(ObjectId(), _listName, "", list: _musicList));
   }
 }
