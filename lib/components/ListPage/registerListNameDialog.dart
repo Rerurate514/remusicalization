@@ -25,16 +25,19 @@ class RegisterListNameDialogState extends State<RegisterListNameDialog>{
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: size.height * 0.3, horizontal: size.width * 0.1),
         child: Card(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildTitle(),
-              StandardSpace(),
-              buildTextField(),
-              StandardSpace(),
-              buildBtns(size)
-            ],
-          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                buildTitle(),
+                StandardSpace(),
+                buildTextField(),
+                StandardSpace(),
+                buildBtns(size)
+              ],
+            ),
+          )
         )
       )
     );
