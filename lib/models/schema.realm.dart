@@ -122,13 +122,15 @@ class PlayList extends _PlayList
     with RealmEntity, RealmObjectBase, RealmObject {
   PlayList(
     ObjectId id,
-    String name, {
+    String name,
+    String picture, {
     Iterable<ObjectId> list = const [],
   }) {
     RealmObjectBase.set(this, 'id', id);
     RealmObjectBase.set(this, 'name', name);
     RealmObjectBase.set<RealmList<ObjectId>>(
         this, 'list', RealmList<ObjectId>(list));
+    RealmObjectBase.set(this, 'picture', picture);
   }
 
   PlayList._();
@@ -151,6 +153,11 @@ class PlayList extends _PlayList
       throw RealmUnsupportedSetError();
 
   @override
+  String get picture => RealmObjectBase.get<String>(this, 'picture') as String;
+  @override
+  set picture(String value) => RealmObjectBase.set(this, 'picture', value);
+
+  @override
   Stream<RealmObjectChanges<PlayList>> get changes =>
       RealmObjectBase.getChanges<PlayList>(this);
 
@@ -166,6 +173,7 @@ class PlayList extends _PlayList
       'id': id.toEJson(),
       'name': name.toEJson(),
       'list': list.toEJson(),
+      'picture': picture.toEJson(),
     };
   }
 
@@ -176,10 +184,12 @@ class PlayList extends _PlayList
         'id': EJsonValue id,
         'name': EJsonValue name,
         'list': EJsonValue list,
+        'picture': EJsonValue picture,
       } =>
         PlayList(
           fromEJson(id),
           fromEJson(name),
+          fromEJson(picture),
           list: fromEJson(list),
         ),
       _ => raiseInvalidEJson(ejson),
@@ -194,6 +204,7 @@ class PlayList extends _PlayList
       SchemaProperty('name', RealmPropertyType.string),
       SchemaProperty('list', RealmPropertyType.objectid,
           collectionType: RealmCollectionType.list),
+      SchemaProperty('picture', RealmPropertyType.string),
     ]);
   }();
 
