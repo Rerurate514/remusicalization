@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
 import 'package:musicalization/models/wrappedPlayList.dart';
 
 class ScrollablePlayLists extends StatefulWidget {
   final List<WrappedPlayList> list;
-  final Function(int) onListTapped;
 
-  const ScrollablePlayLists({super.key, required this.list, required this.onListTapped});
+  const ScrollablePlayLists({super.key, required this.list});
 
   @override
   ScrollablePlayListsState createState() => ScrollablePlayListsState();
@@ -15,7 +15,6 @@ class ScrollablePlayLists extends StatefulWidget {
 
 class ScrollablePlayListsState extends State<ScrollablePlayLists> {
   final ScrollController _scrollController = ScrollController();
-  final PictureBinaryConverter _converter = PictureBinaryConverter();
 
   @override
   void initState(){
@@ -31,17 +30,43 @@ class ScrollablePlayListsState extends State<ScrollablePlayLists> {
         itemCount: widget.list.length,
         addAutomaticKeepAlives: true,
         itemBuilder: (_, int index){
-          return InkCard(
-            onTap: () {
-              widget.onListTapped(index);
-            }, 
-            child: ListTile(
-              leading: buildImage(index),
-              title: Text(widget.list[index].name),
-            )
+          return PlayListsItem(
+            list: widget.list,
+            index: index
           );
         }
       ),
+    );
+  }
+}
+
+class PlayListsItem extends ConsumerStatefulWidget {
+  final int index;
+  final List<WrappedPlayList> list;
+
+  const PlayListsItem({super.key, required this.list, required this.index});
+
+  @override
+  PlayListItemState createState() => PlayListItemState();
+}
+
+class PlayListItemState extends ConsumerState<PlayListsItem> {
+  final PictureBinaryConverter _converter = PictureBinaryConverter();
+
+  void onListTapped(int index){
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkCard(
+      onTap: () {
+        onListTapped(widget.index);
+      }, 
+      child: ListTile(
+        leading: buildImage(widget.index),
+        title: Text(widget.list[widget.index].name),
+      )
     );
   }
 
