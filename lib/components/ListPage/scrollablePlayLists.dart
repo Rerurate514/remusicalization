@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
 import 'package:musicalization/models/wrappedPlayList.dart';
+import 'package:musicalization/providers/isPlayListSelectedProvider.dart';
 
 class ScrollablePlayLists extends StatefulWidget {
   final List<WrappedPlayList> list;
@@ -54,7 +55,7 @@ class PlayListItemState extends ConsumerState<PlayListsItem> {
   final PictureBinaryConverter _converter = PictureBinaryConverter();
 
   void onListTapped(int index){
-
+    ref.watch(isPlayListSelected.notifier).state = true;
   }
 
   @override
