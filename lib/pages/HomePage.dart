@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/HeaderMenuBar.dart';
 import 'package:musicalization/Widgets/MyAppBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
-import 'package:musicalization/Widgets/scrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
+import 'package:musicalization/components/HomePage/ScrollableMusicList.dart';
 import 'package:musicalization/logic/recordFetcher.dart';
-import 'package:musicalization/logic/startup.dart';
 import 'package:musicalization/models/schema.dart';
 
 class HomePage extends StatefulWidget {
