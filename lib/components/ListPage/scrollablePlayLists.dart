@@ -55,7 +55,7 @@ class PlayListItemState extends ConsumerState<PlayListsItem> {
   final PictureBinaryConverter _converter = PictureBinaryConverter();
 
   void onListTapped(int index){
-    ref.watch(isPlayListSelected.notifier).state = true;
+    ref.watch(isPlayListSelectedProvider.notifier).state = true;
   }
 
   @override
