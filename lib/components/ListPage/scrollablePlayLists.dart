@@ -4,6 +4,7 @@ import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
 import 'package:musicalization/models/wrappedPlayList.dart';
 import 'package:musicalization/providers/isPlayListSelectedProvider.dart';
+import 'package:musicalization/providers/musicListInPlayListProvider.dart';
 
 class ScrollablePlayLists extends StatefulWidget {
   final List<WrappedPlayList> list;
@@ -56,6 +57,7 @@ class PlayListItemState extends ConsumerState<PlayListsItem> {
 
   void onListTapped(int index){
     ref.watch(isPlayListSelectedProvider.notifier).state = true;
+    ref.watch(musicListInPlayListProvider.notifier).state = widget.list[index].musicList;
   }
 
   @override

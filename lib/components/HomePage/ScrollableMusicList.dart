@@ -15,17 +15,17 @@ class ScrollableMusicList extends StatefulWidget {
 class ScrollableMusicListState extends State<ScrollableMusicList> {
   final ScrollController _scrollController = ScrollController();
   final PictureBinaryConverter _converter = PictureBinaryConverter();
-  late final MusicPlayer _player;
+  final MusicPlayer _player = MusicPlayer.getEmptyInstance();
 
   @override
   void initState(){
     super.initState();
-    _player = MusicPlayer.setMusicList(widget.list);
   }
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    
     return Expanded( 
       child: ListView.builder(
         controller: _scrollController,

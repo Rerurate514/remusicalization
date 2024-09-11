@@ -4,6 +4,7 @@ import 'package:musicalization/Widgets/MyAppBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/HomePage/ScrollableMusicList.dart';
+import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/recordFetcher.dart';
 import 'package:musicalization/models/schema.dart';
 
@@ -17,24 +18,26 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Music> _list = [];
 
+  MusicPlayer _musicPlayer = MusicPlayer.getEmptyInstance();
   final _recordFetcher = RecordFetcher<Music>(Music.schema);
 
   @override
   void initState(){
     super.initState();
 
-    _updateMusicList();
+    //_updateMusicList();
   }
 
   void _onUpdateBtnTapped() async { 
     await _updateMusicList();
   }
 
-  Future<void> _updateMusicList() async {
+  Future<List<Music>> _updateMusicList() async {
     List<Music> list = await _recordFetcher.getAllReacordList();
-    setState(() {
-      _list = list;
-    });
+    // setState(() {
+    //   _list = list;
+    // });
+    return list;
   }
 
   @override
@@ -61,7 +64,7 @@ class _HomePageState extends State<HomePage> {
               rightWidgetTappedCallback: () {}
             ),
             StandardSpace(),
-            ScrollableMusicList(list: _list)
+            buildList()
           ],
         )
       ),
@@ -73,6 +76,16 @@ class _HomePageState extends State<HomePage> {
           size: 32,
         ),
       ),
+    );
+  }
+
+  Widget buildList(){
+    return FutureBuilder(
+      future: _updateMusicList(), 
+      builder: (_, snapshot){
+        _musicPlayer = MusicPlayer.setMusicList(snapshot.data ?? []);
+        return ScrollableMusicList(list: snapshot.data ?? []);
+      }
     );
   }
 }
