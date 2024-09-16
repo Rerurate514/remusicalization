@@ -30,7 +30,7 @@ class ChoicePlayListState extends State<ChoicePlayList> {
   }
 
   void _onListAddBtnTapped() async {
-    await _dialogRepositry.doSequence();
+    await _dialogRepositry.doAllSequence();
   }
 
   void _initPlayList() async {
@@ -52,7 +52,7 @@ class ChoicePlayListState extends State<ChoicePlayList> {
   Widget build(BuildContext context){
     return Column(
       children: [
-        StandardSpace(),
+        const StandardSpace(),
         HeaderMenuBar(
           leftWidget: const Icon(
             Icons.shuffle,
@@ -65,7 +65,7 @@ class ChoicePlayListState extends State<ChoicePlayList> {
           ), 
           rightWidgetTappedCallback: _onListAddBtnTapped
         ),
-        StandardSpace(),
+        const StandardSpace(),
         ScrollablePlayLists(
           list: _wrappedPlayLists,
         )

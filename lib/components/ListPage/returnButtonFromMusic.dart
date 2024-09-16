@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:musicalization/enums/colors.dart';
 import 'package:musicalization/providers/isPlayListSelectedProvider.dart';
+import 'package:musicalization/providers/musicListInPlayListProvider.dart';
 
 class ReturnButtonFromMusic extends ConsumerStatefulWidget {
   const ReturnButtonFromMusic({super.key});
@@ -13,6 +14,7 @@ class ReturnButtonFromMusic extends ConsumerStatefulWidget {
 class ReturnButtonFromMusicState extends ConsumerState<ReturnButtonFromMusic>{
   void returnPlayListPage(){
     ref.watch(isPlayListSelectedProvider.notifier).state = false;
+    ref.watch(musicListInPlayListProvider.notifier).state = null;
   }
   
   @override

@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
-import 'package:musicalization/logic/musicPlayer.dart';
+import 'package:musicalization/logic/musicListContains.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
 import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
+import 'package:musicalization/models/wrappedPlayList.dart';
 import 'package:realm/realm.dart';
 
 class RegisterListDialog extends StatefulWidget {
+  final Function(bool) isDialogContinued;
   final Function(List<ObjectId>) setMusicList;
+  final WrappedPlayList? wrappedPlayList;
 
-  const RegisterListDialog({super.key, required this.setMusicList});  
+  const RegisterListDialog({super.key, required this.isDialogContinued, required this.setMusicList, this.wrappedPlayList});  
 
   @override
   RegisterListDialogState createState() => RegisterListDialogState();
@@ -35,11 +38,20 @@ class RegisterListDialogState extends State<RegisterListDialog> {
 
   void _initWithAwait() async {
     await _readAllMusic();
-    _selected = List.generate(_allMusicList.length, (index) => false);
+
+    List<Music> list = [];
+    if(widget.wrappedPlayList != null) list = widget.wrappedPlayList!.musicList;
+
+    _selected = List.generate(_allMusicList.length, (index) {
+      return list.containsAtMusic(_allMusicList[index]);
+    });
   }
 
   Future<void> _readAllMusic() async {
-    _allMusicList = await _ioManager.readAll();
+    final List<Music> list = await _ioManager.readAll();
+    setState(() {
+      _allMusicList = list;
+    });
   }
 
   void _okBtnTapped(){
@@ -117,7 +129,7 @@ class RegisterListDialogState extends State<RegisterListDialog> {
     return const Column(
       children: [
         CircularProgressIndicator(),
-        const StandardSpace(),
+        StandardSpace(),
         Text("音楽データを取得中")
       ],
     );
@@ -164,13 +176,17 @@ class RegisterListDialogState extends State<RegisterListDialog> {
       children: [
         TextButton( 
           child: const Text("Cancel"),
-          onPressed: () => Navigator.pop(context), 
+          onPressed: () {
+            widget.isDialogContinued(false);
+            Navigator.pop(context);
+          }
         ), 
         TextButton( 
           child: const Text("Ok"), 
-          onPressed: () => {
-            _okBtnTapped(),
-            Navigator.pop(context), 
+          onPressed: ()  {
+            _okBtnTapped();
+            widget.isDialogContinued(true);
+            Navigator.pop(context);
           }
         ), 
       ],

@@ -20,7 +20,7 @@ class ListPageDeligaterState extends ConsumerState<ListPageDeligater>{
     final wrappedMusicList = ref.watch(musicListInPlayListProvider.notifier).state;
     
     return isPlayListSelected
-    ? ChoiceMusic(list: wrappedMusicList!.musicList)
+    ? ChoiceMusic(wrappedPlayList: wrappedMusicList!)
     : const ChoicePlayList();
   }
 }
