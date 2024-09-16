@@ -55,9 +55,9 @@ class PlayListsItem extends ConsumerStatefulWidget {
 class PlayListItemState extends ConsumerState<PlayListsItem> {
   final PictureBinaryConverter _converter = PictureBinaryConverter();
 
-  void onListTapped(int index){
+  void onListTapped(int index) {
     ref.watch(isPlayListSelectedProvider.notifier).state = true;
-    ref.watch(musicListInPlayListProvider.notifier).state = widget.list[index].musicList;
+    ref.watch(musicListInPlayListProvider.notifier).state = widget.list[index];
   }
 
   @override

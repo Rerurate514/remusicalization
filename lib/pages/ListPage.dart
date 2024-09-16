@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/MyAppBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
+import 'package:musicalization/components/ListPage/bottomListNameShower.dart';
 import 'package:musicalization/components/ListPage/listPageDeligater.dart';
 import 'package:musicalization/components/ListPage/returnButtonFromMusic.dart';
 import 'package:musicalization/enums/colors.dart';
@@ -31,6 +32,7 @@ class _ListPageState extends State<ListPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const ReturnButtonFromMusic(),
+          BottomListNameShower(),
           FloatingActionButton(
             backgroundColor: MyColors.CARD_BACKGROUND.color,
             onPressed: _onUpdateBtnTapped,
