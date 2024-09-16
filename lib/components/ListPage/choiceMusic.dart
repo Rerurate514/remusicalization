@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/HeaderMenuBar.dart';
+import 'package:musicalization/Widgets/ScrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
-import 'package:musicalization/components/HomePage/ScrollableMusicList.dart';
 import 'package:musicalization/logic/recordFetcher.dart';
 import 'package:musicalization/models/schema.dart';
 
