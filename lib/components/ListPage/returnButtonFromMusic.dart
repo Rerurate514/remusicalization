@@ -18,12 +18,16 @@ class ReturnButtonFromMusicState extends ConsumerState<ReturnButtonFromMusic>{
   @override
   Widget build(BuildContext context) {
     final prov = ref.watch(isPlayListSelectedProvider);
-    return prov
-    ? FloatingActionButton(
-      backgroundColor: MyColors.CARD_BACKGROUND.color,
-      onPressed: returnPlayListPage,
-      child: const Icon(Icons.arrow_back),
-    )
-    : const SizedBox.shrink();
+    final Size size = MediaQuery.of(context).size;
+    return Padding(
+      padding: EdgeInsets.only(left: size.width * 0.05),
+      child: prov
+        ? FloatingActionButton(
+          backgroundColor: MyColors.CARD_BACKGROUND.color,
+          onPressed: returnPlayListPage,
+          child: const Icon(Icons.arrow_back),
+        )
+        : const SizedBox.shrink(),
+    );
   }
 }
