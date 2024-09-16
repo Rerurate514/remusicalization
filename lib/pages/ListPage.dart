@@ -3,6 +3,7 @@ import 'package:musicalization/Widgets/MyAppBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/components/ListPage/listPageDeligater.dart';
 import 'package:musicalization/components/ListPage/returnButtonFromMusic.dart';
+import 'package:musicalization/enums/colors.dart';
 
 class ListPage extends StatefulWidget {
   const ListPage({super.key});
@@ -31,7 +32,7 @@ class _ListPageState extends State<ListPage> {
         children: [
           const ReturnButtonFromMusic(),
           FloatingActionButton(
-            backgroundColor: Theme.of(context).cardColor,
+            backgroundColor: MyColors.CARD_BACKGROUND.color,
             onPressed: _onUpdateBtnTapped,
             child: const Icon(
               Icons.update,

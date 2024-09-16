@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:musicalization/enums/colors.dart';
 import 'package:musicalization/providers/isPlayListSelectedProvider.dart';
 
 class ReturnButtonFromMusic extends ConsumerStatefulWidget {
@@ -19,7 +20,7 @@ class ReturnButtonFromMusicState extends ConsumerState<ReturnButtonFromMusic>{
     final prov = ref.watch(isPlayListSelectedProvider);
     return prov
     ? FloatingActionButton(
-      backgroundColor: Theme.of(context).cardColor,
+      backgroundColor: MyColors.CARD_BACKGROUND.color,
       onPressed: returnPlayListPage,
       child: const Icon(Icons.arrow_back),
     )
