@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
       body: PageWrapper(
         child: Column(
           children: [
-            StandardSpace(),  
+            const StandardSpace(),  
             HeaderMenuBar(
               leftWidget: const Icon(
                 Icons.shuffle,
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
               ), 
               rightWidgetTappedCallback: () {}
             ),
-            StandardSpace(),
+            const StandardSpace(),
             buildList()
           ],
         )

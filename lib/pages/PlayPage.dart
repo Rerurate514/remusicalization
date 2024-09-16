@@ -92,11 +92,11 @@ class PlayPageState extends State<PlayPage> {
               Column(
                 children: [
                   buildTitle(size),
-                  StandardSpace(),
+                  const StandardSpace(),
                   const MusicImage(),
-                  StandardSpace(),
+                  const StandardSpace(),
                   buildTimeAndSlider(),
-                  StandardSpace(),
+                  const StandardSpace(),
                   buildButtons(),
                 ],
               ),
@@ -121,7 +121,7 @@ class PlayPageState extends State<PlayPage> {
     return Column(
       children: [
           Text(_listNane),
-          StandardSpace(),
+          const StandardSpace(),
           SizedBox(
             width: size.width * 0.6,
             height: size.height * 0.1,

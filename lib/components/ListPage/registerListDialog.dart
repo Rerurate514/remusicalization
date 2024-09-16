@@ -18,7 +18,6 @@ class RegisterListDialog extends StatefulWidget {
 
 class RegisterListDialogState extends State<RegisterListDialog> {
   final ScrollController _scrollController = ScrollController();
-  final MusicPlayer _player = MusicPlayer.getEmptyInstance();
   final PictureBinaryConverter _converter = PictureBinaryConverter();
   final RealmIOManager _ioManager = RealmIOManager(Music.schema);
 
@@ -67,13 +66,13 @@ class RegisterListDialogState extends State<RegisterListDialog> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                StandardSpace(),
+                const StandardSpace(),
                 buildTitle(),
-                StandardSpace(),
+                const StandardSpace(),
                 buildRegisteringList(),
-                StandardSpace(),
+                const StandardSpace(),
                 buildBtns(),
-                StandardSpace(),
+                const StandardSpace(),
               ],
             ),
           ),
@@ -87,7 +86,8 @@ class RegisterListDialogState extends State<RegisterListDialog> {
   }
 
   Widget buildRegisteringList() {
-    return Expanded( 
+    return _allMusicList.isNotEmpty
+    ? Expanded( 
       child: ListView.builder(
         controller: _scrollController,
         itemCount: _allMusicList.length,
@@ -109,6 +109,17 @@ class RegisterListDialogState extends State<RegisterListDialog> {
           );
         }
       ),
+    )
+    : buildIndicator();
+  }
+
+  Widget buildIndicator(){
+    return const Column(
+      children: [
+        CircularProgressIndicator(),
+        const StandardSpace(),
+        Text("音楽データを取得中")
+      ],
     );
   }
 

@@ -50,9 +50,9 @@ class LyricsSettingAdjusterState extends State<LyricsSettingAdjuster>{
                   child: buildTitle(size)
                 ),
                 buildTextField(size),
-                StandardSpace(),
+                const StandardSpace(),
                 buildBtns(),
-                StandardSpace()
+                const StandardSpace()
               ],
             ),
           )

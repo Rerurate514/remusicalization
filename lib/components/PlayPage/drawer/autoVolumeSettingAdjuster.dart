@@ -44,9 +44,9 @@ class AutoVolumeSettingAdjusterState extends State<AutoVolumeSettingAdjuster>{
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               buildTitle(size),
-              StandardSpace(),
+              const StandardSpace(),
               buildSlider(size),
-              StandardSpace(),
+              const StandardSpace(),
               buildBtns(size)
             ],
           ),

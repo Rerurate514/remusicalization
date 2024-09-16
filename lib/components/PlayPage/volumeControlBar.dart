@@ -60,10 +60,10 @@ class _VolumeControlBarState extends State<VolumeControlBar> {
         height: size.height * 0.4,
         child: Column(
           children: [
-            StandardSpace(),
+            const StandardSpace(),
             buildSlider(),
             buildIcon(),
-            StandardSpace(),
+            const StandardSpace(),
             buildCloseBtn(),
           ],
         ),

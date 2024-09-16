@@ -31,9 +31,9 @@ class RegisterListNameDialogState extends State<RegisterListNameDialog>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 buildTitle(),
-                StandardSpace(),
+                const StandardSpace(),
                 buildTextField(),
-                StandardSpace(),
+                const StandardSpace(),
                 buildBtns(size)
               ],
             ),

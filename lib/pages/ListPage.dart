@@ -32,7 +32,7 @@ class _ListPageState extends State<ListPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const ReturnButtonFromMusic(),
-          BottomListNameShower(),
+          const BottomListNameShower(),
           FloatingActionButton(
             backgroundColor: MyColors.CARD_BACKGROUND.color,
             onPressed: _onUpdateBtnTapped,

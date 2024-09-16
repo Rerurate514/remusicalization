@@ -31,9 +31,9 @@ class LyricsFragmentState extends State<LyricsFragment>{
             child: Card(
               child: Column(
                 children: [
-                  StandardSpace(),
+                  const StandardSpace(),
                   buildHeader(size),
-                  StandardSpace(),
+                  const StandardSpace(),
                   Text(_musicPlayer.currentMusic.lyrics)
                 ],
               ),
@@ -61,7 +61,7 @@ class LyricsFragmentState extends State<LyricsFragment>{
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
             const Icon(Icons.lyrics),
-            StandardSpace(),
+            const StandardSpace(),
             const Text("歌詞")
           ]
         ),

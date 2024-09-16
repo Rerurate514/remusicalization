@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 class StandardSpace extends StatelessWidget{
 
-  StandardSpace(){}
+  const StandardSpace({super.key});
 
   @override
   Widget build(BuildContext context){

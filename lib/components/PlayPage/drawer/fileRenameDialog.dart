@@ -73,11 +73,11 @@ class FileRenameDialogState extends State<FileRenameDialog> {
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: Column(
                 children: [                 
-                  StandardSpace(),
+                  const StandardSpace(),
                   buildTitle(size),
-                  StandardSpace(),
+                  const StandardSpace(),
                   buildTextField(size),
-                  StandardSpace(),
+                  const StandardSpace(),
                   buildBtns()
                 ],
               ),

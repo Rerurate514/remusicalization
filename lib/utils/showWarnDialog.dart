@@ -18,17 +18,17 @@ showWarnDialog(String text, [Widget? child]){
                   size: 75,
                   color: Colors.red,
                 ),
-                StandardSpace(),
+                const StandardSpace(),
                 Column(
                   children: [
                     FittedBox(
                       child: Text(text),
                     ),
-                    StandardSpace(),
+                    const StandardSpace(),
                     child ?? const SizedBox.shrink()
                   ]
                 ),
-                StandardSpace(),
+                const StandardSpace(),
               ],
             )
           ),

@@ -87,13 +87,13 @@ class MusicImageCreaterState extends ConsumerState<MusicImageCreater> {
           padding: const EdgeInsets.all(0),
           child: Column(
             children: [
-              StandardSpace(),
+              const StandardSpace(),
               buildHeader(),
-              StandardSpace(),
+              const StandardSpace(),
               buildMatrix(size),
-              StandardSpace(),
+              const StandardSpace(),
               buildBtns(),
-              StandardSpace(),
+              const StandardSpace(),
             ],
           ),
         ),

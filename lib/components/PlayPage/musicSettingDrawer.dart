@@ -37,7 +37,7 @@ class MusicSettingDrawer extends Drawer{
               ),
             ],
           ),
-          StandardSpace(),
+          const StandardSpace(),
           buildCards()
         ],
       ),
