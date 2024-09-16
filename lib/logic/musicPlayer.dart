@@ -22,6 +22,10 @@ class MusicPlayer{
 
   bool get isPlaying => _player.isPlaying;
 
+  List<Music> get musicList => _player.musicList;
+
+  bool get isMusicFirstPlayExecuted => _player.isMusicFirstPlayExecuted;
+
   factory MusicPlayer.setMusicList(
     List<Music> musicList, 
     [String listName = "",
@@ -99,13 +103,13 @@ class _AudioPlayerManager{
   MusicMode musicMode = MusicMode.NORMAL;
 
   bool _isExcutable = true;
-  bool _isMusicFirstPlayExecuted = false;
+  bool isMusicFirstPlayExecuted = false;
 
   String _listName = "";
 
   Function()? _reRenderUI;
 
-
+  List<Music> get musicList => _musicList;
 
   double get currentSeconds => _clr.currentSeconds;
   double get durationSeconds => _dlr.durationSeconds;
@@ -175,7 +179,7 @@ class _AudioPlayerManager{
 
 
   Future<void> start(int listIndex) async {
-    _isMusicFirstPlayExecuted = true;
+    isMusicFirstPlayExecuted = true;
 
     _index.setIndex(listIndex);
     final String musicPath = currentMusic.path;
