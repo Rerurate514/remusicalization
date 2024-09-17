@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
+import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
 import 'package:musicalization/models/wrappedPlayList.dart';
 import 'package:musicalization/providers/isPlayListSelectedProvider.dart';
@@ -54,10 +55,12 @@ class PlayListsItem extends ConsumerStatefulWidget {
 
 class PlayListItemState extends ConsumerState<PlayListsItem> {
   final PictureBinaryConverter _converter = PictureBinaryConverter();
+  late final MusicPlayer _player;
 
   void onListTapped(int index) {
     ref.watch(isPlayListSelectedProvider.notifier).state = true;
     ref.watch(musicListInPlayListProvider.notifier).state = widget.list[index];
+    _player = MusicPlayer.setMusicList(widget.list[index].musicList);
   }
 
   @override
