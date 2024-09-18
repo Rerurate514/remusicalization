@@ -2,12 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/settings/globalNavigatoeKey.dart';
+import 'package:musicalization/utils/Result.dart';
 
-showWarnDialog(String text, [Widget? child]){
-  showDialog(
+Future<Result> showWarnDialog(String text, {Function()? onOkTapped, Function()? onCancelTapped}) async {
+  Widget buildOkButton(BuildContext context) {
+    return onOkTapped != null
+      ? TextButton(
+          onPressed: () => Navigator.of(context).pop(Result(isSucceeded: true)),
+          child: const Text("Ok"),
+        )
+      : const SizedBox.shrink();
+  }
+
+  Widget buildCancelButton(BuildContext context) {
+    return onCancelTapped != null
+      ? TextButton(
+          onPressed: () => Navigator.of(context).pop(Result(isSucceeded: false)),
+          child: const Text("Cancel"),
+        )
+      : const SizedBox.shrink();
+  }
+
+  final result = await showDialog<Result>(
     barrierDismissible: false,
     context: navigatorKey.currentContext!,
-    builder: (BuildContext context){
+    builder: (BuildContext context) {
       return SimpleDialog(
         title: Center(
           child: PageWrapper(
@@ -25,7 +44,12 @@ showWarnDialog(String text, [Widget? child]){
                       child: Text(text),
                     ),
                     const StandardSpace(),
-                    child ?? const SizedBox.shrink()
+                    Row(
+                      children: [
+                        buildOkButton(context),
+                        buildCancelButton(context)
+                      ],
+                    )
                   ]
                 ),
                 const StandardSpace(),
@@ -34,6 +58,8 @@ showWarnDialog(String text, [Widget? child]){
           ),
         ),
       );
-    } 
+    },
   );
+
+  return result ?? Result(isSucceeded: false);
 }
