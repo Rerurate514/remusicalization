@@ -45,9 +45,10 @@ Future<Result> showWarnDialog(String text, {Function()? onOkTapped, Function()? 
                     ),
                     const StandardSpace(),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        buildCancelButton(context),
                         buildOkButton(context),
-                        buildCancelButton(context)
                       ],
                     )
                   ]
