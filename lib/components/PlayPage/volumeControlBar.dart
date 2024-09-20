@@ -44,7 +44,7 @@ class _VolumeControlBarState extends State<VolumeControlBar> {
     final Size size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      height: size.height * 0.8,
+      height: size.height * 0.75,
       margin: const EdgeInsets.all(20),
       child: Align(
         alignment: Alignment.bottomRight,

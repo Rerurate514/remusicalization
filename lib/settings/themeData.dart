@@ -22,9 +22,11 @@ final ThemeData APP_THEME_DATA = ThemeData.dark().copyWith(
   ),
   sliderTheme: SliderThemeData(
     trackHeight: 2.0,
-        thumbColor: MyColors.PRIMARY_BLUE.color,
-        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8.0),
-        overlayColor: Colors.blue,
-        overlayShape: const RoundSliderOverlayShape(overlayRadius: 20.0),
+      thumbColor: MyColors.PRIMARY_BLUE.color,
+      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8.0),
+      overlayColor: Colors.blue,
+      overlayShape: const RoundSliderOverlayShape(overlayRadius: 20.0),
+      activeTrackColor: MyColors.PRIMARY_BLUE.color,
+      inactiveTrackColor: MyColors.UNSELECTED_BLUE.color
   )
 );
