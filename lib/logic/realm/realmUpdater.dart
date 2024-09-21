@@ -1,6 +1,7 @@
 import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
 import 'package:musicalization/utils/getNamesFromMusic.dart';
+import 'package:musicalization/utils/listDifference.dart';
 
 class Updater{
   final _io = RealmIOManager(Music.schema);
@@ -9,11 +10,17 @@ class Updater{
     final List<Music> originalList = await _io.readAll<Music>();
     final List<Music> createdList = _createUnDuplicateList(
       newList, 
-      originalList
+      originalList 
     );
+
+    final List<Music> listDiff = listDifference<Music>(createdList, originalList);
   
     createdList.forEach((Music music) async {
       _io.update(newData: music);
+    });
+
+    listDiff.forEach((Music music) async {
+      _io.delete(id: music.id);
     });
   }
   
