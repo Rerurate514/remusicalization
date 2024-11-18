@@ -6,7 +6,7 @@ import 'package:musicalization/utils/listDifference.dart';
 class Updater{
   final _io = RealmIOManager(Music.schema);
 
-  void update(List<Music> newList) async {
+  Future<void> update(List<Music> newList) async {
     final List<Music> originalList = await _io.readAll<Music>();
     final List<Music> createdList = _createUnDuplicateList(
       newList, 

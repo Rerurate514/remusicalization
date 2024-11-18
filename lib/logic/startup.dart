@@ -21,6 +21,6 @@ class StartUp{
 
     final musicList = _creater.generateMusicList(pathList, nameList);
 
-    _updater.update(musicList);
+    await _updater.update(musicList);
   } 
 }
