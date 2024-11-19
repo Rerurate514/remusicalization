@@ -5,6 +5,7 @@ import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/ScrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
+import 'package:musicalization/logic/realm/realmUpdater.dart';
 import 'package:musicalization/logic/recordFetcher.dart';
 import 'package:musicalization/models/schema.dart';
 
@@ -17,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Music> _list = [];
+  Updater _updater = Updater();
 
   MusicPlayer _musicPlayer = MusicPlayer.getEmptyInstance();
   final _recordFetcher = RecordFetcher<Music>(Music.schema);
@@ -29,14 +31,18 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onUpdateBtnTapped() async { 
-    await _updateMusicList();
+    List<Music> list = await _updateMusicList();
+    list.forEach((var a) {
+      print("${a.name}");
+    });
+    setState(() {
+      _list = list;
+    });
   }
 
   Future<List<Music>> _updateMusicList() async {
+    await _updater.update();
     List<Music> list = await _recordFetcher.getAllReacordList();
-    // setState(() {
-    //   _list = list;
-    // });
     return list;
   }
 
@@ -83,8 +89,9 @@ class _HomePageState extends State<HomePage> {
     return FutureBuilder(
       future: _updateMusicList(), 
       builder: (_, snapshot){
-        _musicPlayer = MusicPlayer.setMusicList(snapshot.data ?? []);
-        return ScrollableMusicList(list: snapshot.data ?? []);
+        _list = snapshot.data ?? [];
+        _musicPlayer = MusicPlayer.setMusicList(_list);
+        return ScrollableMusicList(list: _list);
       }
     );
   }
