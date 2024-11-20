@@ -9,6 +9,7 @@ class FileStrTrimer{
           .replaceAll("File: '/storage/emulated/0/Download/", "")
           .replaceAll("Directory: '/storage/emulated/0/Download/", "")
           .replaceAll("'", "")
+          .replaceAll("\\", "/")
       );
     }
 
