@@ -10,7 +10,7 @@ class Updater{
   final _fileFetcher = FileFetcher();
   final _creater = MusicCreater();
 
-  Future<void> update() async {
+  Future<List<Music>> update() async {
     final List<Music> originalList = await _io.readAll<Music>();
     final List<Music> newList = await _fetchLocalStorage();
     final List<Music> createdList = _createUnDuplicateList(
@@ -20,14 +20,12 @@ class Updater{
 
     final List<Music> listDiff = listDifference<Music>(originalList, createdList);
 
-    createdList.forEach((Music music) async {
-      _io.update<Music>(newData: music);
-    });
+    await Future.wait(createdList.map((music) => _io.update<Music>(newData: music)));
 
-    listDiff.forEach((Music music) async {
-      print(music.name);
-      _io.delete<Music>(id: music.id);
-    });
+    await Future.wait(listDiff.map((music) => _io.delete<Music>(id: music.id)));
+    
+    List<Music> musicList = await _io.readAll<Music>();
+    return musicList;
   }
 
   Future<List<Music>> _fetchLocalStorage() async {

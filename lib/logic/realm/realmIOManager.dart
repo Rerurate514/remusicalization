@@ -42,9 +42,8 @@ class RealmIOManager {
   }
 
   Future<void> update<T extends RealmObject>({required T newData}) async {
-    _adder.updater<T>(realm: realm, newData: newData);
+    await _adder.updater<T>(realm: realm, newData: newData);
   }
-
 }
 
 class _DataReader {

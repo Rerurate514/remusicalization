@@ -6,7 +6,6 @@ import 'package:musicalization/Widgets/ScrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/realm/realmUpdater.dart';
-import 'package:musicalization/logic/recordFetcher.dart';
 import 'package:musicalization/models/schema.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,30 +18,28 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Music> _list = [];
   Updater _updater = Updater();
-
   MusicPlayer _musicPlayer = MusicPlayer.getEmptyInstance();
-  final _recordFetcher = RecordFetcher<Music>(Music.schema);
 
   @override
   void initState(){
     super.initState();
 
-    //_updateMusicList();
+    initList();
   }
 
-  void _onUpdateBtnTapped() async { 
+  void initList() async {
     List<Music> list = await _updateMusicList();
-    list.forEach((var a) {
-      print("${a.name}");
-    });
     setState(() {
       _list = list;
     });
   }
 
+  void _onUpdateBtnTapped() async {
+    initList();
+  }
+
   Future<List<Music>> _updateMusicList() async {
-    await _updater.update();
-    List<Music> list = await _recordFetcher.getAllReacordList();
+    List<Music> list = await _updater.update();
     return list;
   }
 
@@ -85,14 +82,22 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // Widget buildList(){
+  //   return FutureBuilder(
+  //     future: _musicListFuture, 
+  //     builder: (_, snapshot){
+  //       if(snapshot.hasData){
+  //         _list = snapshot.data ?? [];
+  //         _musicPlayer = MusicPlayer.setMusicList(_list);
+  //         print(_list.length);
+  //         return ScrollableMusicList(list: _list);
+  //       }
+  //       return const Center(child: CircularProgressIndicator());
+  //     }
+  //   );
+  // }
+
   Widget buildList(){
-    return FutureBuilder(
-      future: _updateMusicList(), 
-      builder: (_, snapshot){
-        _list = snapshot.data ?? [];
-        _musicPlayer = MusicPlayer.setMusicList(_list);
-        return ScrollableMusicList(list: _list);
-      }
-    );
+    return ScrollableMusicList(list: _list);
   }
 }
