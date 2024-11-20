@@ -21,7 +21,6 @@ class Updater{
     final List<Music> listDiff = listDifference<Music>(originalList, createdList);
 
     await Future.wait(createdList.map((music) => _io.update<Music>(newData: music)));
-
     await Future.wait(listDiff.map((music) => _io.delete<Music>(id: music.id)));
     
     List<Music> musicList = await _io.readAll<Music>();
