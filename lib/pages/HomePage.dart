@@ -17,8 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Music> _list = [];
-  Updater _updater = Updater();
-  MusicPlayer _musicPlayer = MusicPlayer.getEmptyInstance();
+  final Updater _updater = Updater();
 
   @override
   void initState(){
@@ -40,6 +39,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<List<Music>> _updateMusicList() async {
     List<Music> list = await _updater.update();
+    MusicPlayer.setMusicList(list);
     return list;
   }
 
