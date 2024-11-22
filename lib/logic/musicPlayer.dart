@@ -32,7 +32,7 @@ class MusicPlayer{
     Function()? reRenderUICallback]){
 
     final ins = MusicPlayer._();
-    ins._setMusicList(musicList);
+    ins._setMusicList(musicList, listName);
     ins._setReRenderUICallback(reRenderUICallback);
 
     return ins;
@@ -49,8 +49,8 @@ class MusicPlayer{
     return ins;
   }
 
-  void _setMusicList(List<Music> musicList){
-    _player.setMusicList(musicList);
+  void _setMusicList(List<Music> musicList, String listName){
+    _player.setMusicList(musicList, listName);
   }
 
   void _setReRenderUICallback(
@@ -114,7 +114,8 @@ class _AudioPlayerManager{
   double get currentSeconds => _clr.currentSeconds;
   double get durationSeconds => _dlr.durationSeconds;
 
-  String get listName => "";
+  String get listName => _listName;
+
   Music get currentMusic {
     if(_musicList.isNotEmpty){
       return _musicList[_index.value];
