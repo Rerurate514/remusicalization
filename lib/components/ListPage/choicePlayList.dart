@@ -35,7 +35,7 @@ class ChoicePlayListState extends State<ChoicePlayList> {
   void _initPlayList() async {
     final RecordFetcher<PlayList> fetcher = RecordFetcher<PlayList>(PlayList.schema);
     List<PlayList> playLists = await fetcher.getAllReacordList();
-    
+
     final List<WrappedPlayList> wrappedPlayLists = await Future.wait(
       playLists.map((playList) => WrappedPlayList.getInstance(playList))
     );
@@ -66,6 +66,7 @@ class ChoicePlayListState extends State<ChoicePlayList> {
           const StandardSpace(),
           ScrollablePlayLists(
             list: _wrappedPlayLists,
+            reRenderer: _initPlayList,
           )
         ],
       ),

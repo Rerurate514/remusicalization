@@ -14,8 +14,9 @@ import 'package:musicalization/utils/showWarnDialog.dart';
 
 class ScrollablePlayLists extends StatefulWidget {
   final List<WrappedPlayList> list;
+  final Function() reRenderer;
 
-  const ScrollablePlayLists({super.key, required this.list});
+  const ScrollablePlayLists({super.key, required this.list, required this.reRenderer});
 
   @override
   ScrollablePlayListsState createState() => ScrollablePlayListsState();
@@ -40,7 +41,8 @@ class ScrollablePlayListsState extends State<ScrollablePlayLists> {
         itemBuilder: (_, int index){
           return PlayListsItem(
             list: widget.list,
-            index: index
+            index: index,
+            reRenderer: widget.reRenderer,
           );
         }
       ),
@@ -51,8 +53,9 @@ class ScrollablePlayListsState extends State<ScrollablePlayLists> {
 class PlayListsItem extends ConsumerStatefulWidget {
   final int index;
   final List<WrappedPlayList> list;
+  final Function() reRenderer;
 
-  const PlayListsItem({super.key, required this.list, required this.index});
+  const PlayListsItem({super.key, required this.list, required this.index, required this.reRenderer});
 
   @override
   PlayListItemState createState() => PlayListItemState();
@@ -79,7 +82,9 @@ class PlayListItemState extends ConsumerState<PlayListsItem> {
       onCancelTapped: () {}
     );
     if(!result.isSucceeded) return;
-    _ioManager.delete<PlayList>(id: widget.list[index].id);
+    await _ioManager.delete<PlayList>(id: widget.list[index].id);
+
+    widget.reRenderer();
   }
 
   @override
