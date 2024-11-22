@@ -19,9 +19,9 @@ class LyricsFragmentState extends State<LyricsFragment>{
     final Size size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width,
-      height: size.height * 0.9,
+      height: size.height * 0.7,
       child: Padding(
-        padding: EdgeInsets.only(top: size.height * 0.2),
+        padding: EdgeInsets.only(top: size.height * 0.15),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(64),
