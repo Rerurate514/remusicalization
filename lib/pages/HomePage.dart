@@ -82,21 +82,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Widget buildList(){
-  //   return FutureBuilder(
-  //     future: _musicListFuture, 
-  //     builder: (_, snapshot){
-  //       if(snapshot.hasData){
-  //         _list = snapshot.data ?? [];
-  //         _musicPlayer = MusicPlayer.setMusicList(_list);
-  //         print(_list.length);
-  //         return ScrollableMusicList(list: _list);
-  //       }
-  //       return const Center(child: CircularProgressIndicator());
-  //     }
-  //   );
-  // }
-
   Widget buildList(){
     return ScrollableMusicList(list: _list);
   }
