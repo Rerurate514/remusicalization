@@ -17,7 +17,6 @@ class ChoicePlayList extends StatefulWidget{
 
 class ChoicePlayListState extends State<ChoicePlayList> {
   final RegisterDialogRepositry _dialogRepositry = RegisterDialogRepositry();
-  final RecordFetcher<PlayList> _fetcher = RecordFetcher<PlayList>(PlayList.schema);
   
   List<WrappedPlayList> _wrappedPlayLists = [];
 
@@ -25,9 +24,7 @@ class ChoicePlayListState extends State<ChoicePlayList> {
   void initState(){
     super.initState();
 
-    setState(() {
-      _initPlayList();
-    });
+    _initPlayList();
   }
 
   void _onListAddBtnTapped() async {
@@ -36,13 +33,12 @@ class ChoicePlayListState extends State<ChoicePlayList> {
   }
 
   void _initPlayList() async {
-    List<PlayList> playLists = await _fetcher.getAllReacordList();
-
+    final RecordFetcher<PlayList> fetcher = RecordFetcher<PlayList>(PlayList.schema);
+    List<PlayList> playLists = await fetcher.getAllReacordList();
+    
     final List<WrappedPlayList> wrappedPlayLists = await Future.wait(
       playLists.map((playList) => WrappedPlayList.getInstance(playList))
     );
-
-    wrappedPlayLists.printLog();
 
     setState(() {
       _wrappedPlayLists = wrappedPlayLists;
