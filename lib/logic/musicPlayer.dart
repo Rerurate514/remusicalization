@@ -185,6 +185,8 @@ class _AudioPlayerManager{
     _index.setIndex(listIndex);
     final String musicPath = currentMusic.path;
 
+    _audioPlayer.setVolume(currentMusic.volume / 100);
+
     if(!_isExcutable) return;
     _isExcutable = false;
 
