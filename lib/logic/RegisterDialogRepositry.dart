@@ -16,14 +16,14 @@ class RegisterDialogRepositry{
   String _listName = "";
   List<ObjectId> _musicList = [];
   
-  Future doAllSequence() async {
+  Future<void> doAllSequence() async {
     await _showListNameEnteredDialog();
     if(!_isDialogContinued) return;
     await _showRegisterEnteredDialog();
-    _saveList();
+    await _saveList();
   }
 
-  Future _showListNameEnteredDialog() async {
+  Future<void> _showListNameEnteredDialog() async {
     await showDialog(
       context: navigatorKey.currentContext!, 
       builder: (BuildContext context){
@@ -39,7 +39,7 @@ class RegisterDialogRepositry{
     );
   }
 
-  Future _showRegisterEnteredDialog([WrappedPlayList? wrappedPlayList]) async {
+  Future<void> _showRegisterEnteredDialog([WrappedPlayList? wrappedPlayList]) async {
     await showDialog(
       context: navigatorKey.currentContext!, 
       builder: (BuildContext context){
@@ -56,24 +56,24 @@ class RegisterDialogRepositry{
     );
   }
 
-  void _saveList(){
-    _ioManager.add<PlayList>(newData: PlayList(ObjectId(), _listName, "", list: _musicList));
+  Future<void> _saveList() async {
+    await _ioManager.add<PlayList>(newData: PlayList(ObjectId(), _listName, "", list: _musicList));
   }
 
-  void _editList(ObjectId id, String picture){
-    _ioManager.edit<PlayList>(newData: PlayList(id, _listName, picture, list: _musicList));
+  Future<void> _editList(ObjectId id, String picture) async {
+    await _ioManager.edit<PlayList>(newData: PlayList(id, _listName, picture, list: _musicList));
   }
 
-  Future showListNameEnteredDialog(WrappedPlayList wrappedPlayList) async {
+  Future<void> showListNameEnteredDialog(WrappedPlayList wrappedPlayList) async {
     await _showListNameEnteredDialog();
     _musicList = wrappedPlayList.list;
 
     if(!_isDialogContinued) return;
 
-    _editList(wrappedPlayList.id, wrappedPlayList.picture);
+    await _editList(wrappedPlayList.id, wrappedPlayList.picture);
   }
 
-  Future showRegisterEnteredDialog(WrappedPlayList wrappedPlayList) async {
+  Future<void> showRegisterEnteredDialog(WrappedPlayList wrappedPlayList) async {
     await _showRegisterEnteredDialog(wrappedPlayList);
     _listName = wrappedPlayList.name;
 
