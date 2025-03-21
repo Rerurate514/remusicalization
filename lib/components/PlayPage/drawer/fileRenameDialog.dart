@@ -21,27 +21,22 @@ class FileRenameDialogState extends State<FileRenameDialog> {
   final RealmIOManager _ioManager = RealmIOManager(Music.schema);
   final FileRenamer _renamer = FileRenamer();
 
-  String _newFilePath = "";
-  final String _newFileName = "";
-
 
   FileRenameDialogState(){
     String originalFileName = _player.currentMusic.name.replaceAll(".mp3", "");
     _controller.text = originalFileName;
 
-    _removeFileNameFromPath();
-
     _requestPermission();
   }
 
-  void _removeFileNameFromPath(){
-    _newFilePath = _player.currentMusic.path;
-    _newFilePath.replaceAll(_player.currentMusic.name, "");
+  String _createNewPath(){
+    return "${_player.currentMusic.path
+      .replaceAll(_player.currentMusic.name, _controller.text)}.mp3";
   }
 
   void _okBtnTapped() {
     String newMusicName = "${_controller.text}.mp3";
-    String newMusicPath = "$_newFileName.mp3";
+    String newMusicPath = _createNewPath();
 
     Music musicInfo = Music(
       _player.currentMusic.id, 
