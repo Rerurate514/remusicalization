@@ -1,7 +1,6 @@
 import 'dart:io';
+import 'package:musicalization/utils/getMusicDir.dart';
 import 'package:musicalization/utils/showWarnDialog.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 
 import 'filrStrTrimer.dart';
 
@@ -21,7 +20,7 @@ class FileFetcher{
 
   Future<List<String>> _getNameList() async {
     final list = await _initFileFetcher();
-    return _trimFileStr.convertFileNameToNameString(list);
+    return await _trimFileStr.convertFileNameToNameString(list);
   }
 
   Future<List<String>> _getPathList() async {
@@ -29,22 +28,13 @@ class FileFetcher{
     return _trimFileStr.convertFileNameToPathString(list);
   }
 
-  Future<String> _getMusicPath() async {
-  final homeDir = join(
-    (await getApplicationDocumentsDirectory()).path.replaceAll("\\Documents", ""),
-    'Music'
-  );
-  return homeDir;
-}
-
-
   ///このメソッドは外部ストレージのオブジェクトを取得するメソッドです。
   Future<Directory> _fetchExternalDir() async {
     Directory? directory = Directory("");
 
     if(Platform.isWindows){
       //todo
-      directory = Directory(await _getMusicPath());
+      directory = Directory(await getMusicPath());
       //directory =Directory("C:\\Users\\rerur\\Music");
     }
     else if(Platform.isAndroid){

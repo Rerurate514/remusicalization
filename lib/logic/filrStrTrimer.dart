@@ -1,5 +1,7 @@
+import 'package:musicalization/utils/getMusicDir.dart';
+
 class FileStrTrimer{
-  List<String> convertFileNameToNameString(List listArg){
+  Future<List<String>> convertFileNameToNameString(List listArg) async {
     List<String> strList = convertFileNameToString(listArg);
     List<String> result = [];
 
@@ -10,9 +12,11 @@ class FileStrTrimer{
           .replaceAll("Directory: '/storage/emulated/0/Download/", "")
           .replaceAll("'", "")
           .replaceAll("\\", "/")
+          .replaceAll("File: ${(await getMusicPath()).replaceAll("\\", "/")}/", "")
       );
     }
-
+    print(result);
+    print("File: ${(await getMusicPath()).replaceAll("\\", "/")}");
     return result;
   }
 
