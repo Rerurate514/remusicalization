@@ -19,6 +19,7 @@ dependencies:
   flutter_riverpod: ^2.5.1
   matrix_gesture_detector: ^0.2.0-nullsafety.1
   image_picker: ^1.1.2
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:
