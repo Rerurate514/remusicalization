@@ -7,6 +7,8 @@ import 'package:musicalization/logic/musicPlayer.dart';
 class PreviousMusicButton extends StatelessWidget{
   final _player = MusicPlayer.getEmptyInstance();
 
+  PreviousMusicButton({super.key});
+
   @override
   Widget build(BuildContext context){
     final Size size = MediaQuery.of(context).size;

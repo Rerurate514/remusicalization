@@ -6,6 +6,8 @@ import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
 
 class LyricsSettingAdjuster extends StatefulWidget{
+  const LyricsSettingAdjuster({super.key});
+
   @override
   State<StatefulWidget> createState() => LyricsSettingAdjusterState();
 }

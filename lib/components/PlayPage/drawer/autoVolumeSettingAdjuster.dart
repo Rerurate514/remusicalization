@@ -7,6 +7,8 @@ import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
 
 class AutoVolumeSettingAdjuster extends StatefulWidget{
+  const AutoVolumeSettingAdjuster({super.key});
+
   @override
   State<StatefulWidget> createState() => AutoVolumeSettingAdjusterState();
 }

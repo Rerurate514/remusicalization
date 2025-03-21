@@ -22,7 +22,7 @@ class FileRenameDialogState extends State<FileRenameDialog> {
   final FileRenamer _renamer = FileRenamer();
 
   String _newFilePath = "";
-  String _newFileName = "";
+  final String _newFileName = "";
 
 
   FileRenameDialogState(){

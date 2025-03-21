@@ -87,12 +87,12 @@ class LyricsFragmentState extends State<LyricsFragment>{
             ),
           ),
         ),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
-            const Icon(Icons.lyrics),
-            const StandardSpace(),
-            const Text("歌詞")
+            Icon(Icons.lyrics),
+            StandardSpace(),
+            Text("歌詞")
           ]
         ),
       ],
