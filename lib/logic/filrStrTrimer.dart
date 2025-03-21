@@ -15,8 +15,7 @@ class FileStrTrimer{
           .replaceAll("File: ${(await getMusicPath()).replaceAll("\\", "/")}/", "")
       );
     }
-    print(result);
-    print("File: ${(await getMusicPath()).replaceAll("\\", "/")}");
+    
     return result;
   }
 
