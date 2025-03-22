@@ -34,7 +34,12 @@ class LyricsFragmentState extends State<LyricsFragment>{
                 buildHeader(size),
                 const StandardSpace(),
                 Expanded(
-                  child: Text(_musicPlayer.currentMusic.lyrics),
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: size.height * 0.02),
+                      child: Text(_musicPlayer.currentMusic.lyrics),
+                    ),
+                  )
                 ),
               ],
             ),
@@ -43,36 +48,6 @@ class LyricsFragmentState extends State<LyricsFragment>{
       ),
     );
   }
-
-  // @override
-  // Widget build(BuildContext context){
-  //   final Size size = MediaQuery.of(context).size;
-  //   return SizedBox(
-  //     width: size.width,
-  //     height: size.height * 0.9,
-  //     child: Padding(
-  //       padding: EdgeInsets.only(top: size.height * 0.2),
-  //       child: ClipRRect(
-  //         borderRadius: const BorderRadius.only(
-  //           topLeft: Radius.circular(64),
-  //           topRight: Radius.circular(64)
-  //         ),
-  //         child: Expanded(
-  //           child: Card(
-  //             child: Column(
-  //               children: [
-  //                 const StandardSpace(),
-  //                 buildHeader(size),
-  //                 const StandardSpace(),
-  //                 Text(_musicPlayer.currentMusic.lyrics)
-  //               ],
-  //             ),
-  //           )
-  //         ),
-  //       )
-  //     )
-  //   );
-  // }
 
   Widget buildHeader(Size size){
     return Stack(
