@@ -35,7 +35,6 @@ class FileFetcher{
     if(Platform.isWindows){
       //todo
       directory = Directory(await getMusicPath());
-      //directory =Directory("C:\\Users\\rerur\\Music");
     }
     else if(Platform.isAndroid){
       directory = Directory("/storage/emulated/0/Download/");
