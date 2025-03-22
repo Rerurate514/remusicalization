@@ -20,20 +20,31 @@ class ChoiceMusic extends StatefulWidget {
 class ChoiceMusicState extends State<ChoiceMusic>{
   final RecordFetcher<Music> _fetcher = RecordFetcher<Music>(Music.schema);
   final RegisterDialogRepositry _repositry = RegisterDialogRepositry();
+  late WrappedPlayList _wrappedPlayList;
 
   @override
   void initState(){
     super.initState();
 
     setState(() {
-      
+      _wrappedPlayList = widget.wrappedPlayList;
     });
   }
 
-  void _addMusicToPlayList(){
-    _repositry.showRegisterEnteredDialog(widget.wrappedPlayList);
+  Future<void> _addMusicToPlayList() async {
+    await _repositry.showRegisterEnteredDialog(widget.wrappedPlayList);
   }
-  
+
+  void _initPlayList() async {
+    final RecordFetcher<PlayList> fetcher = RecordFetcher<PlayList>(PlayList.schema);
+    PlayList playList = await fetcher.getRecordFromId(_wrappedPlayList.id);
+
+    final WrappedPlayList wrappedPlayList = await WrappedPlayList.getInstance(playList);
+
+    setState(() {
+      _wrappedPlayList = wrappedPlayList;
+    });
+  }
 
   @override
   Widget build(BuildContext context){
@@ -51,10 +62,13 @@ class ChoiceMusicState extends State<ChoiceMusic>{
               Icons.playlist_add,
               size: 40,
             ), 
-            rightWidgetTappedCallback: _addMusicToPlayList
+            rightWidgetTappedCallback: () async {
+              await _addMusicToPlayList();
+              _initPlayList();
+            }
           ),
           const StandardSpace(),
-          ScrollableMusicList(list: widget.wrappedPlayList.musicList)
+          ScrollableMusicList(list: _wrappedPlayList.musicList)
         ],
       ),
     );

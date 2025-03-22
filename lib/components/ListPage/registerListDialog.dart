@@ -43,7 +43,11 @@ class RegisterListDialogState extends State<RegisterListDialog> {
     if(widget.wrappedPlayList != null) list = widget.wrappedPlayList!.musicList;
 
     _selected = List.generate(_allMusicList.length, (index) {
-      return list.containsAtMusic(_allMusicList[index]);
+      if(list.containsAtMusic(_allMusicList[index])){
+        _tempToBeAddedList.add(_allMusicList[index].id);
+        return true;
+      }
+      return false;
     });
   }
 
