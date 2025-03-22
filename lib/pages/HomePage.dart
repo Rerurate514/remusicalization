@@ -68,7 +68,9 @@ class _HomePageState extends State<HomePage> {
               ),
               rightWidgetTappedCallback: () {
                 showDialogWithContext(
-                  const YtDownloaderDialog()
+                  YtDownloaderDialog(
+                    onDownloadFinished: initList,
+                  )
                 );
               }
             ),
