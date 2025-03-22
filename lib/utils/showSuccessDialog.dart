@@ -4,21 +4,16 @@ import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/settings/globalNavigatoeKey.dart';
 import 'package:musicalization/utils/Result.dart';
 
-Future<Result> showWarnDialog(String text, {Function()? onOkTapped, Function()? onCancelTapped}) async {
+Future<Result> showSuccessDialog(
+  String text, {
+  Function()? onOkTapped,
+}) async {
   Widget buildOkButton(BuildContext context) {
     return TextButton(
-      onPressed: () => Navigator.of(context).pop(Result(isSucceeded: true)),
-      child: const Text("Ok"),
-    );
-  }
-
-  Widget buildCancelButton(BuildContext context) {
-    return onCancelTapped != null
-      ? TextButton(
-          onPressed: () => Navigator.of(context).pop(Result(isSucceeded: false)),
-          child: const Text("Cancel"),
-        )
-      : const SizedBox.shrink();
+            onPressed: () =>
+                Navigator.of(context).pop(Result(isSucceeded: true)),
+            child: const Text("Ok"),
+          );
   }
 
   final result = await showDialog<Result>(
@@ -31,9 +26,9 @@ Future<Result> showWarnDialog(String text, {Function()? onOkTapped, Function()? 
             child: Column(
               children: [
                 const Icon(
-                  Icons.warning,
+                  Icons.check,
                   size: 75,
-                  color: Colors.red,
+                  color: Colors.green,
                 ),
                 const StandardSpace(),
                 Column(
@@ -42,18 +37,15 @@ Future<Result> showWarnDialog(String text, {Function()? onOkTapped, Function()? 
                       child: Text(text),
                     ),
                     const StandardSpace(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        buildCancelButton(context),
-                        buildOkButton(context),
-                      ],
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: buildOkButton(context),
                     )
-                  ]
+                  ],
                 ),
                 const StandardSpace(),
               ],
-            )
+            ),
           ),
         ),
       );

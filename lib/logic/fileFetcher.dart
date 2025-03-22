@@ -1,6 +1,5 @@
 import 'dart:io';
-import 'package:musicalization/utils/getMusicDir.dart';
-import 'package:musicalization/utils/showWarnDialog.dart';
+import 'package:musicalization/utils/fetchNowOSDownloadsDir.dart';
 
 import 'filrStrTrimer.dart';
 
@@ -28,31 +27,9 @@ class FileFetcher{
     return _trimFileStr.convertFileNameToPathString(list);
   }
 
-  ///このメソッドは外部ストレージのオブジェクトを取得するメソッドです。
-  Future<Directory> _fetchExternalDir() async {
-    Directory? directory = Directory("");
-
-    if(Platform.isWindows){
-      //todo
-      directory = Directory(await getMusicPath());
-      //directory =Directory("C:\\Users\\rerur\\Music");
-    }
-    else if(Platform.isAndroid){
-      directory = Directory("/storage/emulated/0/Download/");
-    }
-    else if(Platform.isIOS){
-      //todo
-    }
-    else{
-      showWarnDialog("Unknown platform, Undefined logic");
-    }
-
-    return directory;
-  }
-
   ///このメソッドは外部ストレージのdownloadディレクトリ内のファイルを取得するメソッドです。
   Future<List<FileSystemEntity>> _fetchFileFromDownloadDir() async {
-    Directory dir = await _fetchExternalDir();
+    Directory dir = await fetchNowOSDownloadsDirectory();
 
     List<FileSystemEntity> result = dir.listSync();
 

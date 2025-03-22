@@ -4,9 +4,11 @@ import 'package:musicalization/Widgets/MyAppBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/ScrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
+import 'package:musicalization/components/HomePage/ytDownloaderDialog.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/realm/realmUpdater.dart';
 import 'package:musicalization/models/schema.dart';
+import 'package:musicalization/utils/showDialog.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -61,10 +63,14 @@ class _HomePageState extends State<HomePage> {
               ), 
               leftWidgetTappedCallback: () {}, 
               rightWidget: const Icon(
-                Icons.add_to_drive_outlined,
+                Icons.youtube_searched_for,
                 size: 40,
               ), 
-              rightWidgetTappedCallback: () {}
+              rightWidgetTappedCallback: () {
+                showDialogWithContext(
+                  const YtDownloaderDialog()
+                );
+              }
             ),
             const StandardSpace(),
             buildList()
