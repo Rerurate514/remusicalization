@@ -31,7 +31,10 @@ class YtDownloaderDialogState extends State<YtDownloaderDialog> {
       if(result.isSucceeded){
         showSuccessDialog(
           "ダウンロードに成功しました",
-          onOkTapped: () => widget.onDownloadFinished,
+          onOkTapped: () {
+            widget.onDownloadFinished();
+            print("ok");
+          },
         );
       }else{
         showWarnDialog(result.errorMsg);

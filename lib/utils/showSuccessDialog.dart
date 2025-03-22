@@ -10,8 +10,10 @@ Future<Result> showSuccessDialog(
 }) async {
   Widget buildOkButton(BuildContext context) {
     return TextButton(
-            onPressed: () =>
-                Navigator.of(context).pop(Result(isSucceeded: true)),
+            onPressed: () {
+              if(onOkTapped != null) onOkTapped();
+              Navigator.of(context).pop(Result(isSucceeded: true));
+            },
             child: const Text("Ok"),
           );
   }
