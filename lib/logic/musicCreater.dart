@@ -1,4 +1,3 @@
-// ignore: unused_element
 import 'package:musicalization/models/schema.dart';
 import 'package:realm/realm.dart';
 
