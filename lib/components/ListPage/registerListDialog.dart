@@ -98,7 +98,7 @@ class RegisterListDialogState extends State<RegisterListDialog> {
   }
 
   Widget buildTitle(){
-    return const Text("リストに追加する曲を選択");
+    return const Text("リストに表示する曲を選択");
   }
 
   Widget buildRegisteringList() {

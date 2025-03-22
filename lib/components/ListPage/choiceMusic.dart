@@ -59,7 +59,7 @@ class ChoiceMusicState extends State<ChoiceMusic>{
             ), 
             leftWidgetTappedCallback: () {}, 
             rightWidget: const Icon(
-              Icons.playlist_add,
+              Icons.playlist_add_circle,
               size: 40,
             ), 
             rightWidgetTappedCallback: () async {
