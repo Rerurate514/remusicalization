@@ -37,7 +37,10 @@ Future<Result> showSuccessDialog(
                       child: Text(text),
                     ),
                     const StandardSpace(),
-                    buildOkButton(context),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: buildOkButton(context),
+                    )
                   ],
                 ),
                 const StandardSpace(),
