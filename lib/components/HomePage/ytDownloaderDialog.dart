@@ -6,7 +6,9 @@ import 'package:musicalization/utils/showSuccessDialog.dart';
 import 'package:musicalization/utils/showWarnDialog.dart';
 
 class YtDownloaderDialog extends StatefulWidget {
-  const YtDownloaderDialog({super.key});
+  final Function() onDownloadFinished;
+
+  const YtDownloaderDialog({super.key, required this.onDownloadFinished});
 
   @override
   State<StatefulWidget> createState() => YtDownloaderDialogState();
@@ -27,7 +29,10 @@ class YtDownloaderDialogState extends State<YtDownloaderDialog> {
     try {
       final result = await _downloader.downloadMp3FromYt(url);
       if(result.isSucceeded){
-        showSuccessDialog("ダウンロードに成功しました");
+        showSuccessDialog(
+          "ダウンロードに成功しました",
+          onOkTapped: () => widget.onDownloadFinished,
+        );
       }else{
         showWarnDialog(result.errorMsg);
       }
