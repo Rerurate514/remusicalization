@@ -63,9 +63,9 @@ class _HomePageState extends State<HomePage> {
               ), 
               leftWidgetTappedCallback: () {}, 
               rightWidget: const Icon(
-                Icons.youtube_searched_for,
+                Icons.download,
                 size: 40,
-              ), 
+              ),
               rightWidgetTappedCallback: () {
                 showDialogWithContext(
                   const YtDownloaderDialog()
