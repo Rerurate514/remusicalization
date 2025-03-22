@@ -21,6 +21,7 @@ import 'package:musicalization/components/PlayPage/volumeButton.dart';
 import 'package:musicalization/components/PlayPage/volumeSwitcher.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/settings/globalNavigatoeKey.dart';
+import 'package:musicalization/utils/showDialog.dart';
 
 class PlayPage extends StatefulWidget {
   const PlayPage({super.key});
@@ -237,26 +238,17 @@ class _DrawerTappedFuncs{
       DrawerItemTappped.PICTURE_SETTING: _pictureSettingItemTapped,
     };
   }
-
-  void _showDialog(Widget content){
-    showDialog(
-      context: navigatorKey.currentContext!, 
-      builder: (BuildContext context) {
-        return content;
-      }
-    );
-  }
   
   void _autoVolumeSettingItemTapped(){
-    _showDialog(AutoVolumeSettingAdjuster());
+    showDialogWithContext(const AutoVolumeSettingAdjuster());
   }
 
   void _lyricsSettingItemTapped() {
-    _showDialog(LyricsSettingAdjuster());
+    showDialogWithContext(const LyricsSettingAdjuster());
   }
 
   void _nameSettingItemTapped() {
-    _showDialog(const FileRenameDialog());
+    showDialogWithContext(const FileRenameDialog());
   }
 
   void _pictureSettingItemTapped() {
