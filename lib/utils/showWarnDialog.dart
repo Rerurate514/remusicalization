@@ -6,12 +6,10 @@ import 'package:musicalization/utils/Result.dart';
 
 Future<Result> showWarnDialog(String text, {Function()? onOkTapped, Function()? onCancelTapped}) async {
   Widget buildOkButton(BuildContext context) {
-    return onOkTapped != null
-      ? TextButton(
-          onPressed: () => Navigator.of(context).pop(Result(isSucceeded: true)),
-          child: const Text("Ok"),
-        )
-      : const SizedBox.shrink();
+    return TextButton(
+      onPressed: () => Navigator.of(context).pop(Result(isSucceeded: true)),
+      child: const Text("Ok"),
+    );
   }
 
   Widget buildCancelButton(BuildContext context) {
