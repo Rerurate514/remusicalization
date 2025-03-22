@@ -63,7 +63,6 @@ class _VolumeControlBarState extends State<VolumeControlBar> {
             const StandardSpace(),
             buildSlider(),
             buildIcon(),
-            const StandardSpace(),
             buildCloseBtn(),
           ],
         ),
