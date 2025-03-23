@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/HeaderMenuBar.dart';
+import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/ListPage/scrollablePlayLists.dart';
 import 'package:musicalization/logic/RegisterDialogRepositry.dart';
@@ -47,28 +48,30 @@ class ChoicePlayListState extends State<ChoicePlayList> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: Column(
-        children: [
-          const StandardSpace(),
-          HeaderMenuBar(
-            leftWidget: const Icon(
-              Icons.shuffle,
-              size: 40,
-            ), 
-            leftWidgetTappedCallback: () {}, 
-            rightWidget: const Icon(
-              Icons.playlist_add,
-              size: 40,
-            ), 
-            rightWidgetTappedCallback: _onListAddBtnTapped
-          ),
-          const StandardSpace(),
-          ScrollablePlayLists(
-            list: _wrappedPlayLists,
-            reRenderer: _initPlayList,
-          )
-        ],
-      ),
+      body: PageWrapper(
+        child: Column(
+          children: [
+            const StandardSpace(),
+            HeaderMenuBar(
+              leftWidget: const Icon(
+                Icons.shuffle,
+                size: 40,
+              ), 
+              leftWidgetTappedCallback: () {}, 
+              rightWidget: const Icon(
+                Icons.playlist_add,
+                size: 40,
+              ), 
+              rightWidgetTappedCallback: _onListAddBtnTapped
+            ),
+            const StandardSpace(),
+            ScrollablePlayLists(
+              list: _wrappedPlayLists,
+              reRenderer: _initPlayList,
+            )
+          ],
+        ),
+      )
     );
   }
 }

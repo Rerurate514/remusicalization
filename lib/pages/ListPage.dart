@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/MyAppBar.dart';
-import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/components/ListPage/bottomListNameShower.dart';
 import 'package:musicalization/components/ListPage/listPageDeligater.dart';
 import 'package:musicalization/components/ListPage/returnButtonFromMusic.dart';
@@ -20,9 +19,7 @@ class _ListPageState extends State<ListPage> {
       appBar: MyAppBar(
         image: AssetImage("assets/images/mp3_mode_list.png")
       ),
-      body: PageWrapper(
-        child: ListPageDeligater() 
-      ),
+      body:  ListPageDeligater(),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
