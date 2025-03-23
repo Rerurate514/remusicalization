@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/HeaderMenuBar.dart';
 import 'package:musicalization/Widgets/ScrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
+import 'package:musicalization/components/ListPage/listRenameDialog.dart';
 import 'package:musicalization/logic/RegisterDialogRepositry.dart';
 import 'package:musicalization/logic/recordFetcher.dart';
 import 'package:musicalization/models/schema.dart';
 import 'package:musicalization/models/wrappedPlayList.dart';
+import 'package:musicalization/utils/showDialog.dart';
 
 class ChoiceMusic extends StatefulWidget {
   final WrappedPlayList wrappedPlayList;
@@ -46,6 +48,14 @@ class ChoiceMusicState extends State<ChoiceMusic>{
     });
   }
 
+  void _showEditRenameDialog(){
+    showDialogWithContext(
+      ListRenameDialog(
+        wrappedPlayList: _wrappedPlayList
+      )
+    );
+  }
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -54,10 +64,10 @@ class ChoiceMusicState extends State<ChoiceMusic>{
           const StandardSpace(),
           HeaderMenuBar(
             leftWidget: const Icon(
-              Icons.shuffle,
+              Icons.edit_note,
               size: 40,
             ), 
-            leftWidgetTappedCallback: () {}, 
+            leftWidgetTappedCallback: _showEditRenameDialog, 
             rightWidget: const Icon(
               Icons.playlist_add_circle,
               size: 40,
