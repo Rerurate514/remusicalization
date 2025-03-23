@@ -23,7 +23,6 @@ class ChoiceMusic extends StatefulWidget {
 }
 
 class ChoiceMusicState extends State<ChoiceMusic>{
-  final RecordFetcher<Music> _fetcher = RecordFetcher<Music>(Music.schema);
   final RegisterDialogRepositry _repositry = RegisterDialogRepositry();
   late WrappedPlayList _wrappedPlayList;
 
