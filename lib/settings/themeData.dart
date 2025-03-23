@@ -28,5 +28,11 @@ final ThemeData APP_THEME_DATA = ThemeData.dark().copyWith(
       overlayShape: const RoundSliderOverlayShape(overlayRadius: 20.0),
       activeTrackColor: MyColors.PRIMARY_BLUE.color,
       inactiveTrackColor: MyColors.UNSELECTED_BLUE.color
+  ),
+  snackBarTheme: SnackBarThemeData(
+    backgroundColor: MyColors.CARD_BACKGROUND.color,
+    contentTextStyle: const TextStyle(
+      color: Colors.white
+    )
   )
 );
