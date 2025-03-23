@@ -7,7 +7,9 @@ import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/ListPage/listRenameDialog.dart';
 import 'package:musicalization/components/ListPage/playListImageCreaterSwitcher.dart';
 import 'package:musicalization/components/ListPage/playListSettingDrawer.dart';
+import 'package:musicalization/enums/transition.dart';
 import 'package:musicalization/logic/RegisterDialogRepositry.dart';
+import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/recordFetcher.dart';
 import 'package:musicalization/models/schema.dart';
 import 'package:musicalization/models/wrappedPlayList.dart';
@@ -25,6 +27,7 @@ class ChoiceMusic extends StatefulWidget {
 class ChoiceMusicState extends State<ChoiceMusic>{
   final RegisterDialogRepositry _repositry = RegisterDialogRepositry();
   late WrappedPlayList _wrappedPlayList;
+  final MusicPlayer _player = MusicPlayer.getEmptyInstance();
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   void _openDrawer() => _scaffoldKey.currentState?.openDrawer();
@@ -77,7 +80,10 @@ class ChoiceMusicState extends State<ChoiceMusic>{
                     Icons.shuffle,
                     size: 40,
                   ), 
-                  leftWidgetTappedCallback: () {}, 
+                  leftWidgetTappedCallback: () {
+                    _player.toggleMusicMode();
+                    _player.moveMusicList(Transition.RANDOM);
+                  }, 
                   rightWidget: const Icon(
                     Icons.settings,
                     size: 40,

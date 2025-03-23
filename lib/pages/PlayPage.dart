@@ -60,6 +60,8 @@ class PlayPageState extends State<PlayPage> {
   }
 
   void _reRenderUI(){
+    if(!mounted) return;
+
     setState(() {
       _listNane = _player.listName;
       if(_player.isMusicFirstPlayExecuted) _musicName = _player.currentMusic.name;
