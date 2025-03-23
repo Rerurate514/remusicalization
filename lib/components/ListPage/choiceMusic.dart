@@ -1,9 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/HeaderMenuBar.dart';
+import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/ScrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/ListPage/listRenameDialog.dart';
+import 'package:musicalization/components/ListPage/playListImageCreaterSwitcher.dart';
+import 'package:musicalization/components/ListPage/playListSettingDrawer.dart';
 import 'package:musicalization/logic/RegisterDialogRepositry.dart';
 import 'package:musicalization/logic/recordFetcher.dart';
 import 'package:musicalization/models/schema.dart';
@@ -23,6 +26,10 @@ class ChoiceMusicState extends State<ChoiceMusic>{
   final RecordFetcher<Music> _fetcher = RecordFetcher<Music>(Music.schema);
   final RegisterDialogRepositry _repositry = RegisterDialogRepositry();
   late WrappedPlayList _wrappedPlayList;
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  void _openDrawer() => _scaffoldKey.currentState?.openDrawer();
+  void _closeDrawer() => _scaffoldKey.currentState?.closeDrawer();
 
   @override
   void initState(){
@@ -59,28 +66,53 @@ class ChoiceMusicState extends State<ChoiceMusic>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: Column(
-        children: [
-          const StandardSpace(),
-          HeaderMenuBar(
-            leftWidget: const Icon(
-              Icons.edit_note,
-              size: 40,
-            ), 
-            leftWidgetTappedCallback: _showEditRenameDialog, 
-            rightWidget: const Icon(
-              Icons.playlist_add_circle,
-              size: 40,
-            ), 
-            rightWidgetTappedCallback: () async {
-              await _addMusicToPlayList();
-              _initPlayList();
-            }
-          ),
-          const StandardSpace(),
-          ScrollableMusicList(list: _wrappedPlayList.musicList)
-        ],
+      key: _scaffoldKey,
+      body: PageWrapper(
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                const StandardSpace(),
+                HeaderMenuBar(
+                  leftWidget: const Icon(
+                    Icons.shuffle,
+                    size: 40,
+                  ), 
+                  leftWidgetTappedCallback: () {}, 
+                  rightWidget: const Icon(
+                    Icons.settings,
+                    size: 40,
+                  ), 
+                  rightWidgetTappedCallback: _openDrawer
+                ),
+                const StandardSpace(),
+                ScrollableMusicList(list: _wrappedPlayList.musicList)
+              ],
+            ),
+            PlayListImageCreaterSwitcher(wrappedPlayList: _wrappedPlayList)
+          ],
+        )
       ),
+      drawer: PlayListSettingDrawer({
+        DrawerItemTappped.RENAME_LIST: _renameListItemTapped,
+        DrawerItemTappped.RECHOICE_MUSIC: _rechoiceMusicItemTapped,
+        DrawerItemTappped.PICTURE_SETTING: _pictureSettingItemTapped
+      }),
     );
+  }
+
+  void _renameListItemTapped() async {
+    _showEditRenameDialog();
+    _closeDrawer();
+  }
+
+  void _rechoiceMusicItemTapped() async {
+    await _addMusicToPlayList();
+    _initPlayList();
+    _closeDrawer();
+  }
+
+  void _pictureSettingItemTapped() {
+    _closeDrawer();
   }
 }
