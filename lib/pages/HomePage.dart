@@ -5,6 +5,7 @@ import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/ScrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/HomePage/ytDownloaderDialog.dart';
+import 'package:musicalization/enums/transition.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/realm/realmUpdater.dart';
 import 'package:musicalization/models/schema.dart';
@@ -20,6 +21,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Music> _list = [];
   final Updater _updater = Updater();
+  final MusicPlayer _player = MusicPlayer.getEmptyInstance();
 
   @override
   void initState(){
@@ -45,6 +47,12 @@ class _HomePageState extends State<HomePage> {
     return list;
   }
 
+  void playShuffleMusic(){
+    _player.toggleMusicMode();
+
+    _player.moveMusicList(Transition.RANDOM);
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -61,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                 Icons.shuffle,
                 size: 40,
               ), 
-              leftWidgetTappedCallback: () {}, 
+              leftWidgetTappedCallback: playShuffleMusic, 
               rightWidget: const Icon(
                 Icons.download,
                 size: 40,
