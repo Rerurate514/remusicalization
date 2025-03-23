@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     initList();
   }
 
-  void initList() async {print("fini");
+  void initList() async {
     List<Music> list = await _updateMusicList();
     setState(() {
       _list = list;
