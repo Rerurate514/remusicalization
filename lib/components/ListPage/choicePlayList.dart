@@ -57,7 +57,13 @@ class ChoicePlayListState extends State<ChoicePlayList> {
                 Icons.shuffle,
                 size: 40,
               ), 
-              leftWidgetTappedCallback: () {}, 
+              leftWidgetTappedCallback: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("ごめんなさい！プレイリスト外からのシャッフル再生はまだ未実装です！アップデートをお待ちください！")
+                  )
+                );
+              }, 
               rightWidget: const Icon(
                 Icons.playlist_add,
                 size: 40,
