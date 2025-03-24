@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "245570462912",
+    "project_id": "musicalization-6c51a",
+    "storage_bucket": "musicalization-6c51a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245570462912:android:08bf7389d467c42ea5b925",
+        "android_client_info": {
+          "package_name": "com.rerurate.musicalization"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKivtfkx_3VKtSRzhmlIoEKO2CfN6BV20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
