@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/Widgets/MyAppBar.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 
@@ -20,7 +21,8 @@ class _SettingPageState extends State<SettingPage> {
       body: PageWrapper(
         child: Column(
           children: [
-            InkWell(
+            InkCard(
+              padding: 10,
               onTap: () {
                 showLicensePage(context: context);
               },
