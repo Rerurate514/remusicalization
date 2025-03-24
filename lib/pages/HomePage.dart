@@ -55,7 +55,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: const MyAppBar(
         image: AssetImage("assets/images/mp3_mode_main.png")

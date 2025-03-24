@@ -17,7 +17,6 @@ class InkCard extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    final Size size = MediaQuery.of(context).size;
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(circular)

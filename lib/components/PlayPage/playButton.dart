@@ -8,6 +8,7 @@ class PlayButton extends StatefulWidget {
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _PlayButtonState createState() => _PlayButtonState();
 }
 
@@ -44,7 +45,6 @@ class _PlayButtonState extends State<PlayButton> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return InkCard(
       onTap: onTapped, 
       padding: 10,

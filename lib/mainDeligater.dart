@@ -44,7 +44,6 @@ class _MainDeligaterState extends State<MainDeligater> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(

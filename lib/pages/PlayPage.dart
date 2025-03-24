@@ -20,7 +20,6 @@ import 'package:musicalization/components/PlayPage/previousButton.dart';
 import 'package:musicalization/components/PlayPage/volumeButton.dart';
 import 'package:musicalization/components/PlayPage/volumeSwitcher.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
-import 'package:musicalization/settings/globalNavigatoeKey.dart';
 import 'package:musicalization/utils/showDialog.dart';
 
 class PlayPage extends StatefulWidget {

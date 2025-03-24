@@ -7,7 +7,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context){
-    final Size size = MediaQuery.of(context).size;
     return AppBar(
       automaticallyImplyLeading: false,
       title: const Text("musicalization"),

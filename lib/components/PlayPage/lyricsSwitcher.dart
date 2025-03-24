@@ -19,7 +19,6 @@ class LyricsSwitcherState extends ConsumerState<LyricsSwitcher>{
 
   @override
   Widget build(BuildContext context){
-    final Size size = MediaQuery.of(context).size;
     final showFrag = ref.watch(showLyricsProvider);
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),

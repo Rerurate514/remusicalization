@@ -19,7 +19,6 @@ class VolumeButtonState extends ConsumerState<VolumeButton> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return InkCard(
       onTap: onTapped, 
       padding: 10,

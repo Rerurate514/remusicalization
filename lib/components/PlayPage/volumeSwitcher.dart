@@ -19,7 +19,6 @@ class VolumeSwitcherState extends ConsumerState<VolumeSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     final showSlider = ref.watch(showVolumeSliderProvider);
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),

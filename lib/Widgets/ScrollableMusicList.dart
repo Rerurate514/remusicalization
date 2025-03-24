@@ -24,8 +24,6 @@ class ScrollableMusicListState extends State<ScrollableMusicList> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    
     return Expanded( 
       child: ListView.builder(
         controller: _scrollController,

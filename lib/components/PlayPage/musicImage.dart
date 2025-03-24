@@ -15,6 +15,7 @@ class MusicImageState extends ConsumerState<MusicImage>{
   final MusicPlayer _player = MusicPlayer.getEmptyInstance();
   final PictureBinaryConverter _converter = PictureBinaryConverter();
 
+  // ignore: unused_field
   ImageProvider? _image;
 
   @override

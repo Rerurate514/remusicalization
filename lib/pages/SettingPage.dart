@@ -13,7 +13,6 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: const MyAppBar(
         image: AssetImage("assets/images/mp3_mode_setting.png")

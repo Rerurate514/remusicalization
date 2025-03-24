@@ -32,7 +32,6 @@ class ScrollablePlayListsState extends State<ScrollablePlayLists> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Expanded( 
       child: ListView.builder(
         controller: _scrollController,
@@ -63,13 +62,12 @@ class PlayListsItem extends ConsumerStatefulWidget {
 
 class PlayListItemState extends ConsumerState<PlayListsItem> {
   final PictureBinaryConverter _converter = PictureBinaryConverter();
-  late final MusicPlayer _player;
   final RealmIOManager _ioManager = RealmIOManager(PlayList.schema);
 
   void onListTapped(int index) {
     ref.watch(isPlayListSelectedProvider.notifier).state = true;
     ref.watch(musicListInPlayListProvider.notifier).state = widget.list[index];
-    _player = MusicPlayer.setMusicList(
+    MusicPlayer.setMusicList(
       widget.list[index].musicList, 
       widget.list[index].name
     );

@@ -34,7 +34,6 @@ class MusicImageCreaterState extends ConsumerState<MusicImageCreater> {
   Matrix4 _transform = Matrix4.identity();
 
   final GlobalKey _globalKey = GlobalKey();
-  Uint8List? _imageData;
 
   final ImagePickerController _picker = ImagePickerController();
 
