@@ -42,14 +42,24 @@ class _VolumeControlBarState extends State<VolumeControlBar> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Container(
-      width: size.width,
-      height: size.height * 0.75,
-      margin: const EdgeInsets.all(20),
-      child: Align(
-        alignment: Alignment.bottomRight,
-        child: buildContent(size),
-      )
+    return Stack(
+      children: [
+        SizedBox(
+          width: size.width,
+          height: size.height * 0.75,
+          child: GestureDetector(
+            onTap: () => widget.closeFragment(),
+          ),
+        ),
+        SizedBox( 
+          width: size.width,
+          height: size.height * 0.75,
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: buildContent(size),
+          )
+        ),
+      ],
     );
   }
 
