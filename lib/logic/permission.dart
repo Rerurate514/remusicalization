@@ -21,7 +21,7 @@ class MediaAudioPermissionRequester extends PermissionRequester {
 class StorageAccessRequester extends PermissionRequester {
   @override
   Future<PermissionStatus> requestPermission() async {
-    PermissionStatus status = await Permission.storage.request();
+    PermissionStatus status = await Permission.manageExternalStorage.request();
 
     status.isGranted
       ? print('AccessStorage permission granted.')
