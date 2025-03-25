@@ -2,7 +2,6 @@
 
 // ignore: must_be_immutable
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
