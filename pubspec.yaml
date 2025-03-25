@@ -21,6 +21,7 @@ dependencies:
   image_picker: ^1.1.2
   path: ^1.9.0
   youtube_explode_dart: ^2.3.10
+  file_picker: ^9.2.1
 
 dev_dependencies:
   flutter_test:
