@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/dialogPadding.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
+import 'package:musicalization/logic/sizeDiffFns.dart';
 import 'package:musicalization/logic/youtubeDownloader.dart';
 import 'package:musicalization/utils/showSuccessDialog.dart';
 import 'package:musicalization/utils/showWarnDialog.dart';
@@ -33,7 +34,6 @@ class YtDownloaderDialogState extends State<YtDownloaderDialog> {
           "ダウンロードに成功しました",
           onOkTapped: () {
             widget.onDownloadFinished();
-            print("ok");
           },
         );
       }else{
@@ -43,6 +43,7 @@ class YtDownloaderDialogState extends State<YtDownloaderDialog> {
     } catch (e) {
       showWarnDialog("ダウンロードに失敗しました。 -> ${e.toString()}");
     } finally {
+      // ignore: control_flow_in_finally
       if(!mounted) return;
       setState(() {
         _isDownloading = false;
@@ -108,7 +109,9 @@ Widget buildUrlInputField() {
 
   Widget buildBtns() {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(
+        getDownloadPadding()
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
