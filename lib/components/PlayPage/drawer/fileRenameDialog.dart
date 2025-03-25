@@ -64,17 +64,19 @@ class FileRenameDialogState extends State<FileRenameDialog> {
       child: DialogPadding(
         child: Card(
           child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: Column(
-                children: [                 
-                  const StandardSpace(),
-                  buildTitle(size),
-                  const StandardSpace(),
-                  buildTextField(size),
-                  const StandardSpace(),
-                  buildBtns()
-                ],
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2),
+                child: Column(
+                  children: [                 
+                    const StandardSpace(),
+                    buildTitle(size),
+                    const StandardSpace(),
+                    buildTextField(size),
+                    const StandardSpace(),
+                    buildBtns()
+                  ],
+                ),
               ),
             ),
           )
