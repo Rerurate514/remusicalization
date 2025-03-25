@@ -39,7 +39,10 @@ Future<Result> showWarnDialog(String text, {Function()? onOkTapped, Function()? 
                 Column(
                   children: [
                     FittedBox(
-                      child: Text(text),
+                      child: Text(
+                        text,
+                        softWrap: true,
+                      ),
                     ),
                     const StandardSpace(),
                     Row(

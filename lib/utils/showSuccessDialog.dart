@@ -36,7 +36,10 @@ Future<Result> showSuccessDialog(
                 Column(
                   children: [
                     FittedBox(
-                      child: Text(text),
+                      child: Text(
+                        text,
+                        softWrap: true,
+                      ),
                     ),
                     const StandardSpace(),
                     Align(
