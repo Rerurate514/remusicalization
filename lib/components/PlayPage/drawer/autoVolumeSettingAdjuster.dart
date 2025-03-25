@@ -60,7 +60,7 @@ class AutoVolumeSettingAdjusterState extends State<AutoVolumeSettingAdjuster>{
   Widget buildTitle(Size size){
     return const Text(
       "自動に調整される音量の調整",
-      style: TextStyle(fontSize: 20),
+      //style: TextStyle(fontSize: 20),
     );
   }
 
