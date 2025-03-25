@@ -85,8 +85,7 @@ class FileRenameDialogState extends State<FileRenameDialog> {
 
   Widget buildTitle(Size size){
     return const Text(
-      "ファイル名の変更",
-      style: TextStyle(fontSize: 20),
+      "ファイル名の変更"
     );
   }
 
