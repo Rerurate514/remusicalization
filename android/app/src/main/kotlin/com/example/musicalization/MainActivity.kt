@@ -1,4 +1,4 @@
-package com.example.musicalization
+package com.rerurate.musicalization
 
 import io.flutter.embedding.android.FlutterActivity
 
