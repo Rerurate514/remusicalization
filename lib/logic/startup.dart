@@ -3,10 +3,13 @@ import 'package:musicalization/logic/realm/realmUpdater.dart';
 
 class StartUp{
   final _mediaAudioRequester = MediaAudioPermissionRequester();
+  final _storageAccessRequester = StorageAccessRequester();
+
   final _updater = Updater();
 
   void init() async {
     await _mediaAudioRequester.requestPermission();
+    await _storageAccessRequester.requestPermission();
     _refreshData();
   }
 
