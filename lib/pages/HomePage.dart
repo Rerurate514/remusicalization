@@ -6,6 +6,7 @@ import 'package:musicalization/Widgets/ScrollableMusicList.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
 import 'package:musicalization/components/HomePage/ytDownloaderDialog.dart';
 import 'package:musicalization/enums/transition.dart';
+import 'package:musicalization/logic/fileImporter.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/realm/realmUpdater.dart';
 import 'package:musicalization/models/schema.dart';
@@ -39,6 +40,11 @@ class _HomePageState extends State<HomePage> {
 
   void _onUpdateBtnTapped() async {
     initList();
+  }
+
+  void _onImportButtonTapped(){
+    final importer = FileImporter();
+    importer.importFileFromLocal();
   }
 
   Future<List<Music>> _updateMusicList() async {
@@ -86,14 +92,28 @@ class _HomePageState extends State<HomePage> {
           ],
         )
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).cardColor,
-        onPressed: _onUpdateBtnTapped,
-        child: const Icon(
-          Icons.update,
-          size: 32,
-        ),
-      ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            backgroundColor: Theme.of(context).cardColor,
+            onPressed: _onImportButtonTapped,
+            child: const Icon(
+              Icons.storage,
+              size: 32,
+            ),
+          ),
+          const StandardSpace(),
+          FloatingActionButton(
+            backgroundColor: Theme.of(context).cardColor,
+            onPressed: _onUpdateBtnTapped,
+            child: const Icon(
+              Icons.update,
+              size: 32,
+            ),
+          ),
+        ],
+      )
     );
   }
 
