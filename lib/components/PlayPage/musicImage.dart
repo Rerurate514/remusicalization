@@ -53,6 +53,8 @@ class MusicImageState extends ConsumerState<MusicImage>{
       _setMusicPictureToProv();
     });
 
+    final double imageAvatorSize = size.height * 0.3;
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: Card(
@@ -61,8 +63,8 @@ class MusicImageState extends ConsumerState<MusicImage>{
         ),
         elevation: 16,
         child: SizedBox(
-          width: size.width * 0.74,
-          height: size.height * 0.34,
+          width: imageAvatorSize,
+          height: imageAvatorSize,
           child: CircleAvatar(
             backgroundColor: const Color.fromARGB(28, 28, 28, 0),
             backgroundImage: imageProv,
