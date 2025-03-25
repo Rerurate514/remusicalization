@@ -9,7 +9,10 @@ class DialogPadding extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: size.height * 0.3, horizontal: size.width * 0.1),
+      padding: EdgeInsets.symmetric(
+        vertical: size.height * 0.3, 
+        horizontal: size.width * 0.1
+      ),
       child: child,
     );
   }
