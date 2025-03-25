@@ -147,25 +147,25 @@ class MusicImageCreaterState extends ConsumerState<MusicImageCreater> {
         InkCard(
           padding: 16,
           onTap: widget.closeFragment, 
-          child: const Icon(
+          child: Icon(
             Icons.arrow_back,
-            size: 32,
+            size: getButtonsSize(),
           )
         ),
         InkCard(
           padding: 16,
           onTap: _selectFile, 
-          child: const Icon(
+          child: Icon(
             Icons.download,
-            size: 32,
+            size: getButtonsSize(),
           )
         ),
         InkCard(
           padding: 16,
           onTap: _initMatrix, 
-          child: const Icon(
+          child: Icon(
             Icons.update_rounded,
-            size: 32,
+            size: getButtonsSize(),
           )
         ),
         InkCard(
@@ -174,9 +174,9 @@ class MusicImageCreaterState extends ConsumerState<MusicImageCreater> {
             _captureImage();
             widget.closeFragment();
           }, 
-          child: const Icon(
+          child: Icon(
             Icons.check,
-            size: 32,
+            size: getButtonsSize(),
           )
         ),
       ],
