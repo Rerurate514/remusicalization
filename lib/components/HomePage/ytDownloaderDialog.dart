@@ -43,6 +43,7 @@ class YtDownloaderDialogState extends State<YtDownloaderDialog> {
     } catch (e) {
       showWarnDialog("ダウンロードに失敗しました。 -> ${e.toString()}");
     } finally {
+      if(!mounted) return;
       setState(() {
         _isDownloading = false;
       });
