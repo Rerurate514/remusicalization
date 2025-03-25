@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/PageWrapper.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
-import 'package:musicalization/settings/globalNavigatoeKey.dart';
+import 'package:musicalization/settings/globalNavigatorKey.dart';
 import 'package:musicalization/utils/Result.dart';
 
 Future<Result> showSuccessDialog(

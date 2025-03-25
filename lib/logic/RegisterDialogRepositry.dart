@@ -4,7 +4,7 @@ import 'package:musicalization/components/ListPage/registerListNameDialog.dart';
 import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
 import 'package:musicalization/models/wrappedPlayList.dart';
-import 'package:musicalization/settings/globalNavigatoeKey.dart';
+import 'package:musicalization/settings/globalNavigatorKey.dart';
 import 'package:realm/realm.dart';
 
 

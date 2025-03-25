@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:musicalization/mainDeligater.dart';
-import 'package:musicalization/settings/globalNavigatoeKey.dart';
+import 'package:musicalization/settings/globalNavigatorKey.dart';
 import 'package:musicalization/settings/themeData.dart';
 
 void main() {
