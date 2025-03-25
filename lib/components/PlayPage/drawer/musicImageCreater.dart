@@ -10,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:matrix_gesture_detector/matrix_gesture_detector.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/Widgets/standardSpace.dart';
+import 'package:musicalization/logic/getImageAvatorSize.dart';
 import 'package:musicalization/logic/imagePicker.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
@@ -109,8 +110,8 @@ class MusicImageCreaterState extends ConsumerState<MusicImageCreater> {
         borderRadius: BorderRadius.circular(1000)
       ),
       child: SizedBox(
-        width: size.width * 0.74,
-        height: size.height * 0.34,
+        width: getImageAvatorSize(),
+        height: getImageAvatorSize(),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(1000),
           child: RepaintBoundary(

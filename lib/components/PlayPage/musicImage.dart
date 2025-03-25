@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:musicalization/logic/getImageAvatorSize.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
 import 'package:musicalization/providers/musicImageProvider.dart';
@@ -53,8 +54,6 @@ class MusicImageState extends ConsumerState<MusicImage>{
       _setMusicPictureToProv();
     });
 
-    final double imageAvatorSize = size.height * 0.3;
-
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: Card(
@@ -63,8 +62,8 @@ class MusicImageState extends ConsumerState<MusicImage>{
         ),
         elevation: 16,
         child: SizedBox(
-          width: imageAvatorSize,
-          height: imageAvatorSize,
+          width: getImageAvatorSize(),
+          height: getImageAvatorSize(),
           child: CircleAvatar(
             backgroundColor: const Color.fromARGB(28, 28, 28, 0),
             backgroundImage: imageProv,
