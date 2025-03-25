@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
+import 'package:musicalization/logic/sizeDiffFns.dart';
 import 'package:musicalization/providers/showVolumeSliderProvider.dart';
 
 class VolumeButton extends ConsumerStatefulWidget {
@@ -22,9 +23,9 @@ class VolumeButtonState extends ConsumerState<VolumeButton> {
     return InkCard(
       onTap: onTapped, 
       padding: 10,
-      child: const Icon(
+      child: Icon(
         Icons.volume_up,
-        size: 32,
+        size: getButtonsSize(),
       )
     );
   }

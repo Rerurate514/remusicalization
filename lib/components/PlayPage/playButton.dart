@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
+import 'package:musicalization/logic/sizeDiffFns.dart';
 
 class PlayButton extends StatefulWidget {
   const PlayButton({
@@ -50,7 +51,7 @@ class _PlayButtonState extends State<PlayButton> {
       padding: 10,
       child: Icon(
         _player.isPlaying ? Icons.pause : Icons.play_arrow,
-        size: 32,
+        size: getButtonsSize(),
       )
     );
   }

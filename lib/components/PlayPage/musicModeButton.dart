@@ -3,6 +3,7 @@ import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/enums/colors.dart';
 import 'package:musicalization/enums/musicMode.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
+import 'package:musicalization/logic/sizeDiffFns.dart';
 
 class MusicModeButton extends StatefulWidget {
   const MusicModeButton({super.key});
@@ -17,17 +18,17 @@ class _MusicModeButtonState extends State<MusicModeButton> {
   final Widget normalIcon = Icon(
     Icons.loop,
     color: MyColors.UNSELECTED_BLUE.color,
-    size: 32,
+    size: getButtonsSize(),
   );
 
-  final Widget loopIcon = const Icon(
+  final Widget loopIcon = Icon(
     Icons.loop,
-    size: 32,
+    size: getButtonsSize(),
   );
 
-  final Widget shuffleIcon = const Icon(
+  final Widget shuffleIcon = Icon(
     Icons.shuffle,
-    size: 32,
+    size: getButtonsSize(),
   );
 
   Widget _icon = Container();

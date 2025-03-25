@@ -10,3 +10,13 @@ double getImageAvatorSize(){
   
   return size.height * 0.35;
 }
+
+double getButtonsSize(){
+  final Size size = MediaQuery.of(navigatorKey.currentContext!).size;
+
+    if(size.height < 800){
+    return 25;
+  }
+  
+  return 32;
+}

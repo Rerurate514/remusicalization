@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:musicalization/logic/getImageAvatorSize.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
+import 'package:musicalization/logic/sizeDiffFns.dart';
 import 'package:musicalization/providers/musicImageProvider.dart';
 
 class MusicImage extends ConsumerStatefulWidget{
