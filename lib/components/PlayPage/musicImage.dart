@@ -47,7 +47,6 @@ class MusicImageState extends ConsumerState<MusicImage>{
 
   @override
   Widget build(BuildContext context){
-    final Size size = MediaQuery.of(context).size;
     final imageProv = ref.watch(musicImageProvider);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
