@@ -307,23 +307,23 @@ class _DurationListenerResistry {
   }
 }
 
-class _PlayerCompletionListenerResistry {
-  void setPlayerCompletionListener(
-    AudioPlayer audioPlayer,
-    MusicMode musicMode,
-    Function() moveNext,
-    Function() moveRandom,
-    Function()? reRenderUI
-  ) {
-    print("set lisetener");
-    audioPlayer.onPlayerComplete.listen((event) {
-      switch(musicMode){
-        case MusicMode.NORMAL: moveNext();
-        case MusicMode.LOOP: () {};
-        case MusicMode.SHUFFLE: moveRandom();
-      }
+// class _PlayerCompletionListenerResistry {
+//   void setPlayerCompletionListener(
+//     AudioPlayer audioPlayer,
+//     MusicMode musicMode,
+//     Function() moveNext,
+//     Function() moveRandom,
+//     Function()? reRenderUI
+//   ) {
+//     print("set lisetener");
+//     audioPlayer.onPlayerComplete.listen((event) {
+//       switch(musicMode){
+//         case MusicMode.NORMAL: moveNext();
+//         case MusicMode.LOOP: () {};
+//         case MusicMode.SHUFFLE: moveRandom();
+//       }
 
-      if(reRenderUI != null) reRenderUI();
-    }); 
-  }
-}
+//       if(reRenderUI != null) reRenderUI();
+//     }); 
+//   }
+// }
