@@ -46,4 +46,4 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/mp3_menu_picture_setting.png"
+  image_path: "assets/images/mp3_app_icon.png"
