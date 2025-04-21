@@ -17,6 +17,7 @@ import 'package:musicalization/components/PlayPage/musicSettingDrawer.dart';
 import 'package:musicalization/components/PlayPage/nextMusicButton.dart';
 import 'package:musicalization/components/PlayPage/playButton.dart';
 import 'package:musicalization/components/PlayPage/previousButton.dart';
+import 'package:musicalization/components/PlayPage/screenSaver.dart';
 import 'package:musicalization/components/PlayPage/volumeButton.dart';
 import 'package:musicalization/components/PlayPage/volumeSwitcher.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
@@ -43,6 +44,8 @@ class PlayPageState extends State<PlayPage> {
   String _musicDurText = "null";
   String _musicCurText = "null";
 
+  bool isNull = true;
+
   void _openDrawer() => _scaffoldKey.currentState?.openDrawer();
   void _closeDrawer() => _scaffoldKey.currentState?.closeDrawer();
 
@@ -63,7 +66,10 @@ class PlayPageState extends State<PlayPage> {
 
     setState(() {
       _listNane = _player.listName;
-      if(_player.isMusicFirstPlayExecuted) _musicName = _player.currentMusic.name;
+      if(_player.isMusicFirstPlayExecuted) {
+        _musicName = _player.currentMusic.name;
+        isNull = false;
+      }
     });
   }
 
@@ -87,25 +93,30 @@ class PlayPageState extends State<PlayPage> {
       appBar: const MyAppBar(
         image: AssetImage("assets/images/mp3_mode_music.png")
       ),
-      body: PageWrapper(
-        child: Center(
-          child: Stack(
-            children: [
-              Column(
+      body: Stack(
+        children: [
+          PageWrapper(
+            child: Center(
+              child: Stack(
                 children: [
-                  buildTitle(size),
-                  const StandardSpace(),
-                  const MusicImage(),
-                  const StandardSpace(),
-                  buildTimeAndSlider(),
-                  const StandardSpace(),
-                  buildButtons(),
+                  Column(
+                    children: [
+                      buildTitle(size),
+                      const StandardSpace(),
+                      const MusicImage(),
+                      const StandardSpace(),
+                      buildTimeAndSlider(),
+                      const StandardSpace(),
+                      buildButtons(),
+                    ],
+                  ),
+                  buildSwitchers()
                 ],
               ),
-              buildSwitchers()
-            ],
+            )
           ),
-        )
+          isNull ? const ScreenSaver(): const SizedBox.shrink(),
+        ],
       ),
       drawer: MusicSettingDrawer(
         _DrawerTappedFuncs(
