@@ -115,7 +115,9 @@ class PlayPageState extends State<PlayPage> {
               ),
             )
           ),
-          isNull ? const ScreenSaver(): const SizedBox.shrink(),
+          isNull 
+            ? const ScreenSaver()
+            : const SizedBox.shrink(),
         ],
       ),
       drawer: MusicSettingDrawer(
@@ -126,7 +128,9 @@ class PlayPageState extends State<PlayPage> {
           },
         ).tappedFuncMap
       ),
-      floatingActionButton: buildFloatingButtons(size)
+      floatingActionButton: isNull 
+        ? const SizedBox.shrink()
+        : buildFloatingButtons(size),
     );
   }
 
@@ -178,13 +182,13 @@ class PlayPageState extends State<PlayPage> {
   }
 
   Widget buildButtons(){
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         PreviousMusicButton(),
-        const MusicModeButton(),
-        const PlayButton(),
-        const VolumeButton(),
+        MusicModeButton(),
+        PlayButton(),
+        VolumeButton(),
         NextMusicButton()
       ],
     );
