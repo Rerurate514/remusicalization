@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:musicalization/enums/colors.dart';
 
+// ignore: non_constant_identifier_names
 final ThemeData APP_THEME_DATA = ThemeData.dark().copyWith(
   textTheme: ThemeData.dark().textTheme.copyWith(),
   // colorScheme: ColorScheme.fromSeed(
   //   seedColor: MyColors.PRIMARY_BLUE.color,
   // ),
-  cardTheme: CardTheme(
+  cardTheme: CardThemeData(
     color: MyColors.CARD_BACKGROUND.color,
     elevation: 8
   ),
