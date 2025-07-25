@@ -7,8 +7,8 @@ import 'package:musicalization/logic/pictureBinaryConverter.dart';
 import 'package:musicalization/logic/realm/realmIOManager.dart';
 import 'package:musicalization/models/schema.dart';
 import 'package:musicalization/models/wrappedPlayList.dart';
-import 'package:musicalization/providers/isPlayListSelectedProvider.dart';
 import 'package:musicalization/providers/musicListInPlayListProvider.dart';
+import 'package:musicalization/providers/showPlayListSelectedProvider.dart';
 import 'package:musicalization/utils/Result.dart';
 import 'package:musicalization/utils/showWarnDialog.dart';
 
@@ -65,7 +65,7 @@ class PlayListItemState extends ConsumerState<PlayListsItem> {
   final RealmIOManager _ioManager = RealmIOManager(PlayList.schema);
 
   void onListTapped(int index) {
-    ref.watch(isPlayListSelectedProvider.notifier).state = true;
+    ref.watch(showPlayListSelectedNotifierProvider.notifier).show();
     ref.watch(musicListInPlayListNotifierProvider.notifier).setWrappedPlayList(widget.list[index]);
     MusicPlayer.setMusicList(
       widget.list[index].musicList, 

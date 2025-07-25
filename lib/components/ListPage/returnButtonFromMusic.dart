@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:musicalization/enums/colors.dart';
-import 'package:musicalization/providers/isPlayListSelectedProvider.dart';
 import 'package:musicalization/providers/musicListInPlayListProvider.dart';
+import 'package:musicalization/providers/showPlayListSelectedProvider.dart';
 
 class ReturnButtonFromMusic extends ConsumerStatefulWidget {
   const ReturnButtonFromMusic({super.key});
@@ -13,13 +13,13 @@ class ReturnButtonFromMusic extends ConsumerStatefulWidget {
 
 class ReturnButtonFromMusicState extends ConsumerState<ReturnButtonFromMusic>{
   void returnPlayListPage(){
-    ref.read(isPlayListSelectedProvider.notifier).state = false;
+    ref.read(showPlayListSelectedNotifierProvider.notifier).hide();
     ref.read(musicListInPlayListNotifierProvider.notifier).initWrappedPlayList();
   }
   
   @override
   Widget build(BuildContext context) {
-    final prov = ref.watch(isPlayListSelectedProvider);
+    final prov = ref.watch(showPlayListSelectedNotifierProvider);
     final Size size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.only(left: size.width * 0.06),
