@@ -78,7 +78,7 @@ Widget buildUrlInputField() {
     r'^(?:https?:\/\/)?'
     r'(?:www\.)?'
     r'(?:youtube\.com|youtu\.be)'
-    r'\/(?:watch\?v=)?'
+    r'\/(?:watch\?v=|live\/)?'
     r'([\w-]+)'
     r'(?:(?:\?|\&)[\w-]+=[\w-]+)*$'
   );
