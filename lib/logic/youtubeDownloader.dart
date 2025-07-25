@@ -25,7 +25,7 @@ class YtDownloader {
     final audioStream = _yt.videos.streamsClient.get(audio);
 
     final directory = await fetchNowOSDownloadsDirectory();
-    final filePath = '${directory.path}/${videoTitle.hashCode}.mp3';
+    final filePath = '${directory.path}/$videoTitle.mp3';
 
     final file = File(filePath);
     final fileStream = file.openWrite();
