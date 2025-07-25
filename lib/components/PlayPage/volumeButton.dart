@@ -14,8 +14,7 @@ class VolumeButton extends ConsumerStatefulWidget {
 class VolumeButtonState extends ConsumerState<VolumeButton> {
 
   void onTapped(){
-    ref.read(showVolumeSliderProvider.notifier).state = 
-    !ref.read(showVolumeSliderProvider.notifier).state;
+    ref.read(showVolumeSliderNotifierProvider.notifier).toggleVisible();
   }
 
   @override

@@ -13,13 +13,12 @@ class VolumeSwitcher extends ConsumerStatefulWidget {
 class VolumeSwitcherState extends ConsumerState<VolumeSwitcher> {
   
   void closeFragment(){
-    ref.read(showVolumeSliderProvider.notifier).state = 
-    !ref.read(showVolumeSliderProvider.notifier).state;
+    ref.read(showVolumeSliderNotifierProvider.notifier).toggleVisible();
   }
 
   @override
   Widget build(BuildContext context) {
-    final showSlider = ref.watch(showVolumeSliderProvider);
+    final showSlider = ref.watch(showVolumeSliderNotifierProvider);
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),
       switchInCurve: Curves.easeInOut,

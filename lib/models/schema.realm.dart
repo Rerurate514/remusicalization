@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'schema.dart';
@@ -6,6 +7,7 @@ part of 'schema.dart';
 // RealmObjectGenerator
 // **************************************************************************
 
+// coverage:ignore-file
 // ignore_for_file: type=lint
 class Music extends _Music with RealmEntity, RealmObjectBase, RealmObject {
   Music(
@@ -80,6 +82,7 @@ class Music extends _Music with RealmEntity, RealmObjectBase, RealmObject {
 
   static EJsonValue _toEJson(Music value) => value.toEJson();
   static Music _fromEJson(EJsonValue ejson) {
+    if (ejson is! Map<String, dynamic>) return raiseInvalidEJson(ejson);
     return switch (ejson) {
       {
         'id': EJsonValue id,
@@ -104,7 +107,7 @@ class Music extends _Music with RealmEntity, RealmObjectBase, RealmObject {
   static final schema = () {
     RealmObjectBase.registerFactory(Music._);
     register(_toEJson, _fromEJson);
-    return SchemaObject(ObjectType.realmObject, Music, 'Music', [
+    return const SchemaObject(ObjectType.realmObject, Music, 'Music', [
       SchemaProperty('id', RealmPropertyType.objectid, primaryKey: true),
       SchemaProperty('name', RealmPropertyType.string),
       SchemaProperty('path', RealmPropertyType.string),
@@ -179,18 +182,18 @@ class PlayList extends _PlayList
 
   static EJsonValue _toEJson(PlayList value) => value.toEJson();
   static PlayList _fromEJson(EJsonValue ejson) {
+    if (ejson is! Map<String, dynamic>) return raiseInvalidEJson(ejson);
     return switch (ejson) {
       {
         'id': EJsonValue id,
         'name': EJsonValue name,
-        'list': EJsonValue list,
         'picture': EJsonValue picture,
       } =>
         PlayList(
           fromEJson(id),
           fromEJson(name),
           fromEJson(picture),
-          list: fromEJson(list),
+          list: fromEJson(ejson['list']),
         ),
       _ => raiseInvalidEJson(ejson),
     };
@@ -199,7 +202,7 @@ class PlayList extends _PlayList
   static final schema = () {
     RealmObjectBase.registerFactory(PlayList._);
     register(_toEJson, _fromEJson);
-    return SchemaObject(ObjectType.realmObject, PlayList, 'PlayList', [
+    return const SchemaObject(ObjectType.realmObject, PlayList, 'PlayList', [
       SchemaProperty('id', RealmPropertyType.objectid, primaryKey: true),
       SchemaProperty('name', RealmPropertyType.string),
       SchemaProperty('list', RealmPropertyType.objectid,
