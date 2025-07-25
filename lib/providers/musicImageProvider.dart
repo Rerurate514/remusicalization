@@ -1,4 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final StateProvider<ImageProvider?> musicImageProvider = StateProvider((ref) => null);
+part 'musicImageProvider.g.dart';
+
+@riverpod
+class MusicImageNotifier extends _$MusicImageNotifier {
+  @override
+  ImageProvider? build() {
+    return null;
+  }
+
+  void initImageProvider(){
+    state = null;
+  }
+
+  void setImageProvider(ImageProvider? imageProvider){
+    state = imageProvider;
+  }
+}

@@ -37,7 +37,7 @@ class MusicImageState extends ConsumerState<MusicImage>{
   }
   @override
   Widget build(BuildContext context){
-    final imageProv = ref.watch(musicImageProvider);
+    final imageProv = ref.watch(musicImageNotifierProvider);
     
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),

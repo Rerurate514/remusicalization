@@ -19,8 +19,8 @@ class _NextMusicButtonState extends ConsumerState<NextMusicButton> {
   final PictureBinaryConverter _converter = PictureBinaryConverter();
 
   void _setMusicPictureToProv() {
-    ref.read(musicImageProvider.notifier).update(
-      (state) => _player.currentMusic.picture != "" 
+    ref.read(musicImageNotifierProvider.notifier).setImageProvider(
+      _player.currentMusic.picture != "" 
       ? _converter.convertBase64ToImage(_player.currentMusic.picture)
       : null
     );
