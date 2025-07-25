@@ -33,7 +33,10 @@ class YtDownloader {
     try {
       await audioStream.pipe(fileStream);
     } catch (e) {
-      showWarnDialog("ダウンロードに失敗しました。 -> ${e.toString()}");
+      return Result(
+        isSucceeded: false,
+        errorMsg: "ダウンロードに失敗しました。 -> ${e.toString()}"
+      );
     } finally {
       await fileStream.flush();
       await fileStream.close();
