@@ -12,7 +12,7 @@ class BottomListNameShower extends ConsumerStatefulWidget {
 class BottomListNameShowerState extends ConsumerState<BottomListNameShower> {
   @override
   Widget build(BuildContext context){
-    final prov = ref.watch(musicListInPlayListProvider);
+    final prov = ref.watch(musicListInPlayListNotifierProvider);
     return prov != null
     ? Card(
       child: Padding(

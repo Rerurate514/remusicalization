@@ -17,7 +17,7 @@ class ListPageDeligaterState extends ConsumerState<ListPageDeligater>{
   @override
   Widget build(BuildContext context){
     final isPlayListSelected = ref.watch(isPlayListSelectedProvider);
-    final wrappedMusicList = ref.watch(musicListInPlayListProvider.notifier).state;
+    final wrappedMusicList = ref.watch(musicListInPlayListNotifierProvider);
     
     return isPlayListSelected
     ? ChoiceMusic(wrappedPlayList: wrappedMusicList!)

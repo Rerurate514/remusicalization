@@ -22,7 +22,7 @@ class ListRenameDialogState extends ConsumerState<ListRenameDialog>{
 
   void _okBtnTapped() async {
     await _saveListName();
-    ref.watch(musicListInPlayListProvider.notifier).state = _wrappedPlayList;
+    ref.read(musicListInPlayListNotifierProvider.notifier).setWrappedPlayList(_wrappedPlayList);
   }
 
   Future<void> _saveListName() async {

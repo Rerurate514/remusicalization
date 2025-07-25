@@ -13,8 +13,8 @@ class ReturnButtonFromMusic extends ConsumerStatefulWidget {
 
 class ReturnButtonFromMusicState extends ConsumerState<ReturnButtonFromMusic>{
   void returnPlayListPage(){
-    ref.watch(isPlayListSelectedProvider.notifier).state = false;
-    ref.watch(musicListInPlayListProvider.notifier).state = null;
+    ref.read(isPlayListSelectedProvider.notifier).state = false;
+    ref.read(musicListInPlayListNotifierProvider.notifier).initWrappedPlayList();
   }
   
   @override
