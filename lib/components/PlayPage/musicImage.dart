@@ -35,24 +35,10 @@ class MusicImageState extends ConsumerState<MusicImage>{
       }
     });
   }
-
-  void _setMusicPictureToProv(){
-    ref.read(musicImageProvider.notifier).update(
-      (state) =>
-        _player.currentMusic.picture != ""
-        ? state
-        : null
-    );
-  }
-
   @override
   Widget build(BuildContext context){
     final imageProv = ref.watch(musicImageProvider);
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _setMusicPictureToProv();
-    });
-
+    
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: Card(
