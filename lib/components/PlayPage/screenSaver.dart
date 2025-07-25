@@ -17,6 +17,15 @@ class _ScreenSaverState extends State<ScreenSaver> {
       decoration: const BoxDecoration(
         color: Color.fromARGB(200, 32, 32, 32)
       ),
+      child: const Center(
+        child: Text(
+          "Select Music!",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 32
+          ),
+        ),
+      ),
     );
   }
 }
