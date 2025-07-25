@@ -12,13 +12,12 @@ class ImageCreaterSwitcher extends ConsumerStatefulWidget{
 
 class ImageCreaterSwitcherState extends ConsumerState<ImageCreaterSwitcher> {
   void closeFragment(){
-    ref.read(showMusicImageCreaterProvider.notifier).state =
-    !ref.read(showMusicImageCreaterProvider.notifier).state;
+    ref.read(showMusicImageCreaterNotifierProvider.notifier).toggleVisible();
   }
 
   @override
   Widget build(BuildContext context){
-    final showFlag = ref.watch(showMusicImageCreaterProvider);
+    final showFlag = ref.watch(showMusicImageCreaterNotifierProvider);
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),
       switchInCurve: Curves.easeInOut,
