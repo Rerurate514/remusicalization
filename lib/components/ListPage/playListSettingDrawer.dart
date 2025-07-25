@@ -110,7 +110,7 @@ class _ImageCreaterDrawerItemsState extends ConsumerState<_ImageCreaterDrawerIte
     return InkCard(
       onTap: () {
         widget.onItemTappedFunc();
-        ref.read(showPlayListImageCreaterProvider.notifier).state = true;
+        ref.read(showPlayListImageCreaterNotifierProvider.notifier).show();
       },
       child: ListTile(
         leading: Icon(
