@@ -11,11 +11,11 @@ class MusicListInPlayListNotifier extends _$MusicListInPlayListNotifier {
     return null;
   }
 
-  void initWrappedPlayList(){
+  void init(){
     state = null;
   }
 
-  void setWrappedPlayList(WrappedPlayList wrappedPlayList){
+  void update(WrappedPlayList wrappedPlayList){
     state = wrappedPlayList;
   }
 }

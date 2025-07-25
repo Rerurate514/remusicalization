@@ -66,7 +66,7 @@ class PlayListItemState extends ConsumerState<PlayListsItem> {
 
   void onListTapped(int index) {
     ref.watch(showPlayListSelectedNotifierProvider.notifier).show();
-    ref.watch(musicListInPlayListNotifierProvider.notifier).setWrappedPlayList(widget.list[index]);
+    ref.watch(musicListInPlayListNotifierProvider.notifier).update(widget.list[index]);
     MusicPlayer.setMusicList(
       widget.list[index].musicList, 
       widget.list[index].name

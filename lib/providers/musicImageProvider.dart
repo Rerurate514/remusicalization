@@ -10,11 +10,11 @@ class MusicImageNotifier extends _$MusicImageNotifier {
     return null;
   }
 
-  void initImageProvider(){
+  void init(){
     state = null;
   }
 
-  void setImageProvider(ImageProvider? imageProvider){
+  void update(ImageProvider? imageProvider){
     state = imageProvider;
   }
 }
