@@ -10,9 +10,8 @@ class LyricsShowFloatingButton extends ConsumerStatefulWidget{
 }
 
 class LyricsShowFloatingButtonState extends ConsumerState<LyricsShowFloatingButton>{
-    void onTapped(){
-    ref.read(showLyricsProvider.notifier).state = 
-    !ref.read(showLyricsProvider.notifier).state;
+  void onTapped(){
+    ref.read(showLyricsNotifierProvider.notifier).toggleVisible();
   }
 
   @override

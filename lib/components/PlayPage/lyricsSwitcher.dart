@@ -13,13 +13,12 @@ class LyricsSwitcher extends ConsumerStatefulWidget{
 class LyricsSwitcherState extends ConsumerState<LyricsSwitcher>{
 
   void closeFragment(){
-    ref.read(showLyricsProvider.notifier).state =
-    !ref.read(showLyricsProvider.notifier).state;
+    ref.read(showLyricsNotifierProvider.notifier).toggleVisible();
   }
 
   @override
   Widget build(BuildContext context){
-    final showFrag = ref.watch(showLyricsProvider);
+    final showFrag = ref.watch(showLyricsNotifierProvider);
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),
       switchInCurve: Curves.easeInOut,
