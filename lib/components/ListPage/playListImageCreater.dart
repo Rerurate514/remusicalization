@@ -61,8 +61,7 @@ class MusicImageCreaterState extends ConsumerState<PlayListImageCreater> {
   }
 
   void _setImageToMusic(String newPictureBinary){
-    ImageProvider imageProvider = _converter.convertBase64ToImage(newPictureBinary);
-    ref.read(musicImageNotifierProvider.notifier).update(imageProvider);
+    ref.read(musicImageNotifierProvider.notifier).update(newPictureBinary);
   }
 
   void _initMatrix(){
