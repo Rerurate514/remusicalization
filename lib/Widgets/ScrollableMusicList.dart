@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:musicalization/Widgets/InkCard.dart';
 import 'package:musicalization/logic/musicPlayer.dart';
 import 'package:musicalization/logic/pictureBinaryConverter.dart';
 import 'package:musicalization/models/schema.dart';
+import 'package:musicalization/providers/musicImageProvider.dart';
 
-class ScrollableMusicList extends StatefulWidget {
+class ScrollableMusicList extends ConsumerStatefulWidget {
   final List<Music> list;
   const ScrollableMusicList({super.key, required this.list});
 
@@ -12,7 +14,7 @@ class ScrollableMusicList extends StatefulWidget {
   ScrollableMusicListState createState() => ScrollableMusicListState();
 }
 
-class ScrollableMusicListState extends State<ScrollableMusicList> {
+class ScrollableMusicListState extends ConsumerState<ScrollableMusicList> {
   final ScrollController _scrollController = ScrollController();
   final PictureBinaryConverter _converter = PictureBinaryConverter();
   final MusicPlayer _player = MusicPlayer.getEmptyInstance();
@@ -20,6 +22,11 @@ class ScrollableMusicListState extends State<ScrollableMusicList> {
   @override
   void initState(){
     super.initState();
+  }
+
+  void _setImageToMusic(String newPictureBinary){
+    ImageProvider imageProvider = _converter.convertBase64ToImage(newPictureBinary);
+    ref.read(musicImageNotifierProvider.notifier).update(imageProvider);
   }
 
   @override
@@ -32,6 +39,7 @@ class ScrollableMusicListState extends State<ScrollableMusicList> {
         itemBuilder: (_, int index){
           return InkCard(
             onTap: () {
+              _setImageToMusic(widget.list[index].picture);
               _player.start(index);
             }, 
             child: ListTile(

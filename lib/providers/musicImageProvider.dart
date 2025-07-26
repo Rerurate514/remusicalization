@@ -7,6 +7,7 @@ part 'musicImageProvider.g.dart';
 class MusicImageNotifier extends _$MusicImageNotifier {
   @override
   ImageProvider? build() {
+    ref.keepAlive();
     return null;
   }
 
