@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void initList() async {
+    if(!mounted) return;
     List<Music> list = await _updateMusicList();
     setState(() {
       _list = list;
